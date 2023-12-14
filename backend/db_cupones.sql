@@ -13,7 +13,7 @@ CREATE TABLE `usuario` (
   `direccion` VARCHAR(60) NOT NULL,
   `departamento` VARCHAR(15) NOT NULL,
   `correo` VARCHAR(20) NOT NULL,
-  `contraseña` VARCHAR(20) NOT NULL, #se espera que sea una combinacion de numeros y digitos
+  `contraseña` VARCHAR(20) NOT NULL, --se espera que sea una combinacion de numeros y digitos
   `telefono` INT NULL,
   `eliminado` TINYINT(1),
   `insert_usuarioid` INT,
@@ -36,7 +36,7 @@ CREATE TABLE `cliente_tienda` (
   `direccion` VARCHAR(60) NULL,
   `correo` VARCHAR(30) NOT NULL,
   `nombre_contacto` VARCHAR(60) NOT NULL,
-  `contraseña` VARCHAR(20) NOT NULL, #se espera que sea una combinacion de numeros y digitos
+  `contraseña` VARCHAR(20) NOT NULL, --se espera que sea una combinacion de numeros y digitos
   `telefono` INT NULL,
   `eliminado` TINYINT(1),
   `insert_clienteid` INT,
@@ -140,7 +140,7 @@ CREATE TABLE `administradores` (
   `nombre` VARCHAR(60) NOT NULL,
   `cargo` VARCHAR(30) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
-  `contraseña` VARCHAR(20) NOT NULL, #se espera que sea una combinacion de numeros y digitos
+  `contraseña` VARCHAR(20) NOT NULL, --se espera que sea una combinacion de numeros y digitos
   PRIMARY KEY (`administrador_id`))
  
   /*INSERT INTO administradores(nombre, cargo, correo, contraseña) VALUES ('Carlos', 'admin', 'carlos@gmail.com', 'fjnefike29392' )*/
