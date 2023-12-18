@@ -1,27 +1,64 @@
-# Aquí se importarían las bibliotecas necesarias para la conexión a tu base de datos SQL
+import mysql.connector
+from mysql.connector import Error
+from os import getenv
+from dotenv import load_dotenv
 
-# Como ejemplo que usamos una biblioteca como pymssql para la conexión
-import pymssql
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv()
 
-# Configuración de la conexión a la base de datos
-class Database:
-    def __init__(self):
-        # Configura la conexión a tu base de datos
-        self.connection = pymssql.connect(
-            server='tu_servidor',
-            user='tu_usuario',
-            password='tu_contraseña',
-            database='tu_base_de_datos'
-        )
-    
-    def execute_stored_procedure(self, procedure_name, *args):
-        # Ejecuta un procedimiento almacenado con argumentos
-        with self.connection.cursor() as cursor:
-            cursor.execute(f"EXEC {procedure_name} %s", args)
-            self.connection.commit()
+class DataConexion:
+    def conector(self):
+        """
+        Método para crear y retornar una conexión a la base de datos.
 
-    def query_stored_procedure(self, procedure_name, *args):
-        # Ejecuta un procedimiento almacenado que devuelve resultados
-        with self.connection.cursor(as_dict=True) as cursor:
-            cursor.execute(f"EXEC {procedure_name} %s", args)
-            return cursor.fetchall()
+        - Utiliza variables de entorno para obtener información de conexión.
+        - Devuelve un objeto de conexión.
+        """
+        try: 
+            conexion = mysql.connector.connect(
+                host=getenv("DB_HOST"),
+                user=getenv("DB_USUARIO"),
+                password=getenv("DB_CONTRASENA"),
+                database=getenv("DB_NOMBRE")
+            )
+            print("Conexión exitosa!")
+            return conexion
+        except mysql.connector.Error as Error:
+            print("Error de conexion a la base de datos: {}".format(Error))
+
+
+    def EjecutaProcedure(self, procedure_name, params=[]):
+        """
+        Método para ejecutar un procedimiento almacenado que devuelve resultados.
+
+        - procedure_name: Nombre del procedimiento almacenado a ejecutar.
+        - params: Lista de parámetros para el procedimiento almacenado.
+
+        Retorna un diccionario con los resultados y los parámetros utilizados.
+        """
+        results = []
+        args = params
+        cnn = self.conector()
+        try:
+            cursor = cnn.cursor(dictionary=True)
+            cursor.callproc(procedure_name, params)
+            
+            # Recorremos los resultados del procedimiento almacenado
+            for result in cursor.stored_results():
+                results.append(result.fetchall())
+            
+            cnn.commit()
+            cursor.close()
+        except Error as e:
+            print(e)
+        finally:
+            if cnn.is_connected():
+                cnn.close()
+        return {'results': results, 'params': args}
+
+"""# Crear una instancia de la clase DataAccess
+data_acceder = DataConexion()
+
+# Ejemplo de ejecución de procedimiento almacenado con resultados
+select_result = data_acceder.EjecutaProcedure('sp_ver_usuarios', [])
+print("Resultados del procedimiento con resultados:", select_result)"""
