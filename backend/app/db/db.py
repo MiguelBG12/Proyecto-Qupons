@@ -27,14 +27,14 @@ class DataConexion:
             print("Error de conexion a la base de datos: {}".format(Error))
 
 
-    def EjecutaProcedure(self, procedure_name, params=[]):
+    def EjecutaProcedureSelect(self, procedure_name, params=[]):
         """
         Método para ejecutar un procedimiento almacenado que devuelve resultados.
 
         - procedure_name: Nombre del procedimiento almacenado a ejecutar.
         - params: Lista de parámetros para el procedimiento almacenado.
 
-        Retorna un diccionario con los resultados y los parámetros utilizados.
+        Retorna un diccionario con los resultados y los parámetros utilizados. Adecuado para realizar SELECT
         """
         results = []
         args = params
@@ -55,6 +55,29 @@ class DataConexion:
             if cnn.is_connected():
                 cnn.close()
         return {'results': results, 'params': args}
+    
+    def EjecutaProcedure(self, procedureName, params):
+        """
+        Método para ejecutar un procedimiento almacenado que devuelve resultados.
+
+        - procedure_name: Nombre del procedimiento almacenado a ejecutar.
+        - params: Lista de parámetros para el procedimiento almacenado.
+
+        Adecuado para realizar INSERT, DELETE
+        """
+        args = params
+        try:
+            cnn = self.conector()
+            cursor = cnn.cursor()
+            args = cursor.callproc(procedureName, params)
+            cnn.commit()
+            cursor.close()
+        except Error as e:
+            print(e)
+        finally:
+            if (cnn and cnn.is_connected()):
+                cnn.close()
+        return { 'params': args }
 
 """# Crear una instancia de la clase DataAccess
 data_acceder = DataConexion()
