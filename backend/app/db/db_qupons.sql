@@ -16,7 +16,7 @@ CREATE TABLE `usuario` (
   `contraseña` VARCHAR(20) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
-  )
+  );
 /*INSERT INTO usuario(nombres_completos, dni, genero, fecha_nacimiento, direccion, departamento, correo, contraseña, telefono) VALUES ('Mario', 12345678, 'masculino', '1958-01-30', 'Av La gardenias 1345', 'lima', 'mario@gmail.com', 'dsjfno234', 9756123)*/
 
 /*DROP TABLE IF EXISTS `cliente_tienda` ;*/
@@ -31,7 +31,7 @@ CREATE TABLE `cliente_tienda` (
   `nombre_contacto` VARCHAR(60) NOT NULL,
   `contraseña` VARCHAR(20) NOT NULL,
   `telefono` INT NULL,
-  PRIMARY KEY (`cliente_tienda_id`))
+  PRIMARY KEY (`cliente_tienda_id`));
 /*INSERT INTO cliente_tienda(nombre_empresa, ruc, razon_social, direccion, correo, nombre_contacto, contraseña, telefono) VALUES ('Tayloy', 00254756, 'venta materiales', 'Av Colina verde', 'tayloy@gmail.com', 'Perez', 'jndnduo67dhih', 577496)*/
 
 
@@ -41,7 +41,7 @@ CREATE TABLE `categorias` (
   `categorias_id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(20) NOT NULL,
   `Descripcion` VARCHAR(45) NULL,
-  PRIMARY KEY (`categorias_id`))
+  PRIMARY KEY (`categorias_id`));
   
 /*INSERT INTO categorias(nombre, descripcion) VALUES ('belleza', 'encuentra todas los productos a mejor precio')
 INSERT INTO categorias(nombre) VALUES ('diversion')*/
@@ -72,7 +72,7 @@ CREATE TABLE `cupones` (
     FOREIGN KEY (`categorias_id`)
     REFERENCES `db_webcuponera`.`categorias` (`categorias_id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION);
     
 /*INSERT INTO cupones(titulo, descripcion, fecha_inicio, fecha_vencimiento, precio_normal, precio_oferta, porcentaje_descuento, diseño_oferta_foto, terminos_condiciones, cliente_tienda_id, categorias_id) VALUES ('Nuevo descuento escolar', 'Aprovecha este 20% de decuento en tu segunda compra de utiles escolares', '2023-12-11', '2023-12-30', 150.26, 125.6, 20, '/images/libros.png', 'Solo 1 cupon por persona sera permitido, valido de lunes a viernes', 1, 1)
 INSERT INTO cupones(titulo, descripcion, fecha_inicio, fecha_vencimiento, precio_normal, precio_oferta, porcentaje_descuento, diseño_oferta_foto, terminos_condiciones, cliente_tienda_id, categorias_id) VALUES ('Alisado brasileño', 'De regalo rizado de pestañas', '2024-01-02', '2024-01-13', 120.20, 100, 15, '/images/alisado.png', 'Solo 2 cupon por persona sera permitido, valido de lunes a viernes', 1, 2)*/
@@ -115,7 +115,7 @@ CREATE TABLE `subcategorias` (
   CONSTRAINT `fk_SUBCATEGORIAS_CATEGORIAS1`
     FOREIGN KEY (`categorias_id`)
     REFERENCES `db_webcuponera`.`CATEGORIAS` (`categorias_id`)
-)
+);
 
 /*INSERT INTO subcategorias(nombre, categorias_id) VALUES ('estetica', 2)*/
 /*DROP TABLE IF EXISTS `administradores` ;*/
@@ -126,6 +126,6 @@ CREATE TABLE `administradores` (
   `cargo` VARCHAR(30) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `contraseña` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`administrador_id`))
+  PRIMARY KEY (`administrador_id`));
  
   /*INSERT INTO administradores(nombre, cargo, correo, contraseña) VALUES ('Carlos', 'admin', 'carlos@gmail.com', 'fjnefike29392' )*/
