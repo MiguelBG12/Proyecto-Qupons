@@ -1,0 +1,6 @@
+DELIMITER $$
+CREATE PROCEDURE `sp_ver_cupones`()
+BEGIN
+	SELECT * FROM `cupones`;
+END$$
+DELIMITER ;
