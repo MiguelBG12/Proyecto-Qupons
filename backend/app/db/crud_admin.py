@@ -2,12 +2,12 @@ from db import DataConexion
 
 class Administrador(DataConexion):
 
-    def crear_nuevo_admin(self, nombre, email, contraseña):
-        # Lógica para crear un nuevo administrador en la base de datos
-        pass
+    def crear_nuevo_admin(self, nombre, cargo, email, contraseña):
+        falta logica
+        return self.EjecutaProcedure('sp_crear_admin', (nombre, cargo, email, contraseña))
 
-    def ver_todos_admin(self):
-        return self.EjecutaProcedure('sp_ver_todos_administradores')
+    def ver_admin(self):
+        return self.EjecutaProcedure('sp_ver_administradores')
 
     def actualizar_admin(self, id_admin, nuevo_nombre, nuevo_email, nueva_contraseña):
         # Lógica para actualizar un administrador en la base de datos
@@ -46,5 +46,7 @@ class Administrador(DataConexion):
 admin_handler = Administrador()
 resultados_usuarios = admin_handler.ver_usuarios()
 resultados_clientes = admin_handler.ver_clientes()
+resultado_crearadmin = admin_handler.crear_nuevo_admin("Marco", "jefe", "maco@gmail.com", "ddfdd")
 print("Usuarios:", resultados_usuarios)
 print("Clientes:", resultados_clientes)
+print("Nuevo admin:", resultado_crearadmin)
