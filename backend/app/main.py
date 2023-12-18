@@ -1,12 +1,16 @@
 from fastapi import FastAPI
+from db.crud_admin import Administrador
 
 app = FastAPI()
 
+#Crear una instancia de la clase Administrador
+admin_instance = Administrador()
+
 # Rutas para operaciones relacionadas con usuarios
-@app.get("/users/")
+@app.get("/users")
 def get_users():
-    # Lógica para obtener usuarios
-    return {"message": "Listado de usuarios"}
+    usuarios = admin_instance.ver_usuarios()
+    return {"Listado de usuarios": usuarios}
 
 @app.post("/users/")
 def create_user():

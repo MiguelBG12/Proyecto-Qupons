@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_crear_admin`(
+CREATE PROCEDURE `sp_crear_admin`(
 IN p_nombre VARCHAR(60),
 IN p_cargo VARCHAR(30),
 IN p_correo VARCHAR(45),
