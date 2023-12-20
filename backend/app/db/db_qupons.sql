@@ -66,12 +66,12 @@ CREATE TABLE `cupones` (
   CONSTRAINT `fk_CUPONES_CLIENTE-TIENDA1`
     FOREIGN KEY (`cliente_tienda_id`)
     REFERENCES `db_webcuponera`.`cliente_tienda` (`cliente_tienda_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_CUPONES_CATEGORIAS1`
     FOREIGN KEY (`categorias_id`)
     REFERENCES `db_webcuponera`.`categorias` (`categorias_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION);
     
 /*INSERT INTO cupones(titulo, descripcion, fecha_inicio, fecha_vencimiento, precio_normal, precio_oferta, porcentaje_descuento, diseño_oferta_foto, terminos_condiciones, cliente_tienda_id, categorias_id) VALUES ('Nuevo descuento escolar', 'Aprovecha este 20% de decuento en tu segunda compra de utiles escolares', '2023-12-11', '2023-12-30', 150.26, 125.6, 20, '/images/libros.png', 'Solo 1 cupon por persona sera permitido, valido de lunes a viernes', 1, 1)
@@ -92,18 +92,18 @@ CREATE TABLE `cupon_comprado` (
     CONSTRAINT `fk_CUPON_COMPRADO_USUARIO`
         FOREIGN KEY (`usuario_id`)
         REFERENCES `db_webcuponera`.`usuario` (`usuario_id`)
-        ON DELETE NO ACTION
+        ON DELETE CASCADE
         ON UPDATE NO ACTION,
     CONSTRAINT `fk_CUPON_COMPRADO_CUPONES1`
         FOREIGN KEY (`cupones_id`)
         REFERENCES `db_webcuponera`.`cupones` (`cupones_id`)
-        ON DELETE NO ACTION
+        ON DELETE CASCADE
         ON UPDATE NO ACTION
 );
 
 /*INSERT INTO cupon_comprado(fecha_compra, codigo_venta, cantidad_comprada, estado_cupon, usuario_id, cupones_id) VALUES ('2023-12-11', '202345754', '2', 'canjeado', '1', '1')*/
 
-/*DROP TABLE IF EXISTS `db_webcuponera`.`subcategorias` ;*/
+/*DROP TABLE IF EXISTS `subcategorias` ;*/
 
 CREATE TABLE `subcategorias` (
   `subcategorias_id` INT NOT NULL AUTO_INCREMENT,
