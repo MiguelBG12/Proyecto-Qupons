@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_borrar_usuario` $$
+
 CREATE PROCEDURE `sp_borrar_usuario`(
     IN p_usuario_id INT
 )

@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_borrar_cupon` $$
+
 CREATE PROCEDURE `sp_borrar_cupon`(
     IN p_cupones_id INT
 )
@@ -18,4 +21,5 @@ BEGIN
         SET MESSAGE_TEXT = 'El cupón con el ID proporcionado no existe';
     END IF;
 END$$
+
 DELIMITER ;

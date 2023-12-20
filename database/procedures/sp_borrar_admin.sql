@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_borrar_admin` $$
+
 CREATE PROCEDURE `sp_borrar_admin`(
     IN p_administrador_id INT
 )
@@ -18,4 +21,5 @@ BEGIN
         SET MESSAGE_TEXT = 'El administrador con el ID proporcionado no existe';
     END IF;
 END$$
+
 DELIMITER ;

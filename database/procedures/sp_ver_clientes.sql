@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_ver_clientes` $$
+
 CREATE PROCEDURE `sp_ver_clientes`()
 BEGIN
 	SELECT

@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_borrar_cliente` $$
+
 CREATE PROCEDURE `sp_borrar_cliente`(
     IN p_cliente_tienda_id INT
 )
@@ -17,4 +20,5 @@ BEGIN
         SET MESSAGE_TEXT = 'No se encontró ningún cliente con el ID proporcionado';
     END IF;
 END$$
+
 DELIMITER ;

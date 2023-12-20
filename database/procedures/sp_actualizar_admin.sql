@@ -1,4 +1,7 @@
 DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_actualizar_admin` $$
+
 CREATE PROCEDURE `sp_actualizar_admin`(
     IN p_administrador_id INT,
     IN p_nuevo_nombre VARCHAR(60),
@@ -15,4 +18,5 @@ BEGIN
     WHERE
         `administrador_id` = p_administrador_id;
 END$$
+
 DELIMITER ;
