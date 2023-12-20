@@ -1,39 +1,33 @@
-from fastapi import APIRouter, HTTPException
-from typing import List
-
-# Importar aquí modelos, lógica de negocios, o servicios necesarios
+from fastapi import APIRouter, Depends, HTTPException
+import pymysql
 
 router = APIRouter()
 
-# Endpoint para obtener información de usuarios
-@router.get("/users/", response_model=List[User])
-async def get_users():
-    """
-    Obtiene una lista de usuarios.
-    """
-    # Lógica para obtener usuarios desde la base de datos o servicio
+class Database:
+    def __init__(self):
+        # Configuración de la conexión a la base de datos
+        self.connection = pymysql.connect(
+            host='tu_host',
+            user='tu_usuario',
+            password='tu_contraseña',
+            database='tu_base_de_datos'
+        )
 
-    return users
+    def execute_procedure(self, procedure_name, args):
+        try:
+            with self.connection.cursor() as cursor:
+                cursor.callproc(procedure_name, args)
+                result = cursor.fetchone()
+                return result[0] if result else None
+        except pymysql.Error as e:
+            print(f"Error al ejecutar el procedimiento almacenado: {e}")
+            return None
 
-# Endpoint para obtener información de un usuario específico
-@router.get("/users/{user_id}", response_model=User)
-async def get_user(user_id: int):
-    """
-    Obtiene un usuario específico por ID.
-    """
-    # Lógica para obtener un usuario específico por ID
-
-    if not user:
-        raise HTTPException(status_code=404, detail="Usuario no encontrado")
-    
-    return user
-
-# Endpoint para crear un nuevo usuario
-@router.post("/users/", response_model=User)
-async def create_user(user: UserCreate):
-    """
-    Crea un nuevo usuario.
-    """
-    # Lógica para crear un nuevo usuario en la base de datos
-
-    return user
+@router.post("/crear_administrador")
+async def crear_administrador(nombre: str, cargo: str, correo: str, contraseña: str):
+    db = Database()
+    admin_id = db.execute_procedure('sp_crear_admin', (nombre, cargo, correo, contraseña))
+    if admin_id:
+        return {"message": "Administrador creado exitosamente", "admin_id": admin_id}
+    else:
+        raise HTTPException(status_code=500, detail="Error al crear administrador")
