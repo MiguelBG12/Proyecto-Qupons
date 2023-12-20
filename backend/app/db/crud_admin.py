@@ -7,12 +7,17 @@ from os import getenv
 class Administrador(DataConexion):
 
     def crear_nuevo_admin(self, nombre, cargo, email, contraseña):
+        if not all(map(bool, [nombre, cargo, email, contraseña])):
+            return "Todos los campos deben estar llenos"
         try:
             procedure = 'sp_crear_admin'
             data = self.EjecutaProcedure(procedure, (nombre, cargo, email, contraseña))
-            return data
-        except Exception as e:
-            return str(e)
+            if 'mensaje_error' in data:
+                return f"Error al crear administrador: {data['mensaje_error']}"
+            else:
+                return "Administrador creado con éxito"
+        except mysql.connector.Error as e:
+            return f"Error de MySQL: {str(e)}"
 
     def ver_admin(self):
         try:
@@ -109,7 +114,7 @@ class Administrador(DataConexion):
 admin_handler = Administrador()
 
 "Crear administrador nuevo"
-resultado_crearadmin = admin_handler.crear_nuevo_admin("Carlos", "jefe", "Carlos@gmail.com", "fsdfsd")
+resultado_crearadmin = admin_handler.crear_nuevo_admin("Mochi", "subsecretario", "mochi@gmail.com", "nkmdkjm")
 print("Nuevo admin:", resultado_crearadmin)
 """
 "Ver todos los administradores"

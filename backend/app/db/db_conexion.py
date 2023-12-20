@@ -55,7 +55,7 @@ class DataConexion:
         finally:
             if cnn.is_connected():
                 cnn.close()
-        return results
+        return { 'result': results, 'params': args }
     
     def EjecutaProcedure(self, procedureName, params):
         """
@@ -78,7 +78,7 @@ class DataConexion:
         finally:
             if (cnn and cnn.is_connected()):
                 cnn.close()
-        return args
+        return { 'params': args }
 
 """# Crear una instancia de la clase DataAccess
 data_acceder = DataConexion()
