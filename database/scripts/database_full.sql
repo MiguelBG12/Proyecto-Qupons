@@ -13,7 +13,7 @@ CREATE TABLE `usuario` (
   `direccion` VARCHAR(60) NOT NULL,
   `departamento` VARCHAR(15) NOT NULL,
   `correo` VARCHAR(20) NOT NULL,
-  `contraseña` VARCHAR(20) NOT NULL,
+  `contraseña` VARCHAR(64) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
   );
@@ -29,7 +29,7 @@ CREATE TABLE `cliente_tienda` (
   `direccion` VARCHAR(60) NULL,
   `correo` VARCHAR(30) NOT NULL,
   `nombre_contacto` VARCHAR(60) NOT NULL,
-  `contraseña` VARCHAR(20) NOT NULL,
+  `contraseña` VARCHAR(64) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`cliente_tienda_id`));
 /*INSERT INTO cliente_tienda(nombre_empresa, ruc, razon_social, direccion, correo, nombre_contacto, contraseña, telefono) VALUES ('Tayloy', 00254756, 'venta materiales', 'Av Colina verde', 'tayloy@gmail.com', 'Perez', 'jndnduo67dhih', 577496)*/
