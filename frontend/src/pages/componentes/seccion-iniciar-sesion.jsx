@@ -1,11 +1,7 @@
-import React from 'react';
-
-const seccion_iniciar_sesion = () => {
+const Seccion_iniciar_sesion = () => {
     return (
-        <div>
-            <h1>Seccion iniciar sesion</h1>
-        </div>
+        <h1>Seccion iniciar sesion</h1>
     );
 }
 
-export default seccion_iniciar_sesion;
+export default Seccion_iniciar_sesion;

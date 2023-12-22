@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import Header from "./componentes/header";
+import Footer from "./componentes/footer";
+import Seccion_iniciar_sesion from "./componentes/seccion-iniciar-sesion";
 
-const iniciar_sesion = () => {
+const Iniciar_sesion = () => {
     return (
-        <div>
-            <h1>Iniciar sesion</h1>
-        </div>
+        <>
+        <Header/>
+        <Seccion_iniciar_sesion/>
+        <Footer/>
+        </>
     );
-}
+};
 
-export default iniciar_sesion;
+export default Iniciar_sesion;

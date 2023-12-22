@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import Header from "./componentes/header";
+import Footer from "./componentes/footer";
+import Seccion_formulario_usuario from "./componentes/seccion-formulario-usuario";
 
-const registrate = () => {
+const Registrate = () => {
     return (
-        <div>
-            <h1>Registrate</h1>
-        </div>
+        <>
+        <Header/>
+        <Seccion_formulario_usuario/>
+        <Footer/>
+        </>
     );
-}
+};
 
-export default registrate;
+export default Registrate;

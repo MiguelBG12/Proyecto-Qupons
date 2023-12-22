@@ -1,11 +1,7 @@
-import React from 'react';
-
-const seccion_pasos = () => {
+const Seccion_pasos = () => {
     return (
-        <div>
-            <h1>Seccion pasos</h1>
-        </div>
+        <h1>Seccion pasos</h1>
     );
 }
 
-export default seccion_pasos;
+export default Seccion_pasos;
