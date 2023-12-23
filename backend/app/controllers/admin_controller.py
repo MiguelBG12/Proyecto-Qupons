@@ -1,5 +1,5 @@
 "Proyecto-Qupons/backend/app/db/crud_admin.py"
-from db_conexion import DataConexion
+from config.db_conexion import DataConexion
 import mysql.connector
 from mysql.connector import Error
 from os import getenv

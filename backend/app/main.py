@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from db.crud_admin import Administrador
+from backend.app.controllers.admin_controller import Administrador
 
 app = FastAPI()
 
