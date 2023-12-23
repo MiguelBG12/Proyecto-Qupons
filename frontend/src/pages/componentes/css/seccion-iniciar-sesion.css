@@ -1,0 +1,16 @@
+.fondo-seccion-formulario-verde {
+    height: 10rem;
+}
+
+button {
+    padding: 0.5rem 0.54rem;
+    margin: 0.2rem;
+    border-radius: 0.5rem;
+}
+
+input {
+    padding: 0.5rem 0.54rem;
+    margin: 0.2rem;
+    border-radius: 0.5rem;
+
+}
