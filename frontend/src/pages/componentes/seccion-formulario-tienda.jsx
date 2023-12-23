@@ -6,7 +6,7 @@ const Seccion_formulario_tienda = () => {
         <div className="contenedor-formulario">
           <h2>Registra tu tienda y crea promociones </h2>
 
-          <form action="">
+          <form action="#" method="get">
             <input type="text" placeholder="Nombre de la tienda:" required />
             <br />
             <input type="text" placeholder="Nombre del contacto:" required />

@@ -8,7 +8,7 @@ const Seccion_formulario_usuario = () => {
           <p>con</p>
           <button>Registrate con Gmail</button>
           <p>ó</p>
-          <form action="">
+          <form action="#" method="get">
             <input type="text" placeholder="Nombre Completo:" required />
             <br />
             <input type="tel" placeholder="Teléfono:" required />

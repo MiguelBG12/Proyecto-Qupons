@@ -12,7 +12,7 @@ const Seccion_iniciar_sesion = () => {
           <p>con</p>
           <button>Iniciar sesión con Gmail</button>
           <p>ó</p>
-          <form action="">
+          <form action="#" method="get">
             <input type="text" placeholder="Correo electronico:" required />
             <br />
             <input type="password" placeholder="contraseña:" required />
