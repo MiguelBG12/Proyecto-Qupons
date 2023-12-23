@@ -1,11 +1,7 @@
-import React from 'react';
-
-const seccion_formulario_usuario = () => {
+const Seccion_formulario_usuario = () => {
     return (
-        <div>
-            <h1>Seccion formulario usuario</h1>
-        </div>
+        <h1>Seccion formulario usuario</h1>
     );
 }
 
-export default seccion_formulario_usuario;
+export default Seccion_formulario_usuario;

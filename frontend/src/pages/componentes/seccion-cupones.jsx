@@ -1,11 +1,7 @@
-import React from 'react';
+const Seccion_cupones = () => {
+  return (
+      <h1>Seccion cupones</h1>
+  );
+};
 
-const seccion_cupones = () => {
-    return (
-        <div>
-            <h1>Seccion cupones</h1>
-        </div>
-    );
-}
-
-export default seccion_cupones;
+export default Seccion_cupones;

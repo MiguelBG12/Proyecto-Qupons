@@ -1,11 +1,16 @@
-import React from 'react';
+import React from "react";
+import Header from "./componentes/header";
+import Footer from "./componentes/footer";
+import Seccion_formulario_tienda from "./componentes/seccion-formulario-tienda";
 
-const registrar_tienda = () => {
+const Registrar_tienda = () => {
     return (
-        <div>
-            <h1>Registrar Tienda</h1>
-        </div>
+        <>
+        <Header/>
+        <Seccion_formulario_tienda/>
+        <Footer/>
+        </>
     );
-}
+};
 
-export default registrar_tienda;
+export default Registrar_tienda;

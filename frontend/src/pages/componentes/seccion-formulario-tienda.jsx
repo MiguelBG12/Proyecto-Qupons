@@ -1,11 +1,9 @@
-import React from 'react';
-
-const seccion_formilario_tienda = () => {
+const Seccion_formulario_tienda = () => {
     return (
         <div>
-            <h1>Seccion formilario tienda</h1>
+            <h1>Seccion formulario tienda</h1>
         </div>
     );
 }
 
-export default seccion_formilario_tienda;
+export default Seccion_formulario_tienda;

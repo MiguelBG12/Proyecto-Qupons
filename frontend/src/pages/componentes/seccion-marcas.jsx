@@ -1,11 +1,7 @@
-import React from 'react';
-
-const seccion_marcas = () => {
+const Seccion_marcas = () => {
     return (
-        <div>
-            <h1>Seccion marcas</h1>
-        </div>
+        <h1>Seccion marcas</h1>
     );
 }
 
-export default seccion_marcas;
+export default Seccion_marcas;
