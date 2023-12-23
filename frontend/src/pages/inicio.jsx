@@ -10,7 +10,6 @@ const Inicio = () => {
   return (
     <>
     <Header/>
-    <h1>Inicio</h1>
     <Slider/>
     <Seccion_cupones/>
     <Seccion_pasos/>
