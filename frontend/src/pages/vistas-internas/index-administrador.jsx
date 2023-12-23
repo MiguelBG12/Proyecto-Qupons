@@ -9,7 +9,15 @@ const Index_administrador = () => {
       <>
         <Router>
           <Routes>
-            <Route path="/panel" element={<Panel/>} exact />
+            <Route path="/panel-administrador" element={<Panel_administrador/>} exact />
+            <Route path="/perfil-administrador" element={<Perfil_administrador/>} />
+            <Route path="/estadisticas" element={<Estadisticas/>} />
+            <Route path="/tiendas" element={<Tiendas/>} />
+            <Route path="/crear-tienda" element={<Crear_tienda/>} />
+            <Route path="/cupones-administrador" element={<Cupones_administrador/>} />
+            <Route path="/crear-cupones-administrador" element={<Crear_cupones_administrador/>} />
+            <Route path="/cupones-obtenidos-administrador" element={<Crear_cupones_administrador/>} />
+            <Route path="/crear-categorias" element={<Crear_categorias/>} />
           </Routes>
         </Router>
       </>
