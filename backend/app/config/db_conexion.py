@@ -16,9 +16,9 @@ class DataConexion:
         """
         try: 
             host = getenv("DB_HOST")
-            user = getenv("DB_USER")
-            password = getenv("DB_PASSWORD")
-            database = getenv("DB_NAME")
+            user = getenv("DB_USUARIO")
+            password = getenv("DB_CONTRASENA")
+            database = getenv("DB_NOMBRE")
             
             conexion = mysql.connector.connect(
                 host=host,

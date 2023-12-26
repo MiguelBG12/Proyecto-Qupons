@@ -17,7 +17,7 @@ class AdminUpdateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
     nombre: str
     nuevo_cargo: str
-    nueva_correo: str
+    nuevo_correo: str
     contraseña: str
 
 @router.post("/crear_admin")
@@ -41,7 +41,7 @@ async def crear_admin(admin_request: AdminCreateRequest):
         
 @router.post("/actualizar_admin")
 async def actualizar_admin(admin_request: AdminUpdateRequest):
-    hashed_password = hashlib.sha256(admin_request.new_password.encode()).hexdigest()
+    hashed_password = hashlib.sha256(admin_request.contraseña.encode()).hexdigest()
     params = [
         admin_request.admin_id,
         admin_request.nombre,
