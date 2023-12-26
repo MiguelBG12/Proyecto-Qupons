@@ -12,7 +12,7 @@ BEGIN
 
     SELECT COUNT(*), MAX(usuario_id) INTO usuario_count, usuario_id
     FROM `usuario`
-    WHERE `correo` = p_correo AND `contraseña` = p_contraseña;
+    WHERE `usuario_id` = p_usuario_id;
 
     IF usuario_count = 1 THEN
         SELECT * FROM `usuario` WHERE `correo` = p_correo;

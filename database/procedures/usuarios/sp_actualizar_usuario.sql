@@ -2,6 +2,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_actualizar_usuario` $$
 CREATE PROCEDURE `sp_actualizar_usuario`(
+	IN p_usuario_id INT,
 	IN p_correo VARCHAR(20),
     IN p_contraseña VARCHAR(64),
     IN p_direccion VARCHAR(60),
@@ -16,7 +17,7 @@ BEGIN
     -- Verifica si el usuario con el ID proporcionado existe
     SELECT COUNT(*) INTO usuario_count
     FROM `usuario`
-    WHERE `correo` = p_correo AND `contraseña` = SHA2(p_contraseña, 256);
+    WHERE `usuario_id` = p_usuario_id;
 
     IF usuario_count = 1 THEN
         -- Credenciales válidas, actualiza los datos del usuario

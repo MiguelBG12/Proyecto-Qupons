@@ -2,7 +2,7 @@
 CREATE SCHEMA IF NOT EXISTS `db_webcuponera` ;
 
 USE `db_webcuponera` ;
-/*DROP TABLE IF EXISTS `usuario` ;*/
+DROP TABLE IF EXISTS `usuario` ;
 
 CREATE TABLE `usuario` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
@@ -17,9 +17,8 @@ CREATE TABLE `usuario` (
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
   );
-/*INSERT INTO usuario(nombres_completos, dni, genero, fecha_nacimiento, direccion, departamento, correo, contraseña, telefono) VALUES ('Mario', 12345678, 'masculino', '1958-01-30', 'Av La gardenias 1345', 'lima', 'mario@gmail.com', 'dsjfno234', 9756123)*/
 
-/*DROP TABLE IF EXISTS `cliente_tienda` ;*/
+DROP TABLE IF EXISTS `cliente_tienda`;
 
 CREATE TABLE `cliente_tienda` (
   `cliente_tienda_id` INT NOT NULL AUTO_INCREMENT,
@@ -32,10 +31,8 @@ CREATE TABLE `cliente_tienda` (
   `contraseña` VARCHAR(64) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`cliente_tienda_id`));
-/*INSERT INTO cliente_tienda(nombre_empresa, ruc, razon_social, direccion, correo, nombre_contacto, contraseña, telefono) VALUES ('Tayloy', 00254756, 'venta materiales', 'Av Colina verde', 'tayloy@gmail.com', 'Perez', 'jndnduo67dhih', 577496)*/
 
-
-/*DROP TABLE IF EXISTS `categorias` ;*/
+DROP TABLE IF EXISTS `categorias` ;
 
 CREATE TABLE `categorias` (
   `categorias_id` INT NOT NULL AUTO_INCREMENT,
@@ -43,9 +40,7 @@ CREATE TABLE `categorias` (
   `Descripcion` VARCHAR(45) NULL,
   PRIMARY KEY (`categorias_id`));
   
-/*INSERT INTO categorias(nombre, descripcion) VALUES ('belleza', 'encuentra todas los productos a mejor precio')
-INSERT INTO categorias(nombre) VALUES ('diversion')*/
-/*DROP TABLE IF EXISTS `cupones` ;*/
+DROP TABLE IF EXISTS `cupones` ;
 
 CREATE TABLE `cupones` (
   `cupones_id` INT NOT NULL AUTO_INCREMENT, 
@@ -74,14 +69,10 @@ CREATE TABLE `cupones` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
     
-/*INSERT INTO cupones(titulo, descripcion, fecha_inicio, fecha_vencimiento, precio_normal, precio_oferta, porcentaje_descuento, diseño_oferta_foto, terminos_condiciones, cliente_tienda_id, categorias_id) VALUES ('Nuevo descuento escolar', 'Aprovecha este 20% de decuento en tu segunda compra de utiles escolares', '2023-12-11', '2023-12-30', 150.26, 125.6, 20, '/images/libros.png', 'Solo 1 cupon por persona sera permitido, valido de lunes a viernes', 1, 1)
-INSERT INTO cupones(titulo, descripcion, fecha_inicio, fecha_vencimiento, precio_normal, precio_oferta, porcentaje_descuento, diseño_oferta_foto, terminos_condiciones, cliente_tienda_id, categorias_id) VALUES ('Alisado brasileño', 'De regalo rizado de pestañas', '2024-01-02', '2024-01-13', 120.20, 100, 15, '/images/alisado.png', 'Solo 2 cupon por persona sera permitido, valido de lunes a viernes', 1, 2)*/
-
-/*DROP TABLE IF EXISTS `cupon_comprado` ;*/
+DROP TABLE IF EXISTS `cupon_comprado` ;
 
 CREATE TABLE `cupon_comprado` (
     `fecha_compra` DATE NOT NULL,
-    `codigo_venta` INT NOT NULL,
     `cantidad_comprada` INT NOT NULL,
     `estado_cupon` ENUM('canjeado', 'no canjeado', 'vencido') NOT NULL,
     `usuario_id` INT NOT NULL,
@@ -101,9 +92,7 @@ CREATE TABLE `cupon_comprado` (
         ON UPDATE NO ACTION
 );
 
-/*INSERT INTO cupon_comprado(fecha_compra, codigo_venta, cantidad_comprada, estado_cupon, usuario_id, cupones_id) VALUES ('2023-12-11', '202345754', '2', 'canjeado', '1', '1')*/
-
-/*DROP TABLE IF EXISTS `subcategorias` ;*/
+DROP TABLE IF EXISTS `subcategorias` ;
 
 CREATE TABLE `subcategorias` (
   `subcategorias_id` INT NOT NULL AUTO_INCREMENT,
@@ -117,8 +106,7 @@ CREATE TABLE `subcategorias` (
     REFERENCES `db_webcuponera`.`CATEGORIAS` (`categorias_id`)
 );
 
-/*INSERT INTO subcategorias(nombre, categorias_id) VALUES ('estetica', 2)*/
-/*DROP TABLE IF EXISTS `administradores` ;*/
+DROP TABLE IF EXISTS `administradores` ;
 
 CREATE TABLE `administradores` (
   `administrador_id` INT NOT NULL AUTO_INCREMENT,
@@ -128,4 +116,3 @@ CREATE TABLE `administradores` (
   `contraseña` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`administrador_id`));
  
-  /*INSERT INTO administradores(nombre, cargo, correo, contraseña) VALUES ('Carlos', 'admin', 'carlos@gmail.com', 'fjnefike29392' )*/
