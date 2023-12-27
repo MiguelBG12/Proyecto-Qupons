@@ -1,0 +1,24 @@
+@import url("../../../index.css");
+
+footer {
+    background-color: var(--color-verde);
+    padding: 1rem 0 2rem 0;
+    height: auto;
+    width: 100%;
+}
+
+footer p {
+    color: var(--color-blanco);
+}
+
+.logo-footer h1 {
+    color: var(--color-blanco);
+    text-align: center;
+    padding: 3rem 0 3rem 0;
+}
+
+
+hr {
+    margin-bottom: 1rem;
+}
+

@@ -7,7 +7,6 @@ const Cupones = () => {
     return (
         <>
         <Header/>
-        <h1>Cupones</h1>
         <Seccion_cupones/>
         <Footer/>
         </>

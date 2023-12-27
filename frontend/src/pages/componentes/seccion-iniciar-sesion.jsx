@@ -1,30 +1,34 @@
-import "../../index.css";
 import "./css/seccion-iniciar-sesion.css";
 
 const Seccion_iniciar_sesion = () => {
   return (
     <>
-      <div className="fondo-seccion-formulario-verde">
-      </div>
-      <div className="fondo-seccion-formulario-blanco">
+      <section className="seccion-verde-formulario"></section>
+      <section className="seccion-blanca-formulario">
         <div className="contenedor-formulario">
-          <h2>Iniciar sesion</h2>
-          <p>con</p>
-          <button>Iniciar sesión con Gmail</button>
-          <p>ó</p>
-          <form action="#" method="get">
+          <h1>Iniciar sesión</h1>
+          <p><span className="texto-formulario">con</span></p>
+          <button className="btn-gmail">Gmail</button>
+          <p><span className="texto-formulario">ó</span></p>
+          <form action="#" method="POST">
             <input type="text" placeholder="Correo electronico:" required />
             <br />
-            <input type="password" placeholder="contraseña:" required />
+            <input type="password" placeholder="Contraseña:" required />
             <br />
-            <input type="submit" value="Iniciar Sesión" />
+            <button type="submit" className="btn-enviar">
+              Enviar
+            </button>
           </form>
 
-          <form action="#" method="get">
-            <input type="submit" value="Recuperar contraseña" />
+          <form action="#" method="POST">
+            <button type="submit" className="btn-recuperar-contraseña">
+              Olvide mi contraseña
+            </button>
           </form>
+          
         </div>
-      </div>
+      </section>
+      <section className="top-para-footer"></section>
     </>
   );
 };

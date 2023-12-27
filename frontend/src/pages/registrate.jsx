@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./componentes/header";
-import Footer from "./componentes/footer";
 import Seccion_formulario_usuario from "./componentes/seccion-formulario-usuario";
+import Footer from "./componentes/footer";
 
 const Registrate = () => {
     return (

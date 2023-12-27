@@ -1,6 +1,14 @@
+import "./css/seccion-cupones.css";
+
 const Seccion_cupones = () => {
   return (
-      <h1>Seccion cupones</h1>
+      <>
+      <section className="seccion-cupones">
+        <div className="container">
+            <h1>Sección cupones</h1>
+        </div>
+      </section>
+      </>
   );
 };
 

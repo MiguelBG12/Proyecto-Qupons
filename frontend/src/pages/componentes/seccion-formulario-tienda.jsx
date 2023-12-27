@@ -1,12 +1,19 @@
+import "./css/seccion-formulario-tienda.css";
+
 const Seccion_formulario_tienda = () => {
   return (
     <>
       <div className="fondo-seccion-formulario-verde"></div>
       <div className="fondo-seccion-formulario-blanco">
-        <div className="contenedor-formulario">
-          <h2>Registra tu tienda y crea promociones </h2>
+        <div className="contenedor-formulario"></div>
+      </div>
 
-          <form action="#" method="get">
+      <section className="seccion-verde-formulario"></section>
+      <section className="seccion-blanca-formulario">
+        <div className="contenedor-formulario">
+          <h1>Registre su tienda</h1>
+
+          <form action="#" method="POST">
             <input type="text" placeholder="Nombre de la tienda:" required />
             <br />
             <input type="text" placeholder="Nombre del contacto:" required />
@@ -27,14 +34,13 @@ const Seccion_formulario_tienda = () => {
             <br />
             <input type="password" placeholder="Repetir contraseña:" required />
             <br />
-            <input type="submit" value="Iniciar Sesión" />
+            <button type="submit" className="btn-enviar">Registrar</button>
           </form>
 
-          <form action="#" method="get">
-            <input type="submit" value="Recuperar contraseña" />
-          </form>
+          <button type="submit" className="btn-recuperar-contraseña">Olvide mi contraseña</button>
         </div>
-      </div>
+      </section>
+      <section className="top-para-footer-tienda"></section>
     </>
   );
 };

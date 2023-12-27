@@ -1,16 +1,76 @@
-.fondo-seccion-formulario-verde {
-    height: 10rem;
+@import url("../../../index.css");
+
+.seccion-verde-formulario {
+    background-color: var(--color-verde);
+    height: 23rem;
+}
+
+.seccion-blanca-formulario{
+   background-color: var(--color-blanco);
+   position: absolute;
+   width: 100%;
+}
+
+.contenedor-formulario {
+    background-color: var(--color-blanco);
+    width: 30%;
+    margin: auto;
+    margin-bottom: 5rem;
+    margin-top: -15rem;
+    height: auto;
+    padding: 2rem 1.5rem 2rem 1.5rem;
+    border-radius: 0.7rem;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+.contenedor-formulario h1, p {
+    text-align: center;
+}
+
+
+input {
+    padding: 0.7rem 0.7rem;
+    margin: 0.2rem 0 0.2rem 0;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: solid 1px #737373;
+    font-size: 1rem;
 }
 
 button {
-    padding: 0.5rem 0.54rem;
-    margin: 0.2rem;
+    padding: 0.7rem 0.7rem;
+    margin: 0.2rem 0 0.2rem 0;
     border-radius: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
 }
 
-input {
-    padding: 0.5rem 0.54rem;
-    margin: 0.2rem;
-    border-radius: 0.5rem;
+.btn-gmail {
+    background-color: #FF644F;
+    color: var(--color-blanco);
+    border: 0;
+}
 
+.btn-enviar {
+    background-color: var(--color-verde);
+    color: var(--color-blanco);
+    font-weight: 700;
+    font-size: 1rem;
+    border: 0;
+}
+
+.btn-recuperar-contraseña {
+    background-color: var(--color-blanco);
+    color: var(--color-verde);
+    border: solid 2px var(--color-verde);
+}
+
+.texto-formulario {
+    font-size: 1rem;
+}
+
+.top-para-footer {
+    height: 17rem;
+    background-color: var(--color-blanco);
 }

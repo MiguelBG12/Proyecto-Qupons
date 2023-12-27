@@ -1,14 +1,16 @@
+import "./css/seccion-formulario-usuario.css";
+
 const Seccion_formulario_usuario = () => {
   return (
     <>
-      <div className="fondo-seccion-formulario-verde"></div>
-      <div className="fondo-seccion-formulario-blanco">
+      <section className="seccion-verde-formulario"></section>
+      <section className="seccion-blanca-formulario">
         <div className="contenedor-formulario">
-          <h2>Únete y disfruta de grandes descuentos </h2>
-          <p>con</p>
-          <button>Registrate con Gmail</button>
-          <p>ó</p>
-          <form action="#" method="get">
+          <h1>Registrate</h1>
+          <p><span className="texto-formulario">con</span></p>
+          <button className="btn-gmail">Gmail</button>
+          <p><span className="texto-formulario">ó</span></p>
+          <form action="#" method="POST">
             <input type="text" placeholder="Nombre Completo:" required />
             <br />
             <input type="tel" placeholder="Teléfono:" required />
@@ -21,7 +23,7 @@ const Seccion_formulario_usuario = () => {
             <br />
             <select id="opciones" name="opciones" required>
               <option value="" disabled selected>
-                -- Genero --
+                -- Género --
               </option>
               <option value="opcion1">Mujer</option>
               <option value="opcion2">hombre</option>
@@ -30,20 +32,31 @@ const Seccion_formulario_usuario = () => {
             <br />
             <input type="text" placeholder="Dirección:" required />
             <br />
-            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required/>
+            <input
+              type="date"
+              id="fecha_nacimiento"
+              name="fecha_nacimiento"
+              required
+            />
             <br />
             <input type="password" placeholder="Contraseña:" required />
             <br />
             <input type="password" placeholder="Repetir contraseña:" required />
             <br />
-            <input type="submit" value="Iniciar Sesión" />
+            <button type="submit" className="btn-enviar">
+              Enviar
+            </button>
           </form>
 
-          <form action="#" method="get">
-            <input type="submit" value="Recuperar contraseña" />
+          <form action="#" method="POST">
+            <button type="submit" className="btn-recuperar-contraseña">
+              Olvide mi contraseña
+            </button>
           </form>
         </div>
-      </div>
+      </section>
+
+      <section className="top-para-footer-usuario"></section>
     </>
   );
 };

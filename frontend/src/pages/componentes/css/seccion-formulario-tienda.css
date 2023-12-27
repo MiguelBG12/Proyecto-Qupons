@@ -1,0 +1,9 @@
+@import url("../../../index.css");
+@import url("./seccion-iniciar-sesion.css");
+
+.top-para-footer-tienda {
+    height: 35rem;
+    background-color: var(--color-blanco);
+
+}
+

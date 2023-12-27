@@ -1,7 +1,11 @@
 const Seccion_marcas = () => {
-    return (
-        <h1>Seccion marcas</h1>
-    );
-}
+  return (
+    <>
+      <div className="container">
+        <h1>Sección marcas</h1>
+      </div>
+    </>
+  );
+};
 
 export default Seccion_marcas;
