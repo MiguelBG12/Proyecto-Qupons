@@ -71,22 +71,5 @@ class DataConexion:
         else:
             return {'result': [], 'params': args}
 
-    def buscar_admin_por_correo(self, correo):
-        cnn = self.conectar()  # Establecer conexión
-        if cnn is not None: # Verificacion de conexión establecida :D
-            try:
-                cursor = cnn.cursor(dictionary=True) # Creacion de cursor ejecutador de consultas 3000
-                query = "SELECT * FROM administradores WHERE correo = %s" # Consulta de SQL para buscar Correos de administradores ya creados
-                cursor.execute(query, (correo,)) # Ejecutar consulta con los datos de los correos selecionados
-                result = cursor.fetchone() # Obetener la 1° fila que coincida con lo consultado
-                return result # Devolver el resultado de la consulta :D
-            except Error as e:
-                print(e) # Manejo de errores: mostrar cualquier error que ocurra durante la accion 
-            finally:
-                if cnn and cnn.is_connected():
-                    cursor.close() # cerramos el cursor para liberar recursos
-                    cnn.close() # cerramos la conexión a la base de datos
-        return None # Si no hay ningun error con todo lo antes echo y mensionado cerramos con un None 
-
 # Crear una instancia de la clase DataConexion
 data_conexion = DataConexion()

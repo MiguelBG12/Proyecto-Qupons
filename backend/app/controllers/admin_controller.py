@@ -15,6 +15,7 @@ class AdminCreateRequest(BaseModel):
 
 class AdminUpdateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
+    admin_id: int
     nombre: str
     nuevo_cargo: str
     nuevo_correo: str
@@ -29,10 +30,6 @@ async def crear_admin(admin_request: AdminCreateRequest):
         admin_request.correo,
         hashed_password
     ]
-    existing_admin = data_conexion.buscar_admin_por_correo(admin_request.correo)
-    if existing_admin:
-        raise HTTPException(status_code=400, detail="Ya existe un admin con este correo electronico")
-    
     result = data_conexion.ejecutar_procedure('sp_crear_admin', params)
         
 @router.post("/actualizar_admin")
