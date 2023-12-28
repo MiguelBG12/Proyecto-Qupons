@@ -8,12 +8,12 @@ CREATE PROCEDURE `sp_crear_tienda`(
     IN p_direccion VARCHAR(60),
     IN p_correo VARCHAR(30),
     IN p_nombre_contacto VARCHAR(60),
-    IN p_contraseña VARCHAR(64),
+    IN p_contraseña VARCHAR(255),
     IN p_telefono INT
 )
 BEGIN
 	DECLARE tienda_count INT;
-    DECLARE hashedPassword VARCHAR(64);
+    DECLARE hashedPassword VARCHAR(255);
     
     SET hashedPassword = SHA2(p_contraseña, 256);
 

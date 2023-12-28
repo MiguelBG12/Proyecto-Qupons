@@ -3,23 +3,9 @@ from pydantic import BaseModel
 import hashlib
 from typing import List
 from app.config.db_conexion import data_conexion
-
+from app.models.administrator import AdminCreateRequest, AdminUpdateRequest
+from app.models.category import CategoriasCreateRequest
 router = APIRouter()
-
-class AdminCreateRequest(BaseModel):
-    # Define la estructura de la solicitud para la creación de administradores
-    nombre: str
-    cargo: str
-    correo: str
-    contraseña: str
-
-class AdminUpdateRequest(BaseModel):
-    # Define la estructura de la solicitud para la creación de administradores
-    admin_id: int
-    nombre: str
-    nuevo_cargo: str
-    nuevo_correo: str
-    contraseña: str
 
 @router.post("/crear_admin")
 async def crear_admin(admin_request: AdminCreateRequest):
@@ -32,9 +18,9 @@ async def crear_admin(admin_request: AdminCreateRequest):
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_admin', params)
         
-@router.post("/actualizar_admin")
+@router.put("/actualizar_admin")
 async def actualizar_admin(admin_request: AdminUpdateRequest):
-    hashed_password = hashlib.sha256(admin_request.contraseña.encode()).hexdigest()
+    hashed_password = hashlib.sha256(admin_request.nueva_contraseña.encode()).hexdigest()
     params = [
         admin_request.admin_id,
         admin_request.nombre,
@@ -43,6 +29,26 @@ async def actualizar_admin(admin_request: AdminUpdateRequest):
         hashed_password
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_admin', params)
+
+@router.post("/crear_categoria")
+async def create_categoria(categorias_request:CategoriasCreateRequest):
+    params = [
+        categorias_request.nombre,
+        categorias_request.descripcion,
+    ]
+    result = data_conexion.ejecutar_procedure('sp_crear_categorias', params)
+    return result
+
+@router.delete("/borrar_admin/{categorias_id}")
+async def borrar_categoria(categorias_id: int):
+    params = [categorias_id]
+    result = data_conexion.ejecutar_procedure('sp_delete_categorias', params)
+    return result
+
+@router.get("/ver_categorias", response_model=List[dict])
+async def ver_categorias():
+    result = data_conexion.ejecutar_procedure('sp_ver_categorias', [])
+    return result
 
 @router.delete("/borrar_admin/{admin_id}")
 async def borrar_admin(admin_id: int):

@@ -36,6 +36,6 @@ async def route_borrar_cupontienda(cupones_id: int):
 async def route_ver_cupontienda():
     return await ver_cupontienda()
 
-@router.get("/ver_perfiltienda")
-async def route_ver_perfiltienda():
-    return await ver_perfiltienda()
+@router.get("ver_perfiltienda/{p_correo}/{p_contraseña}")
+async def route_ver_perfiltienda(p_correo: str, p_contraseña: str):
+    return await ver_perfiltienda(p_correo, p_contraseña)
