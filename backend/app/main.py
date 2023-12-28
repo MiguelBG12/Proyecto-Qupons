@@ -5,15 +5,17 @@ from app.routes import stores
 from app.routes import categories
 app = FastAPI()
 
-# Agregar rutas del perfil del administrador
+# Ruta del perfil del administrador
 app.include_router(admin.router, prefix="/admin", tags=["Admin"])
 
+# Ruta del perfil de la tienda
 app.include_router(users.router, prefix="/user", tags=["User"])
 
+# Ruta del perfil del usuario
 app.include_router(stores.router, prefix= "/store", tags=["Store"])
 
-app.include_router(categories.router, prefix= "/category", tags=["Category"])
-# Otros middlewares, configuraciones de base de datos, etc., pueden ir aquí
+# app.include_router(categories.router, prefix= "/category", tags=["Category"])
+
 
 if __name__ == "__main__":
     import uvicorn
