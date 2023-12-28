@@ -1,49 +1,32 @@
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+import hashlib
 from typing import List
+from app.config.db_conexion import data_conexion
 
 router = APIRouter()
 
-# Lógica para la lista de categorías (reemplazar con interacciones reales con la base de datos)
-categories_db = [
-    {"id": 1, "name": "Electrónicos"},
-    {"id": 2, "name": "Ropa"},
-    # Otras categorías...
-]
+class CategoriasCreateRequest(BaseModel):
+    # Define la estructura de la solicitud para la creación de administradores
+    nombre: str
+    descripcion: str
 
-# Obtener todas las categorías
-@router.get("/categories/", tags=["categories"])
-async def get_categories():
-    return categories_db
+@router.post("/crear_categoria")
+async def create_categoria(categorias_request:CategoriasCreateRequest):
+    params = [
+        categorias_request.nombre,
+        categorias_request.descripcion,
+    ]
+    result = data_conexion.ejecutar_procedure('sp_crear_categorias', params)
+    return result
 
-# Obtener una categoría por su ID
-@router.get("/categories/{category_id}", tags=["categories"])
-async def get_category_by_id(category_id: int):
-    for category in categories_db:
-        if category["id"] == category_id:
-            return category
-    raise HTTPException(status_code=404, detail="Categoría no encontrada")
+@router.delete("/borrar_admin/{categorias_id}")
+async def borrar_categoria(categorias_id: int):
+    params = [categorias_id]
+    result = data_conexion.ejecutar_procedure('sp_delete_categorias', params)
+    return result
 
-# Crear una nueva categoría
-@router.post("/categories/", tags=["categories"])
-async def create_category(name: str):
-    new_category = {"id": len(categories_db) + 1, "name": name}
-    categories_db.append(new_category)
-    return new_category
-
-# Actualizar los datos de una categoría por su ID
-@router.put("/categories/{category_id}", tags=["categories"])
-async def update_category(category_id: int, name: str):
-    for category in categories_db:
-        if category["id"] == category_id:
-            category["name"] = name
-            return category
-    raise HTTPException(status_code=404, detail="Categoría no encontrada")
-
-# Eliminar una categoría por su ID
-@router.delete("/categories/{category_id}", tags=["categories"])
-async def delete_category(category_id: int):
-    for i, category in enumerate(categories_db):
-        if category["id"] == category_id:
-            del categories_db[i]
-            return {"message": "Categoría eliminada"}
-    raise HTTPException(status_code=404, detail="Categoría no encontrada")
+@router.get("/ver_categorias", response_model=List[dict])
+async def ver_categorias():
+    result = data_conexion.ejecutar_procedure('sp_ver_categorias', [])
+    return result
