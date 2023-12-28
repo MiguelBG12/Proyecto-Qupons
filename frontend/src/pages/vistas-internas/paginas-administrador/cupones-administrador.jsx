@@ -1,8 +1,13 @@
 import React from "react";
 import "../../../index.css";
+
 import Header_interno from "../componentes-internos/header-interno";
 import Footer from "../../componentes/footer";
 import Menu_vertical_administrador from "../componentes-internos/menu-vertical-administrador";
+import Info_cupones_administrador from "../componentes-internos/info-cupones-administrador";
+
+
+
 const Cupones_administrador = () => {
   return (
     <>
@@ -13,8 +18,8 @@ const Cupones_administrador = () => {
             <div className="container-menu-vertical">
               <Menu_vertical_administrador />
             </div>
-            <div className="container-section">
-                
+            <div className="container-section"> 
+              <Info_cupones_administrador/>
             </div>
           </div>
         </div>

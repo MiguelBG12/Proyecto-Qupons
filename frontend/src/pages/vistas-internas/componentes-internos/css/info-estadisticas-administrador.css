@@ -1,0 +1,19 @@
+@import url("../../../../index.css");
+
+.container-info-estadisticas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.estadistica {
+    background-color: var(--color-verde);
+    border-radius: var(--border-radius-interior);
+    padding: 2rem;
+}
+
+.estadistica h1, 
+.estadistica h4 {
+    text-align: center;
+    color: var(--color-blanco);
+}
