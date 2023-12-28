@@ -3,13 +3,8 @@ from pydantic import BaseModel
 import hashlib
 from typing import List
 from app.config.db_conexion import data_conexion
-
+from app.models.category import CategoriasCreateRequest
 router = APIRouter()
-
-class CategoriasCreateRequest(BaseModel):
-    # Define la estructura de la solicitud para la creación de administradores
-    nombre: str
-    descripcion: str
 
 @router.post("/crear_categoria")
 async def create_categoria(categorias_request:CategoriasCreateRequest):
