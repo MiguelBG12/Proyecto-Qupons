@@ -1,0 +1,18 @@
+@import url("../../../componentes/css/header.css");
+
+.header-interno {
+    background-color: var(--color-blanco);
+}
+
+.contenedor-nav {
+    align-items: center;
+}
+
+.btn-header-interno {
+    background-color: var(--color-verde);
+}
+
+.logo-header-interno {
+    padding: 0 !important;
+    margin-bottom: 0;
+}

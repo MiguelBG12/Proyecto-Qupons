@@ -1,0 +1,19 @@
+@import url("../../../../index.css");
+
+.btn-menu-v {
+    background-color: var(--color-blanco);
+    border: 0;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    margin-bottom: 0.5rem;
+    color: var(--color-verde);
+}
+
+.btn-menu-v i {
+    padding: 0 1rem 0 1rem;
+}
+
+.btn-menu-v:hover {
+    color: var(--color-blanco) !important;
+    background-color: var(--color-verde);
+}

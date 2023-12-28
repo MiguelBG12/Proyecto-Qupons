@@ -7,19 +7,20 @@ header {
 .contenedor-nav {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 0 1.5rem 0;
+    align-items: center;
 }
 
 .menu {
     display: flex;
     justify-content: flex-end;
+    align-content: center;
 }
 
 .menu a {
     margin: 0 0 0 0.5rem;
     text-decoration: none;
     color: var(--color-blanco);
-    padding: 0.8rem 1rem 0.8rem 1rem;
+    padding: 0.8rem  0.8rem ;
     border-radius: 0.5rem;
 }
 
@@ -35,5 +36,4 @@ header {
 
 .logo-header h1 {
     color: var(--color-blanco);
-    padding: 0 !important;
 }

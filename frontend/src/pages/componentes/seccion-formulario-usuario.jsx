@@ -47,12 +47,6 @@ const Seccion_formulario_usuario = () => {
               Enviar
             </button>
           </form>
-
-          <form action="#" method="POST">
-            <button type="submit" className="btn-recuperar-contraseña">
-              Olvide mi contraseña
-            </button>
-          </form>
         </div>
       </section>
 

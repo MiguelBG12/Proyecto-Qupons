@@ -13,7 +13,7 @@ const Seccion_formulario_tienda = () => {
         <div className="contenedor-formulario">
           <h1>Registre su tienda</h1>
 
-          <form action="#" method="POST">
+          <form action="/crear_admin" method="POST">
             <input type="text" placeholder="Nombre de la tienda:" required />
             <br />
             <input type="text" placeholder="Nombre del contacto:" required />
@@ -36,8 +36,6 @@ const Seccion_formulario_tienda = () => {
             <br />
             <button type="submit" className="btn-enviar">Registrar</button>
           </form>
-
-          <button type="submit" className="btn-recuperar-contraseña">Olvide mi contraseña</button>
         </div>
       </section>
       <section className="top-para-footer-tienda"></section>
