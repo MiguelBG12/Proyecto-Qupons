@@ -1,49 +1,41 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
+from app.controllers.stores_controller import StoreCreateRequest, StoreUpdateRequest, CuponCreateRequest, CuponUpdateRequest
+from app.controllers.stores_controller import (
+    crear_store, 
+    actualizar_store, 
+    crear_cupon, 
+    actualizar_cupon,
+    borrar_cupontienda,
+    ver_cupontienda,
+    ver_perfiltienda,
+)
 
 router = APIRouter()
 
-# Simulación de una lista de tiendas (reemplazar con base de datos)
-stores_db = [
-    {"id": 1, "name": "Tienda A", "location": "Ciudad X"},
-    {"id": 2, "name": "Tienda B", "location": "Ciudad Y"},
-    # Otros registros de tiendas...
-]
+@router.post("/crear_store")
+async def route_crear_store(store_data: StoreCreateRequest):
+   return await crear_store(store_data)
 
-# Obtener todas las tiendas
-@router.get("/stores/", tags=["stores"])
-async def get_stores():
-    return stores_db
+@router.post("/crear_cupon")
+async def route_crear_cupon(cupon_data: CuponCreateRequest):
+   return await crear_cupon(cupon_data)
 
-# Obtener una tienda por su ID
-@router.get("/stores/{store_id}", tags=["stores"])
-async def get_store_by_id(store_id: int):
-    for store in stores_db:
-        if store["id"] == store_id:
-            return store
-    raise HTTPException(status_code=404, detail="Tienda no encontrada")
+@router.put("/actualizar_store")
+async def route_actualizar_store(sotre_data: StoreUpdateRequest):
+    return await actualizar_store(sotre_data)
 
-# Crear una nueva tienda
-@router.post("/stores/", tags=["stores"])
-async def create_store(name: str, location: str):
-    new_store = {"id": len(stores_db) + 1, "name": name, "location": location}
-    stores_db.append(new_store)
-    return new_store
+@router.put("/actualizar_cupon")
+async def route_actualizar_cupon(cupon_data: CuponUpdateRequest):
+    return await actualizar_cupon(cupon_data)
 
-# Actualizar los datos de una tienda por su ID
-@router.put("/stores/{store_id}", tags=["stores"])
-async def update_store(store_id: int, name: str, location: str):
-    for store in stores_db:
-        if store["id"] == store_id:
-            store["name"] = name
-            store["location"] = location
-            return store
-    raise HTTPException(status_code=404, detail="Tienda no encontrada")
+@router.delete("/borrar_cupontienda/{cupon_id}")
+async def route_borrar_cupontienda(cupones_id: int):
+    return await borrar_cupontienda(cupones_id)
 
-# Eliminar una tienda por su ID
-@router.delete("/stores/{store_id}", tags=["stores"])
-async def delete_store(store_id: int):
-    for i, store in enumerate(stores_db):
-        if store["id"] == store_id:
-            del stores_db[i]
-            return {"message": "Tienda eliminada"}
-    raise HTTPException(status_code=404, detail="Tienda no encontrada")
+@router.get("/ver_cupontienda")
+async def route_ver_cupontienda():
+    return await ver_cupontienda()
+
+@router.get("/ver_perfiltienda")
+async def route_ver_perfiltienda():
+    return await ver_perfiltienda()

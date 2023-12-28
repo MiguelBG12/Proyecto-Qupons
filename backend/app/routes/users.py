@@ -1,49 +1,26 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
+from app.controllers.users_controller import UserCreateRequest, UserUpdateRequest
+from app.controllers.users_controller import (
+    crear_user,
+    actualizar_user,
+    verperfil_usuario,
+    vercupones_adquiridos,
+)
 
 router = APIRouter()
 
-# Simulación de una lista de usuarios (reemplazar con base de datos)
-users_db = [
-    {"id": 1, "username": "usuario1", "email": "usuario1@example.com"},
-    {"id": 2, "username": "usuario2", "email": "usuario2@example.com"},
-    # Otros usuarios...
-]
+@router.post("/crear_user")
+async def route_crear_user(user_data: UserCreateRequest):
+    return await crear_user(user_data)
 
-# Obtener todos los usuarios
-@router.get("/users/", tags=["users"])
-async def get_users():
-    return users_db
+@router.put("/actualizar_user")
+async def route_actualizar_user(user_data: UserUpdateRequest):
+    return await actualizar_user(user_data)
 
-# Obtener un usuario por su ID
-@router.get("/users/{user_id}", tags=["users"])
-async def get_user_by_id(user_id: int):
-    for user in users_db:
-        if user["id"] == user_id:
-            return user
-    raise HTTPException(status_code=404, detail="Usuario no encontrado")
+@router.get("/verperfil_usuario")
+async def route_verperfil_usuario():
+    return await verperfil_usuario()
 
-# Crear un nuevo usuario
-@router.post("/users/", tags=["users"])
-async def create_user(username: str, email: str):
-    new_user = {"id": len(users_db) + 1, "username": username, "email": email}
-    users_db.append(new_user)
-    return new_user
-
-# Actualizar los datos de un usuario por su ID
-@router.put("/users/{user_id}", tags=["users"])
-async def update_user(user_id: int, username: str, email: str):
-    for user in users_db:
-        if user["id"] == user_id:
-            user["username"] = username
-            user["email"] = email
-            return user
-    raise HTTPException(status_code=404, detail="Usuario no encontrado")
-
-# Eliminar un usuario por su ID
-@router.delete("/users/{user_id}", tags=["users"])
-async def delete_user(user_id: int):
-    for i, user in enumerate(users_db):
-        if user["id"] == user_id:
-            del users_db[i]
-            return {"message": "Usuario eliminado"}
-    raise HTTPException(status_code=404, detail="Usuario no encontrado")
+@router.get("/vercupones_adquiridos")
+async def route_vercupones_adquiridos():
+    return await vercupones_adquiridos()
