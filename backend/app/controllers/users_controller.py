@@ -1,33 +1,73 @@
-from fastapi import APIRouter, Depends, HTTPException
-import pymysql
+from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+import hashlib
+from typing import List
+from app.config.db_conexion import data_conexion
 
 router = APIRouter()
 
-class Database:
-    def __init__(self):
-        # Configuración de la conexión a la base de datos
-        self.connection = pymysql.connect(
-            host='tu_host',
-            user='tu_usuario',
-            password='tu_contraseña',
-            database='tu_base_de_datos'
-        )
+class UserCreateRequest(BaseModel):
+    # Define la estructura de la solicitud para la creación de administradores
+    nombres_completos: str
+    dni: int
+    genero: str
+    fecha_nacimiento: int
+    direccion: str
+    departamento: str
+    correo: str
+    contraseña: str
+    telefono: int
 
-    def execute_procedure(self, procedure_name, args):
-        try:
-            with self.connection.cursor() as cursor:
-                cursor.callproc(procedure_name, args)
-                result = cursor.fetchone()
-                return result[0] if result else None
-        except pymysql.Error as e:
-            print(f"Error al ejecutar el procedimiento almacenado: {e}")
-            return None
+class UserUpdateRequest(BaseModel):
+    # Define la estructura de la solicitud para la creación de administradores
+    nombres_completos: str
+    dni: int
+    genero: str
+    fecha_nacimiento: int
+    direccion: str
+    departamento: str
+    correo: str
+    contraseña: str
+    telefono: int
 
-@router.post("/crear_administrador")
-async def crear_administrador(nombre: str, cargo: str, correo: str, contraseña: str):
-    db = Database()
-    admin_id = db.execute_procedure('sp_crear_admin', (nombre, cargo, correo, contraseña))
-    if admin_id:
-        return {"message": "Administrador creado exitosamente", "admin_id": admin_id}
-    else:
-        raise HTTPException(status_code=500, detail="Error al crear administrador")
+@router.post("/crear_user")
+async def crear_user(user_request: UserCreateRequest):
+    hashed_password = hashlib.sha256(user_request.contraseña.encode()).hexdigest()
+    params = [
+        user_request.nombres_completos,
+        user_request.dni,
+        user_request.genero,
+        user_request.fecha_nacimiento,
+        user_request.direccion,
+        user_request.departamento,
+        user_request.correo,
+        hashed_password,
+        user_request.telefono
+    ]
+    result = data_conexion.ejecutar_procedure('sp_crear_usuario', params)
+        
+@router.post("/actualizar_user")
+async def actualizar_user(user_request: UserUpdateRequest):
+    hashed_password = hashlib.sha256(user_request.contraseña.encode()).hexdigest()
+    params = [
+        user_request.nombres_completos,
+        user_request.dni,
+        user_request.genero,
+        user_request.fecha_nacimiento,
+        user_request.direccion,
+        user_request.departamento,
+        user_request.correo,
+        hashed_password,
+        user_request.telefono
+    ]
+    result = data_conexion.ejecutar_procedure('sp_actualizar_usuario', params)
+
+@router.get("/verperfil_usuario", response_model=List[dict])
+async def verperfil_usuario():
+    result = data_conexion.ejecutar_procedure('sp_verperfil_usuario', [])
+    return result
+
+@router.get("/vercupones_adquiridos", response_model=List[dict])
+async def vercupones_adquiridos():
+    result = data_conexion.ejecutar_procedure('sp_vercupones_adquiridos', [])
+    return result

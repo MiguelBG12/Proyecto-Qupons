@@ -1,39 +1,142 @@
 from fastapi import APIRouter, HTTPException
+from pydantic import BaseModel
+import hashlib
 from typing import List
-
-# Importar modelos, lógica de negocio o servicios necesarios
+from app.config.db_conexion import data_conexion
 
 router = APIRouter()
 
-# Endpoint para obtener información de todas las tiendas
-@router.get("/stores/", response_model=List[Store])
-async def get_stores():
-    """
-    Obtiene una lista de todas las tiendas.
-    """
-    # Lógica para obtener la lista de tiendas desde la base de datos o un servicio
-    
-    return stores
+class StoreCreateRequest(BaseModel):
+    # Define la estructura de la solicitud para la creación de administradores
+    nombre_empresa: str
+    ruc: str
+    razon_social: str
+    direccion: str
+    correo: str
+    nombre_contacto: str
+    contraseña: str
+    telefono: int
 
-# Endpoint para obtener información de una tienda específica por ID
-@router.get("/stores/{store_id}", response_model=Store)
-async def get_store(store_id: int):
-    """
-    Obtiene una tienda específica por su ID.
-    """
-    # Lógica para obtener una tienda específica por su ID
-    
-    if not store:
-        raise HTTPException(status_code=404, detail="Tienda no encontrada")
-    
-    return store
+class StoreUpdateRequest(BaseModel):
+    # Define la estructura de la solicitud para la creación de administradores
+    nombre_empresa: str
+    ruc: str
+    razon_social: str
+    direccion: str
+    correo: str
+    nombre_contacto: str
+    contraseña: str
+    telefono: int
 
-# Endpoint para crear una nueva tienda
-@router.post("/stores/", response_model=Store)
-async def create_store(store: StoreCreate):
-    """
-    Crea una nueva tienda.
-    """
-    # Lógica para crear una nueva tienda en la base de datos
-    
-    return store
+class CuponCreateRequest(BaseModel):
+    # Define la estructura de la creacion de cupones
+    titulo: str
+    descripcion: str
+    fecha_inicio: int
+    fecha_vencimiento: int
+    precioOG: float
+    precioNew: float
+    porcentaje_descuento: float
+    diseño_oferta_foto: str
+    terminos_condiciones: str
+    cliente_tienda_id: int
+    categorias_id: int
+
+class CuponUpdateRequest(BaseModel):
+    # Define la estructura de la creacion de cupones
+    titulo: str
+    descripcion: str
+    fecha_inicio: int
+    fecha_vencimiento: int
+    precioOG: float
+    precioNew: float
+    porcentaje_descuento: float
+    diseño_oferta_foto: str
+    terminos_condiciones: str
+    cliente_tienda_id: int
+    categorias_id: int
+
+
+@router.post("/crear_store")
+async def crear_store(store_request: StoreCreateRequest):
+    hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
+    params = [
+        store_request.nombre_empresa,
+        store_request.ruc,
+        store_request.razon_social,
+        store_request.direccion,
+        store_request.correo,
+        store_request.nombre_contacto,
+        hashed_password,
+        store_request.telefono
+    ]
+    result = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
+    return result
+
+@router.post("/actualizar_store")
+async def actualizar_store(store_request: StoreUpdateRequest):
+    hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
+    params = [
+        store_request.nombre_empresa,
+        store_request.ruc,
+        store_request.razon_social,
+        store_request.direccion,
+        store_request.correo,
+        store_request.nombre_contacto,
+        hashed_password,
+        store_request.telefono
+    ]
+    result = data_conexion.ejecutar_procedure('sp_actualizar_admin', params)
+    return result
+
+@router.post("/crear_cupon")
+async def crear_cupon(cupon_request: CuponCreateRequest):
+    params = [
+        cupon_request.titulo,
+        cupon_request.descripcion,
+        cupon_request.fecha_inicio,
+        cupon_request.fecha_vencimiento,
+        cupon_request.precioOG,
+        cupon_request.precioNew,
+        cupon_request.porcentaje_descuento,
+        cupon_request.diseño_oferta_foto,
+        cupon_request.terminos_condiciones,
+        cupon_request.cliente_tienda_id,
+        cupon_request.categorias_id
+    ]
+    result = data_conexion.ejecutar_procedure('sp_crear_cupon', params)
+    return result
+
+@router.post("/actualizar_cupon")
+async def actualizar_cupon(cupon_request: CuponUpdateRequest):
+    params = [
+        cupon_request.titulo,
+        cupon_request.descripcion,
+        cupon_request.fecha_inicio,
+        cupon_request.fecha_vencimiento,
+        cupon_request.precioOG,
+        cupon_request.precioNew,
+        cupon_request.porcentaje_descuento,
+        cupon_request.diseño_oferta_foto,
+        cupon_request.terminos_condiciones,
+        cupon_request.cliente_tienda_id,
+        cupon_request.categorias_id
+    ]
+    result = data_conexion.ejecutar_procedure('sp_crear_cupon', params)
+    return result
+
+@router.delete("/borrar_cupontienda/{cupones_id}")
+async def borrar_cupontienda(cupones_id: int):
+    params = [cupones_id]
+    result = data_conexion.ejecutar_procedure('sp_borrar_cupontienda', params)
+    return result
+
+@router.get("/ver_cupontienda", response_model=List[dict])
+async def ver_cupontienda():
+    result = data_conexion.ejecutar_procedure('sp_ver_cupontienda', [])
+    return result
+
+@router.get("/ver_perfiltienda", response_model=List[dict])
+async def ver_perfiltienda():
+    result = data_conexion.ejecutar_procedure('sp_verperfil_tienda', [])
+    return result
