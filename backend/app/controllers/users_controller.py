@@ -4,31 +4,8 @@ import hashlib
 from typing import List
 from app.config.db_conexion import data_conexion
 from datetime import datetime
+from app.models.user import UserCreateRequest, UserUpdateRequest
 router = APIRouter()
-
-class UserCreateRequest(BaseModel):
-    # Define la estructura de la solicitud para la creación de administradores
-    nombres_completos: str
-    dni: int
-    genero: str
-    fecha_nacimiento: str
-    direccion: str
-    departamento: str
-    correo: str
-    contraseña: str
-    telefono: int
-
-class UserUpdateRequest(BaseModel):
-    # Define la estructura de la solicitud para la creación de administradores
-    nombres_completos: str
-    dni: int
-    genero: str
-    fecha_nacimiento: str
-    direccion: str
-    departamento: str
-    correo: str
-    contraseña: str
-    telefono: int
 
 @router.post("/crear_user")
 async def crear_user(user_request: UserCreateRequest):

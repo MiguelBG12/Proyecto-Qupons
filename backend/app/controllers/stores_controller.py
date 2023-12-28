@@ -3,59 +3,11 @@ from pydantic import BaseModel
 import hashlib
 from typing import List
 from app.config.db_conexion import data_conexion
+from app.models.store import StoreCreateRequest, StoreUpdateRequest
+from app.models.coupon import CuponCreateRequest, CuponUpdateRequest
 from datetime import datetime
+
 router = APIRouter()
-
-class StoreCreateRequest(BaseModel):
-    # Define la estructura de la solicitud para la creación de administradores
-    nombre_empresa: str
-    ruc: str
-    razon_social: str
-    direccion: str
-    correo: str
-    nombre_contacto: str
-    contraseña: str
-    telefono: int
-
-class StoreUpdateRequest(BaseModel):
-    # Define la estructura de la solicitud para la creación de administradores
-    nombre_empresa: str
-    ruc: str
-    razon_social: str
-    direccion: str
-    correo: str
-    nombre_contacto: str
-    contraseña: str
-    telefono: int
-
-class CuponCreateRequest(BaseModel):
-    # Define la estructura de la creacion de cupones
-    titulo: str
-    descripcion: str
-    fecha_inicio: str
-    fecha_vencimiento: str
-    precioOG: float
-    precioNew: float
-    porcentaje_descuento: float
-    diseño_oferta_foto: str
-    terminos_condiciones: str
-    cliente_tienda_id: int
-    categorias_id: int
-
-class CuponUpdateRequest(BaseModel):
-    # Define la estructura de la creacion de cupones
-    titulo: str
-    descripcion: str
-    fecha_inicio: str
-    fecha_vencimiento: str
-    precioOG: float
-    precioNew: float
-    porcentaje_descuento: float
-    diseño_oferta_foto: str
-    terminos_condiciones: str
-    cliente_tienda_id: int
-    categorias_id: int
-
 
 @router.post("/crear_store")
 async def crear_store(store_request: StoreCreateRequest):
