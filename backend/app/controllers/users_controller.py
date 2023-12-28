@@ -47,7 +47,7 @@ async def crear_user(user_request: UserCreateRequest):
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_usuario', params)
         
-@router.post("/actualizar_user")
+@router.put("/actualizar_user")
 async def actualizar_user(user_request: UserUpdateRequest):
     formatted_fecha_nacimiento = datetime.strptime(user_request.fecha_nacimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
     hashed_password = hashlib.sha256(user_request.contraseña.encode()).hexdigest()

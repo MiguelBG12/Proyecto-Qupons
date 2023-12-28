@@ -73,7 +73,7 @@ async def crear_store(store_request: StoreCreateRequest):
     result = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
     return result
 
-@router.post("/actualizar_store")
+@router.put("/actualizar_store")
 async def actualizar_store(store_request: StoreUpdateRequest):
     hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
     params = [

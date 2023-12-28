@@ -12,7 +12,7 @@ CREATE TABLE `usuario` (
   `fecha_nacimiento` DATE NOT NULL,
   `direccion` VARCHAR(60) NOT NULL,
   `departamento` VARCHAR(15) NOT NULL,
-  `correo` VARCHAR(20) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
   `contraseña` VARCHAR(64) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
@@ -26,7 +26,7 @@ CREATE TABLE `cliente_tienda` (
   `ruc` VARCHAR(11) NOT NULL,
   `razon_social` VARCHAR(45) NOT NULL,
   `direccion` VARCHAR(60) NULL,
-  `correo` VARCHAR(30) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
   `nombre_contacto` VARCHAR(60) NOT NULL,
   `contraseña` VARCHAR(64) NOT NULL,
   `telefono` INT NULL,

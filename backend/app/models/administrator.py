@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class AdminCreateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
@@ -10,7 +11,7 @@ class AdminCreateRequest(BaseModel):
 class AdminUpdateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
     admin_id: int
-    nombre: str
-    nuevo_cargo: str
-    nuevo_correo: str
-    contraseña: str
+    nombre: Optional[str] = None
+    nuevo_cargo: Optional[str] = None
+    nuevo_correo: Optional[str] = None
+    nueva_contraseña: Optional[str] = None

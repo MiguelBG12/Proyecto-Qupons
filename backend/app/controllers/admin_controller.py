@@ -18,9 +18,9 @@ async def crear_admin(admin_request: AdminCreateRequest):
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_admin', params)
         
-@router.post("/actualizar_admin")
+@router.put("/actualizar_admin")
 async def actualizar_admin(admin_request: AdminUpdateRequest):
-    hashed_password = hashlib.sha256(admin_request.contraseña.encode()).hexdigest()
+    hashed_password = hashlib.sha256(admin_request.nueva_contraseña.encode()).hexdigest()
     params = [
         admin_request.admin_id,
         admin_request.nombre,
