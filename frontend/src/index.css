@@ -20,6 +20,7 @@
 
 body {
     font-family: var(--font-family)
+    
 }
 
 h1 {
@@ -42,4 +43,13 @@ p {
 .container {
     width: 80%;
     margin: auto;
+}
+
+img {
+    width: 100%;
+    border-radius: var(--border-radius-interior);
+}
+
+button i {
+    margin-right: 0.5rem;
 }

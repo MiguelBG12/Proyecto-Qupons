@@ -13,7 +13,7 @@ const Seccion_formulario_tienda = () => {
         <div className="contenedor-formulario">
           <h1>Registre su tienda</h1>
 
-          <form action="/crear_admin" method="POST">
+          <form action="#" method="POST">
             <input type="text" placeholder="Nombre de la tienda:" required />
             <br />
             <input type="text" placeholder="Nombre del contacto:" required />
@@ -26,15 +26,19 @@ const Seccion_formulario_tienda = () => {
             <br />
             <input type="text" placeholder="Razon social:" required />
             <br />
-            <input type="password" placeholder="contraseña:" required />
-            <br />
             <input type="text" placeholder="Dirección:" required />
+            <br />
+            <br />
+            <label htmlFor="">Logo de la tienda</label>
+            <input type="file" id="archivo" name="archivo" accept=".jpg, .jpeg, .png" required></input>
             <br />
             <input type="password" placeholder="Contraseña:" required />
             <br />
             <input type="password" placeholder="Repetir contraseña:" required />
             <br />
-            <button type="submit" className="btn-enviar">Registrar</button>
+            <button type="submit" className="btn-enviar">
+              Registrar
+            </button>
           </form>
         </div>
       </section>

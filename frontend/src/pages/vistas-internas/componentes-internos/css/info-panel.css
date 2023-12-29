@@ -1,0 +1,11 @@
+@import url("../../../../index.css");
+
+.img-ancho-completo {
+    margin-bottom: 1rem;
+}
+
+.doble-img {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}

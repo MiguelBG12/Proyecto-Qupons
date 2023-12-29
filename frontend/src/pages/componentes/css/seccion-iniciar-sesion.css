@@ -24,7 +24,11 @@
 
 }
 
-.contenedor-formulario h1, p {
+.contenedor-formulario p {
+    text-align: center;
+}
+
+.contenedor-formulario h1 {
     text-align: center;
 }
 

@@ -3,6 +3,8 @@ import "../../../index.css";
 import Header_interno from "../componentes-internos/header-interno";
 import Footer from "../../componentes/footer";
 import Menu_vertical_administrador from "../componentes-internos/menu-vertical-administrador";
+import Info_estadisticas_administrador from "../componentes-internos/info-estadisticas-administrador";
+
 const Estadisticas_administrador = () => {
   return (
     <>
@@ -14,7 +16,7 @@ const Estadisticas_administrador = () => {
               <Menu_vertical_administrador />
             </div>
             <div className="container-section">
-                
+              <Info_estadisticas_administrador/>
             </div>
           </div>
         </div>

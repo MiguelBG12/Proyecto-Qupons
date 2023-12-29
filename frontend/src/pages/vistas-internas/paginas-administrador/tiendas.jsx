@@ -3,6 +3,8 @@ import "../../../index.css";
 import Header_interno from "../componentes-internos/header-interno";
 import Footer from "../../componentes/footer";
 import Menu_vertical_administrador from "../componentes-internos/menu-vertical-administrador";
+import Info_tiendas_listado from "../componentes-internos/info-tiendas-listado";
+
 const Tiendas = () => {
   return (
     <>
@@ -14,7 +16,7 @@ const Tiendas = () => {
               <Menu_vertical_administrador />
             </div>
             <div className="container-section">
-
+              <Info_tiendas_listado/>
             </div>
           </div>
         </div>

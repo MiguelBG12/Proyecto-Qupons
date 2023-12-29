@@ -9,6 +9,7 @@ footer {
 
 footer p {
     color: var(--color-blanco);
+    text-align: center;
 }
 
 .logo-footer h1 {
@@ -19,6 +20,7 @@ footer p {
 
 
 hr {
-    margin-bottom: 1rem;
+    border: solid 1px var(--color-blanco);
+
 }
 

@@ -3,6 +3,7 @@ import "../paginas-administrador/css/panel-administrador.css";
 import Header_interno from "../componentes-internos/header-interno";
 import Footer from "../../componentes/footer";
 import Menu_vertical_usuario from "../componentes-internos/menu-vertical-usuario";
+import Info_panel from "../componentes-internos/info-panel";
 const Panel_usuario = () => {
   return (
     <>
@@ -14,7 +15,7 @@ const Panel_usuario = () => {
               <Menu_vertical_usuario/>
             </div>
             <div className="container-section">
-
+              <Info_panel/>
             </div>
           </div>
         </div>

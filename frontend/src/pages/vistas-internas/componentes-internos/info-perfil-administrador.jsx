@@ -1,16 +1,13 @@
-import "./css/seccion-formulario-usuario.css";
+import React from "react";
+import "../../componentes/seccion-iniciar-sesion";
+import "./css/info-perfil-administrador.css";
 
-const Seccion_formulario_usuario = () => {
+const Info_perfil_administrador = () => {
   return (
     <>
-      <section className="seccion-verde-formulario"></section>
-      <section className="seccion-blanca-formulario">
-        <div className="contenedor-formulario">
-          <h1>Registrate</h1>
-          <p><span className="texto-formulario">con</span></p>
-          <button className="btn-gmail">Gmail</button>
-          <p><span className="texto-formulario">ó</span></p>
-          <form action="#" method="POST">
+    <h1 className="titulo-intranet">Manten tus datos actualizados</h1>
+      <section className="formulario">
+      <form action="#" method="POST">
             <input type="text" placeholder="Nombre Completo:" required />
             <br />
             <input type="tel" placeholder="Teléfono:" required />
@@ -31,7 +28,7 @@ const Seccion_formulario_usuario = () => {
             <input type="text" placeholder="Dirección:" required />
             <br />
             <br />
-            <label htmlFor="">Fecha de nacimiento </label>
+            <label htmlFor="">Fecha de nacimiento:</label>
             <input
               type="date"
               id="fecha_nacimiento"
@@ -39,20 +36,17 @@ const Seccion_formulario_usuario = () => {
               required
             />
             <br />
-            <input type="password" placeholder="Contraseña:" required />
+            <input type="password" placeholder="Nueva contraseña:" required />
             <br />
-            <input type="password" placeholder="Repetir contraseña:" required />
+            <input type="password" placeholder="Repetir nueva contraseña:" required />
             <br />
             <button type="submit" className="btn-enviar">
-              Enviar
+              Actualizar
             </button>
           </form>
-        </div>
-      </section>
 
-      <section className="top-para-footer-usuario"></section>
+      </section>
     </>
   );
 };
-
-export default Seccion_formulario_usuario;
+export default Info_perfil_administrador;

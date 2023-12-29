@@ -1,0 +1,6 @@
+@import url("../../../../index.css");
+
+.container-cupones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
