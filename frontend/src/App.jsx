@@ -5,7 +5,8 @@ import Inicio from "./pages/inicio";
 import Cupones from "./pages/cupones";
 import Registrar_tienda from "./pages/registrar-tienda";
 import Registrate from "./pages/registrate";
-import Iniciar_sesion from "./pages/iniciar-sesion";
+import Acceso_tienda from "./pages/iniciar-sesion-tienda";
+import Acceso_usuario from "./pages/iniciar-sesion-usuario";
 
 import Panel_administrador from "./pages/vistas-internas/paginas-administrador/panel-administrador";
 import Perfil_administrador from "./pages/vistas-internas/paginas-administrador/perfil-administrador";
@@ -30,6 +31,7 @@ import Cupones_obtenidos_usuario from "./pages/vistas-internas/paginas-usuario/c
 
 
 
+
 // Importar componentes que quieres mostrar en diferentes rutas
 
 const App = () => {
@@ -39,30 +41,31 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Inicio/>} exact />
           <Route path="/cupones" element={<Cupones/>} />
-          <Route path="/registra-tu-tienda" element={<Registrar_tienda/>} />
-          <Route path="/registrate" element={<Registrate/>} />
-          <Route path="/iniciar-sesion" element={<Iniciar_sesion/>} />
+          <Route path="/registrar-tienda" element={<Registrar_tienda/>} />
+          <Route path="/registrar-usuario" element={<Registrate/>} />
+          <Route path="/acceso-tienda" element={<Acceso_tienda/>} />
+          <Route path="/acceso-usuario" element={<Acceso_usuario/>} />
           
-          <Route path="/panel-administrador" element={<Panel_administrador/>} exact />
-          <Route path="/perfil-administrador" element={<Perfil_administrador/>} />
-          <Route path="/estadisticas-administrador" element={<Estadisticas_administrador/>} />
-          <Route path="/tiendas" element={<Tiendas/>} />
-          <Route path="/crear-tienda" element={<Crear_tienda/>} />
-          <Route path="/cupones-administrador" element={<Cupones_administrador/>} />
-          <Route path="/crear-cupones-administrador" element={<Crear_cupones_administrador/>} />
-          <Route path="/cupones-obtenidos-administrador" element={<Cupones_obtenidos_administrador/>} />
-          <Route path="/crear-categorias" element={<Crear_categorias/>} />
+          <Route path="/adminitrador-panel" element={<Panel_administrador/>} exact />
+          <Route path="/adminitrador-perfil" element={<Perfil_administrador/>} />
+          <Route path="/adminitrador-estadisticas" element={<Estadisticas_administrador/>} />
+          <Route path="/adminitrador-ver-tiendas" element={<Tiendas/>} />
+          <Route path="/adminitrador-crear-tienda" element={<Crear_tienda/>} />
+          <Route path="/adminitrador-ver-cupones" element={<Cupones_administrador/>} />
+          <Route path="/adminitrador-crear-cupones" element={<Crear_cupones_administrador/>} />
+          <Route path="/adminitrador-cupones-obtenidos" element={<Cupones_obtenidos_administrador/>} />
+          <Route path="/adminitrador-crear-categorias" element={<Crear_categorias/>} />
 
-          <Route path="/panel-tienda" element={<Panel_tienda/>} exact />
-          <Route path="/perfil-tienda" element={<Perfil_tienda/>} />
-          <Route path="/estadisticas-tienda" element={<Estadisticas_tienda/>} />
-          <Route path="/cupones-tienda" element={<Cupones_tienda/>} />
-          <Route path="/crear-cupones-tienda" element={<Crear_cupones_tienda/>} />
+          <Route path="/tienda-panel" element={<Panel_tienda/>} exact />
+          <Route path="/tienda-perfil" element={<Perfil_tienda/>} />
+          <Route path="/tienda-estadisticas" element={<Estadisticas_tienda/>} />
+          <Route path="/tienda-ver-cupones" element={<Cupones_tienda/>} />
+          <Route path="/tienda-crear-cupones" element={<Crear_cupones_tienda/>} />
 
-          <Route path="/panel-usuario" element={<Panel_usuario/>} exact />
-          <Route path="/perfil-usuario" element={<Perfil_usuario/>} />
-          <Route path="/cupones-usuario" element={<Cupones_usuario/>} />
-          <Route path="/cupones-obtenidos-usuario" element={<Cupones_obtenidos_usuario/>} />
+          <Route path="/usuario-panel" element={<Panel_usuario/>} exact />
+          <Route path="/usuario-perfil" element={<Perfil_usuario/>} />
+          <Route path="/usuario-ver-cupones" element={<Cupones_usuario/>} />
+          <Route path="/usuario-cupones-obtenidos" element={<Cupones_obtenidos_usuario/>} />
           
         </Routes>
       </Router>
