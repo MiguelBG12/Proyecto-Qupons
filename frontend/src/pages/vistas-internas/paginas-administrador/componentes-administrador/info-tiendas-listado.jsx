@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/info-tiendas-listado.css";
-import Logo_tienda from "../../../assets/img/Logo-tienda.png";
+import Logo_tienda from "../../../../assets/img/Logo-tienda.png";
 
 const Info_tiendas_listado = () => {
   return (

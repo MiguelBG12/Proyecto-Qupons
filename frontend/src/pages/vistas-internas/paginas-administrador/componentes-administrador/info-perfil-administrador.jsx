@@ -1,5 +1,5 @@
 import React from "react";
-import "../../componentes/sesion_tienda";
+import "../../../componentes/sesion-tienda";
 import "./css/info-perfil-administrador.css";
 
 const Info_perfil_administrador = () => {

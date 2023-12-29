@@ -6,7 +6,6 @@ const Cupon_condicional = () => {
     <>
       <div className="base-cupon">
         <img src={promo6} />
-
         <br />
         <h3 className="titulo-cupon">Nombre cupón</h3>
 
@@ -26,7 +25,7 @@ const Cupon_condicional = () => {
           </div>
         </div>
 
-        <a href="#"><button className="btn-obtener-cupon">Descargar PDF</button></a>
+        <a href="/registrar-usuario"><button className="btn-obtener-cupon">Registrate ahora</button></a>
       </div>
     </>
   );

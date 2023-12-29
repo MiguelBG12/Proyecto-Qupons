@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./componentes/header";
 import Footer from "./componentes/footer";
-import Iniciar_sesion_usuario from "./componentes/sesion_usuario";
+import Iniciar_sesion_usuario from "./componentes/sesion-usuario";
 
 
 const Acceso_usuario = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import "./css/info-cupones-administrador.css";
-import Cupon from "../../componentes/cupon";
+import Cupon from "../../../componentes/cupon";
 const Info_cupones_administrador = () => {
   return (
     <>

@@ -1,5 +1,5 @@
 import React from "react";
-import "../paginas-administrador/css/panel-administrador.css";
+import "../componentes-internos/css/plantilla-interna-general.css";
 import Header_interno from "../componentes-internos/header-interno";
 import Footer from "../../componentes/footer";
 import Menu_vertical_tienda from "../componentes-internos/menu-vertical-tienda";
