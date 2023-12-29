@@ -24,7 +24,7 @@ const Seccion_formulario_tienda = () => {
             <br />
             <input type="text" placeholder="RUC:" required />
             <br />
-            <input type="text" placeholder="Razon social:" required />
+            <input type="text" placeholder="Razón social:" required />
             <br />
             <input type="text" placeholder="Dirección:" required />
             <br />

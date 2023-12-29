@@ -1,15 +1,12 @@
 import "./css/seccion-iniciar-sesion.css";
 
-const Seccion_iniciar_sesion = () => {
+const Iniciar_sesion_tienda = () => {
   return (
     <>
       <section className="seccion-verde-formulario"></section>
       <section className="seccion-blanca-formulario">
         <div className="contenedor-formulario">
-          <h1>Iniciar sesión</h1>
-          <p><span className="texto-formulario">con</span></p>
-          <button className="btn-gmail">Gmail</button>
-          <p><span className="texto-formulario">ó</span></p>
+          <h1>Acceso tienda</h1>
           <form action="#" method="POST">
             <input type="text" placeholder="Correo electronico:" required />
             <br />
@@ -25,7 +22,7 @@ const Seccion_iniciar_sesion = () => {
               Olvide mi contraseña
             </button>
           </form>
-          
+
         </div>
       </section>
       <section className="top-para-footer"></section>
@@ -33,4 +30,4 @@ const Seccion_iniciar_sesion = () => {
   );
 };
 
-export default Seccion_iniciar_sesion;
+export default Iniciar_sesion_tienda;

@@ -12,10 +12,11 @@ const Header = () => {
             <nav>
               <div className="menu">
                 <a href="/">INICIO</a>
-                <a href="/cupones">CUPONES</a>
-                <a href="/registra-tu-tienda" className="btn-verde">REGISTRA TU TIENDA</a>
-                <a href="/registrate" className="btn-verde">REGISTRATE</a>
-                <a href="/iniciar-sesion" className="btn-blanco">INICIAR SESION</a>
+                <a href="/cupones">VER CUPONES</a>
+                <a href="/registrar-tienda" className="btn-verde">REGISTRE SU TIENDA</a>
+                <a href="/registrar-usuario" className="btn-verde">REGISTRATE</a>
+                <a href="/acceso-tienda" className="btn-blanco">ACCESO TIENDA</a>
+                <a href="/acceso-usuario" className="btn-blanco">ACCESO USUARIO</a>
               </div>
             </nav>
           </div>

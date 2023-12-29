@@ -1,16 +1,16 @@
 import React from "react";
 import Header from "./componentes/header";
 import Footer from "./componentes/footer";
-import Seccion_iniciar_sesion from "./componentes/seccion-iniciar-sesion";
+import Iniciar_sesion_tienda from "./componentes/sesion_tienda";
 
-const Iniciar_sesion = () => {
+const Acceso_tienda = () => {
     return (
         <>
         <Header/>
-        <Seccion_iniciar_sesion/>
+        <Iniciar_sesion_tienda/>
         <Footer/>
         </>
     );
 };
 
-export default Iniciar_sesion;
+export default Acceso_tienda;
