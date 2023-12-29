@@ -1,1 +1,16 @@
 @import url("../../../index.css");
+
+.seccion-cupones {
+    background-color: var(--color-gris-sueve);
+    padding: 4rem 0 4rem 0;
+}
+
+.container-cupones-condicional {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.seccion-cupones h1 {
+    text-align: center;
+}

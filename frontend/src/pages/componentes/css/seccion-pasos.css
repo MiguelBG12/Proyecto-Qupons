@@ -1,0 +1,40 @@
+@import "../../../index.css";
+
+.seccion-pasos {
+    background-color: var(--color-verde);
+    padding: 4rem 0 4rem 0;
+}
+
+.container-pasos {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 3rem;
+}
+
+.base-paso {
+    background-color: var(--color-blanco);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.base-paso i {
+    color: var(--color-verde);
+    font-size: 3rem;
+    margin: 2rem 0 2rem 0;
+    
+}
+
+.base-paso h2 {
+    text-align: center;
+    color: var(--color-verde);
+    font-weight: 600;
+
+}
+
+.base-paso p {
+    text-align: center;
+}

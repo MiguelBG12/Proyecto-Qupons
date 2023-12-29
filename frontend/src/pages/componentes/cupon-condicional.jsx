@@ -1,11 +1,11 @@
 import "./css/cupon.css";
-import promo6 from "../../assets/img/promo6.jpg";
+import promo7 from "../../assets/img/promo7.jpg";
 
 const Cupon_condicional = () => {
   return (
     <>
       <div className="base-cupon">
-        <img src={promo6} />
+        <img src={promo7} />
         <br />
         <h3 className="titulo-cupon">Nombre cupón</h3>
 

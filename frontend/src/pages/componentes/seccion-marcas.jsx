@@ -1,9 +1,13 @@
+import "./css/seccion-marcas.css"
+
 const Seccion_marcas = () => {
   return (
     <>
+    <section className="seccion-marcas">
       <div className="container">
-        <h1>Sección marcas</h1>
+        <h1 className="titulo-seccion-marcas">¡Cupones en todas la categorías solo aquí!</h1>
       </div>
+    </section>
     </>
   );
 };

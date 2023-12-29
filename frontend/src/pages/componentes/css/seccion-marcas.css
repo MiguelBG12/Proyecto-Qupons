@@ -1,0 +1,10 @@
+@import "../../../index.css";
+
+.seccion-marcas {
+    padding: 4rem 0 4rem 0;
+}
+
+.titulo-seccion-marcas {
+    text-align: center;
+    margin: 0;
+}
