@@ -1,6 +1,6 @@
 from enum import Enum
 from fastapi import Depends, HTTPException, status
-from app.security.auth import decode_token
+from app.security.auth_user import decode_token
 
 class UserRole(str, Enum):
     admin = "admin"

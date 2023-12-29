@@ -22,3 +22,9 @@ class UserUpdateRequest(BaseModel):
     correo: Optional[str] = None
     contraseña: Optional[str] = None
     telefono: Optional[int] = None
+
+class UserDataToken(BaseModel):
+    id: int
+    nombres_completos: str
+    correo: str
+    exp: int 
