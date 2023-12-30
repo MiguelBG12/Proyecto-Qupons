@@ -30,7 +30,9 @@ app.include_router(auth_user.router, prefix="/user", tags=["User"])
 # Ruta del perfil del usuario
 app.include_router(stores.router, prefix= "/store", tags=["Store"])
 
+#ruta de categorias
 app.include_router(categories.router, prefix= "/categories", tags=["CATEGORY"])
+
 if __name__ == "__main__":
     import uvicorn
 
