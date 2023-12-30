@@ -27,4 +27,9 @@ class UserDataToken(BaseModel):
     id: int
     nombres_completos: str
     correo: str
+    contraseña: str
     exp: int 
+
+class LoginFormData(BaseModel):
+    username: str
+    password: str

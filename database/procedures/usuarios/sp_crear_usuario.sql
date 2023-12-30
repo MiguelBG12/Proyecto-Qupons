@@ -20,11 +20,12 @@ BEGIN
 
     SELECT COUNT(*) INTO usuario_count
     FROM `usuario`
-    WHERE `nombres_completos` = p_nombres_completos;
+    WHERE `correo` = p_correo;
 
     IF usuario_count = 0 THEN
         INSERT INTO `usuario` (`nombres_completos`, `dni`, `genero`, `fecha_nacimiento`, `direccion`, `departamento`, `correo`, `contraseña`, `telefono`)
         VALUES (p_nombres_completos, p_dni, p_genero, p_fecha_nacimiento, p_direccion, p_departamento, p_correo, hashedPassword, p_telefono);
+        SELECT 'Usuario creado con éxito' AS `mensaje_exito`;
     ELSE
         SELECT 'El Usuario ya existe' AS `mensaje_error`;
     END IF;

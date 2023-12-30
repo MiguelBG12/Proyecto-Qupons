@@ -1,23 +1,20 @@
 DELIMITER $$
-DROP PROCEDURE IF EXISTS `sp_verperfil_usuario` $$
-
-CREATE PROCEDURE `sp_verperfil_usuario`(
-    IN p_correo VARCHAR(20),
-    IN p_contraseña VARCHAR(64)
-
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_verperfil_usuario`(
+    IN p_usuario_id INT
 )
 BEGIN
-	DECLARE usuario_id INT;
     DECLARE usuario_count INT;
 
-    SELECT COUNT(*), MAX(usuario_id) INTO usuario_count, usuario_id
+    SELECT COUNT(*)
+    INTO usuario_count
     FROM `usuario`
     WHERE `usuario_id` = p_usuario_id;
 
     IF usuario_count = 1 THEN
-        SELECT * FROM `usuario` WHERE `correo` = p_correo;
+        SELECT * FROM `usuario` WHERE `usuario_id` = p_usuario_id;
     ELSE
-        SELECT 'Credenciales incorrectas' AS `mensaje_error`;
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Credenciales incorrectas';
     END IF;
 END$$
 DELIMITER ;

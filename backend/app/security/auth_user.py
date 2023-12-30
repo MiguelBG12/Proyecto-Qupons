@@ -17,8 +17,13 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 def create_access_token(data: dict, expires_delta: timedelta):
     to_encode = data.copy()
     expire = datetime.utcnow() + expires_delta
-    to_encode.update({"exp": expire})
+    to_encode.update({
+        "nombres_completos": data.get("nombres_completos", ""),
+        "contraseña": data.get("contraseña", ""),
+        "exp": expire
+    })
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    print(encoded_jwt)
     return encoded_jwt
 
 def verify_token_access(token: str, credentials_exception):
@@ -28,10 +33,11 @@ def verify_token_access(token: str, credentials_exception):
 
         # Obtener datos del token
         correo: str = payload.get("correo")
-        contraseña: str = payload.get("contraseña")
+        hashedPassword: str = payload.get("contraseña")
 
         # Llamar al procedimiento almacenado para autenticar al usuario
-        result = data_conexion.ejecutar_procedure("sp_autenticar_usuario", [correo, contraseña])
+        result = data_conexion.ejecutar_procedure("sp_autenticar_usuario", [correo, hashedPassword])
+        print("Resultado del procedimiento almacenado:", result)
 
         # Verificar si el procedimiento almacenado devolvió resultados
         if result['result'] and len(result['result'][0]) > 0:
