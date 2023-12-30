@@ -1,7 +1,6 @@
 import "./css/slider.css";
 import slider1 from "../../assets/img/slider1.png";
 import slider2 from "../../assets/img/slider2.png";
-import slider3 from "../../assets/img/slider3.png";
 
 const Slider = () => {
   return (
@@ -17,9 +16,6 @@ const Slider = () => {
           </div>
           <div class="carousel-item">
             <img src={slider2} class="d-block w-100" />
-          </div>
-          <div class="carousel-item">
-            <img src={slider3} class="d-block w-100" />
           </div>
         </div>
         <button

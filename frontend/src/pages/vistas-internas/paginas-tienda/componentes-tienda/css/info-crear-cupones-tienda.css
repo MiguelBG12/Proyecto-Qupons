@@ -1,0 +1,6 @@
+@import url("../../../../../index.css");
+@import url("../../../../componentes/css/seccion-iniciar-sesion.css");
+
+.titulo-crear-cupones-tienda {
+    text-align: center;
+}

@@ -5,7 +5,7 @@ const Seccion_marcas = () => {
     <>
     <section className="seccion-marcas">
       <div className="container">
-        <h1 className="titulo-seccion-marcas">¡Cupones en todas la categorías solo aquí!</h1>
+        <h1 className="titulo-seccion-marcas">¡Cupones en todas las categorías solo aquí!</h1>
       </div>
     </section>
     </>

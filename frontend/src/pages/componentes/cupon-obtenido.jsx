@@ -10,7 +10,7 @@ const Cupon_obtenido = () => {
         <br />
         <h3 className="titulo-cupon">Nombre cupón</h3>
 
-        <p className="descripcion-cupon">Descripcion del cupón</p>
+        <p className="descripcion-cupon">Descripción del cupón</p>
 
         <h4 className="texto-descuento"><span className="porcentaje">30%</span> de descuento</h4>
 

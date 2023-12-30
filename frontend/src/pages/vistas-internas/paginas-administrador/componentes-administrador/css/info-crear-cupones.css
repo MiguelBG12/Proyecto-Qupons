@@ -1,0 +1,6 @@
+@import url("../../../../../index.css");
+@import url("../../../../componentes/css/seccion-iniciar-sesion.css");
+
+.titulo-formulario-crear-categoria {
+    text-align: center;
+}

@@ -3,6 +3,7 @@ import "../componentes-internos/css/plantilla-interna-general.css";
 import Header_interno from "../componentes-internos/header-interno";
 import Footer from "../../componentes/footer";
 import Menu_vertical_usuario from "../componentes-internos/menu-vertical-usuario";
+import Info_perfil_usuario from "./componentes-usuario/info-perfil-usuario";
 const Perfil_usuario = () => {
   return (
     <>
@@ -14,7 +15,7 @@ const Perfil_usuario = () => {
               <Menu_vertical_usuario />
             </div>
             <div className="container-section">
-                
+              <Info_perfil_usuario/>
             </div>
           </div>
         </div>
