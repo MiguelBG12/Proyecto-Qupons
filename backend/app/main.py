@@ -4,7 +4,6 @@ from app.routes import users
 from app.routes import stores
 from app.routes import auth_user
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import categories
 
 origins = [
     "http://localhost:5173",
@@ -30,8 +29,6 @@ app.include_router(auth_user.router, prefix="/user", tags=["User"])
 # Ruta del perfil del usuario
 app.include_router(stores.router, prefix= "/store", tags=["Store"])
 
-#ruta de categorias
-app.include_router(categories.router, prefix= "/categories", tags=["CATEGORY"])
 
 if __name__ == "__main__":
     import uvicorn

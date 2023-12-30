@@ -6,8 +6,7 @@ CREATE PROCEDURE `sp_ver_categorias`()
 BEGIN
 	SELECT
 	`categorias_id`,
-    `nombre`,
-    `Descripcion`
+    `nombre`
     FROM
 		`categorias`;
 END$$

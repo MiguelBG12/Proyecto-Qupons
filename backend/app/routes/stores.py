@@ -28,7 +28,7 @@ async def route_actualizar_store(sotre_data: StoreUpdateRequest):
 async def route_actualizar_cupon(cupon_data: CuponUpdateRequest):
     return await actualizar_cupon(cupon_data)
 
-@router.delete("/borrar_cupontienda/{cupon_id}")
+@router.delete("/borrar_cupon_tienda/{cupon_id}")
 async def route_borrar_cupontienda(cupones_id: int):
     return await borrar_cupontienda(cupones_id)
 

@@ -3,8 +3,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_crear_categorias` $$
 
 CREATE PROCEDURE `sp_crear_categorias`(
-    IN p_nombre VARCHAR(255),
-    IN p_Descripcion VARCHAR(255)
+    IN p_nombre VARCHAR(255)
 )
 BEGIN
     DECLARE categoria_count INT;
@@ -15,8 +14,8 @@ BEGIN
     WHERE `nombre` = p_nombre;
 
     IF categoria_count = 0 THEN
-        INSERT INTO `categorias` (`nombre`, `Descripcion`)
-        VALUES (p_nombre, p_Descripcion);
+        INSERT INTO `categorias` (`nombre`)
+        VALUES (p_nombre);
 
         SET mensaje_exito = 'categoria creada con exito';
         SELECT mensaje_exito AS `mensaje_exito`;
