@@ -5,7 +5,7 @@ import "./css/info-perfil-tienda.css";
 const Info_perfil_tienda = () => {
   return (
     <>
-    <h1 className="titulo-intranet">Manten los datos de tienda actualizada</h1>
+    <h1 className="titulo-intranet">Mantenga los datos de su tienda actualizados</h1>
       <section className="formulario">
       <form action="#" method="POST">
             <input type="text" placeholder="Nombre de tienda:" required />

@@ -23,4 +23,4 @@ uvicorn main:app --reload
 
 Iniciar el Frontend (Vite con React):
 Desde el directorio frontend, ejecuta:
-npm run dev
+Comando: npm run dev

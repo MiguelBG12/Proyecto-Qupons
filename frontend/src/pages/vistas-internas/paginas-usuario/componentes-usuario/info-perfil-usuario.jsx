@@ -4,7 +4,7 @@ import "./css/info-perfil-usuario.css";
 const Info_perfil_usuario = () => {
   return (
     <>
-    <h1 className="titulo-intranet">Manten tus datos actualizados</h1>
+    <h1 className="titulo-intranet">Mantenga sus datos actualizados</h1>
       <section className="formulario">
       <form action="#" method="POST">
             <input type="text" placeholder="Nombre Completo:" required />
