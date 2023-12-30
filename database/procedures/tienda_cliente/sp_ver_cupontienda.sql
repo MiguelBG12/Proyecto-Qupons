@@ -2,12 +2,10 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_ver_cupontienda` $$
 CREATE PROCEDURE `sp_ver_cupontienda`(
-    IN p_cupones_id INT
+    IN p_cliente_tienda_id INT
 )
 BEGIN
-    -- Verifica si el cupón con el ID proporcionado existe
-    IF EXISTS (SELECT 1 FROM `cupones` WHERE `cupones_id` = p_cupones_id) THEN
-        -- Retorna la información del cupón
+    IF EXISTS (SELECT 1 FROM `cupones` WHERE `cliente_tienda_id` = p_cliente_tienda_id) THEN
         SELECT
             `cupones_id`,
             `titulo`,
@@ -22,10 +20,9 @@ BEGIN
             `cliente_tienda_id`,
             `categorias_id`
         FROM `cupones`
-        WHERE `cupones_id` = p_cupones_id;
+        WHERE `cliente_tienda_id` = p_cliente_tienda_id;
     ELSE
-        -- El cupón no existe
-        SELECT 'El cupón con el ID proporcionado no existe' AS `mensaje_error`;
+        SELECT 'La con el ID proporcionado no existe' AS `mensaje_error`;
     END IF;
 END$$
 DELIMITER ;

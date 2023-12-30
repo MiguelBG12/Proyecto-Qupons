@@ -32,9 +32,9 @@ async def route_actualizar_cupon(cupon_data: CuponUpdateRequest):
 async def route_borrar_cupontienda(cupones_id: int):
     return await borrar_cupontienda(cupones_id)
 
-@router.get("/ver_cupontienda")
-async def route_ver_cupontienda():
-    return await ver_cupontienda()
+@router.get("/ver_cupontienda/{cliente_tienda_id}")
+async def route_ver_cupontienda(cliente_tienda_id: int):
+    return await ver_cupontienda(cliente_tienda_id)
 
 @router.get("ver_perfiltienda/{p_correo}/{p_contraseña}")
 async def route_ver_perfiltienda(p_correo: str, p_contraseña: str):

@@ -26,4 +26,4 @@ class CuponUpdateRequest(BaseModel):
     diseño_oferta_foto: Optional[str] = None
     terminos_condiciones: Optional[str] = None
     #cliente_tienda_id: Optional[int] = None
-    #categorias_id: Optional[int] = None
+    categorias_id: Optional[int] = None

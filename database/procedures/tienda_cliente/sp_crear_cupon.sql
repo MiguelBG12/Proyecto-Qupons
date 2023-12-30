@@ -9,7 +9,7 @@ CREATE PROCEDURE `sp_crear_cupon`(
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
     IN p_porcentaje_descuento FLOAT,
-    IN p_diseno_oferta_foto VARCHAR(45),
+    IN p_diseno_oferta_foto VARCHAR(255),
     IN p_terminos_condiciones VARCHAR(400),
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT

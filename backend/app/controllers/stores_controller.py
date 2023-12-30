@@ -75,25 +75,24 @@ async def actualizar_cupon(cupon_request: CuponUpdateRequest):
         cupon_request.porcentaje_descuento,
         cupon_request.diseño_oferta_foto,
         cupon_request.terminos_condiciones,
-        cupon_request.cliente_tienda_id,
         cupon_request.categorias_id
     ]
-    result = data_conexion.ejecutar_procedure('sp_crear_cupon', params)
+    result = data_conexion.ejecutar_procedure('sp_actualizar_cupon', params)
     return result
 
-@router.delete("/borrar_cupontienda/{cupones_id}")
+@router.delete("/borrar_cupon_tienda/{cupones_id}")
 async def borrar_cupontienda(cupones_id: int):
     params = [cupones_id]
     result = data_conexion.ejecutar_procedure('sp_borrar_cupontienda', params)
     return result
 
-@router.get("/ver_cupontienda/{tienda_id}")
-async def ver_cupontienda(tienda_id: int):
-    params = [tienda_id]
+@router.get("/ver_cupon_tienda/{cliente_tienda_id}")
+async def ver_cupontienda(cliente_tienda_id: int):
+    params = [cliente_tienda_id]
     result = data_conexion.ejecutar_procedure('sp_ver_cupontienda', params)
     return result
 
-@router.get("/ver_perfiltienda/{p_correo}/{p_contraseña}")
+@router.get("/ver_perfil_tienda/{p_correo}/{p_contraseña}")
 async def ver_perfiltienda(p_correo: str, p_contraseña: str):
     params = [p_correo, p_contraseña]
     result = data_conexion.ejecutar_procedure('sp_verperfil_tienda', params)
