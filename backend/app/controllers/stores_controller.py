@@ -29,8 +29,9 @@ async def crear_store(store_request: StoreCreateRequest):
 async def actualizar_store(store_request: StoreUpdateRequest):
     hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
     params = [
+        store_request.cliente_tienda_id,
         store_request.nombre_empresa,
-        store_request.ruc,
+        #store_request.ruc,
         store_request.razon_social,
         store_request.direccion,
         store_request.correo,
@@ -38,7 +39,7 @@ async def actualizar_store(store_request: StoreUpdateRequest):
         hashed_password,
         store_request.telefono
     ]
-    result = data_conexion.ejecutar_procedure('sp_actualizar_admin', params)
+    result = data_conexion.ejecutar_procedure('sp_actualizar_tienda', params)
     return result
 
 @router.post("/crear_cupon")
@@ -92,8 +93,8 @@ async def ver_cupontienda(cliente_tienda_id: int):
     result = data_conexion.ejecutar_procedure('sp_ver_cupontienda', params)
     return result
 
-@router.get("/ver_perfil_tienda/{p_correo}/{p_contraseña}")
-async def ver_perfiltienda(p_correo: str, p_contraseña: str):
-    params = [p_correo, p_contraseña]
+@router.get("/ver_perfil_tienda/{ruc}/{nombre_empresa}")
+async def ver_perfiltienda(p_ruc: str, p_nombre_empresa: str):
+    params = [p_ruc, p_nombre_empresa]
     result = data_conexion.ejecutar_procedure('sp_verperfil_tienda', params)
     return result
