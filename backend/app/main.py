@@ -1,4 +1,5 @@
-import jwt
+from jose import jwt
+from jose.exceptions import JWTError
 from datetime import datetime, timedelta
 from fastapi import FastAPI, Depends, HTTPException, status, Request
 from app.routes.admin import router as admin_router
@@ -59,23 +60,35 @@ def login(form_data: OAuth2PasswordRequestForm = Depends ()):
 # Middleware para validar el token en las rutas del administrador
 async def admin_token_validation(request: Request, call_next):
     if request.url.path.startswith("/admin"):
-        token = request.headers.get("Authorization", "").replace("Bearer ", "")
+        token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+
+        if not token:
+            print("Token no proporcionado")
+            return await call_next(request)  # Permitir que la solicitud continúe sin decodificar el token
+
         try:
+            print("Contenido del token antes de decodificación:", token)
             payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
             username: str = payload.get("sub")
-            if username != "admin_username":  
+            if username != "admin_username":
                 raise HTTPException(status_code=403, detail="No tienes permiso para acceder")
-        except jwt.ExpiredSignatureError:
+        except jwt.ExpiredSignatureError as e:
+            print("Token expirado:", e)
             raise HTTPException(status_code=401, detail="Token expirado")
         except jwt.DecodeError as e:
-            print("Error de decodificación del token:", e)  # Agregar esta línea para depurar
+            print("Error de decodificación del token:", e)
+            raise HTTPException(status_code=401, detail=f"Token inválido: {str(e)}")
+        except JWTError as e:
+            print("Error de decodificación del token:", e)
             raise HTTPException(status_code=401, detail=f"Token inválido: {str(e)}")
         except Exception as e:
-            print("Otro error al procesar el token:", e)  # Agregar esta línea para depurar
+            print("Otro error al procesar el token:", e)
             raise HTTPException(status_code=401, detail=f"Error al procesar el token: {str(e)}")
 
     response = await call_next(request)
     return response
+
+
 
 app.middleware("http")(admin_token_validation)
 
