@@ -7,6 +7,7 @@ import Registrar_tienda from "./pages/registrar-tienda";
 import Registrate from "./pages/registrate";
 import Acceso_tienda from "./pages/iniciar-sesion-tienda";
 import Acceso_usuario from "./pages/iniciar-sesion-usuario";
+import Acceso_administrador from "./pages/iniciar-sesion-administrador";
 
 import Panel_administrador from "./pages/vistas-internas/paginas-administrador/panel-administrador";
 import Perfil_administrador from "./pages/vistas-internas/paginas-administrador/perfil-administrador";
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/registrar-usuario" element={<Registrate/>} />
           <Route path="/acceso-tienda" element={<Acceso_tienda/>} />
           <Route path="/acceso-usuario" element={<Acceso_usuario/>} />
+          <Route path="/acceso-administrador" element={<Acceso_administrador/>} />
           
           <Route path="/adminitrador-panel" element={<Panel_administrador/>} exact />
           <Route path="/adminitrador-perfil" element={<Perfil_administrador/>} />
