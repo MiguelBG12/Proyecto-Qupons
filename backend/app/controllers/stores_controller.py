@@ -64,6 +64,7 @@ async def actualizar_cupon(cupon_request: CuponUpdateRequest):
     formatted_fecha_inicio = datetime.strptime(cupon_request.fecha_inicio, '%Y-%m-%d').strftime('%Y-%m-%d')
     formatted_fecha_vencimiento = datetime.strptime(cupon_request.fecha_vencimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
     params = [
+        cupon_request.cupones_id,
         cupon_request.titulo,
         cupon_request.descripcion,
         formatted_fecha_inicio,
@@ -73,6 +74,7 @@ async def actualizar_cupon(cupon_request: CuponUpdateRequest):
         cupon_request.porcentaje_descuento,
         cupon_request.diseño_oferta_foto,
         cupon_request.terminos_condiciones,
+        cupon_request.cliente_tienda_id,
         cupon_request.categorias_id
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_cupon', params)
