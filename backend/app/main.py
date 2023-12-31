@@ -34,10 +34,10 @@ app.include_router(users.router, prefix="/user", tags=["User"])
 # Ruta del perfil del usuario
 app.include_router(stores.router, prefix= "/store", tags=["Store"])
 
-@app.post("token")
+@app.post("/token")
 def login(form_data: OAuth2PasswordRequestForm = Depends ()):
-    admin = result.get(form_data.username)
-    if not admin:
+    Admin = result.get(form_data.username)
+    if not Admin:
         raise HTTPException(status_code=400, detail="Usuario no valido")
     if not form_data.password == admin["contraseña"]:
         raise HTTPException(status_code=400, detail="Contraseña no valida")
