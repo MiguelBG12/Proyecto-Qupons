@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.models.administrator import AdminCreateRequest, AdminUpdateRequest
+from app.models.administrator import AdminCreateRequest, AdminUpdateRequest, AdminLoginRequest
 from app.models.category import CategoriasCreateRequest
 from app.controllers.admin_controller import (
     crear_admin, 
@@ -14,7 +14,8 @@ from app.controllers.admin_controller import (
     ver_cupones,
     create_categoria,
     borrar_categoria,
-    ver_categorias
+    ver_categorias,
+    login_admin
 )
 
 router = APIRouter()
@@ -71,11 +72,6 @@ async def route_ver_usuarios():
 async def route_ver_cupones():
     return await ver_cupones()
 
-# Puedes agregar más rutas y sus correspondientes llamadas a funciones de los controladores aquí
-
-# Por ejemplo:
-# @router.get("/")
-# async def get_admin(admin_id: int):
-#     return await obtener_admin(admin_id)
-
-# Recuerda importar las clases y definiciones necesarias de los controladores
+@router.post("/login_admin")
+async def route_login_admin(admin_data: AdminLoginRequest):
+    return await login_admin(admin_data)

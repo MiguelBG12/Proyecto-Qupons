@@ -86,3 +86,10 @@ async def ver_cupones():
     result = data_conexion.ejecutar_procedure('sp_ver_cupones', [])
     return result
 
+@router.post("/login_admin")
+async def login_admin(admin_request: AdminCreateRequest):
+    params = [
+        admin_request.nombre,
+        admin_request.contraseña
+    ]
+    result = data_conexion.ejecutar_procedure('sp_login_administrador', params)

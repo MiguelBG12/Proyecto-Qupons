@@ -15,3 +15,8 @@ class AdminUpdateRequest(BaseModel):
     nuevo_cargo: Optional[str] = None
     nuevo_correo: Optional[str] = None
     nueva_contraseña: Optional[str] = None
+
+class AdminLoginRequest(BaseModel):
+    nombre: str
+    correo: str
+    contraseña: str
