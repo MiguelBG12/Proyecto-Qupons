@@ -10,42 +10,44 @@ CREATE PROCEDURE `sp_actualizar_cupon`(
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
     IN p_porcentaje_descuento FLOAT,
-    IN p_diseno_oferta_foto VARCHAR(45),
+    IN p_diseño_oferta_foto VARCHAR(45),
     IN p_terminos_condiciones VARCHAR(400),
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )
 BEGIN
-    -- Verifica si el cupón con el ID proporcionado existe
-    IF EXISTS (SELECT 1 FROM `cupones` WHERE `cupones_id` = p_cupones_id) THEN
-        -- Actualiza los datos del cupón
-
-        -- Actualiza el titulo si se proporciona
+    IF EXISTS (SELECT 1 FROM `cupones` WHERE `cupones_id` = p_cupones_id AND `cliente_tienda_id` = p_cliente_tienda_id) THEN
         IF p_titulo IS NOT NULL THEN
             UPDATE `cupones` SET `titulo` = p_titulo WHERE `cupones_id` = p_cupones_id;
         END IF;
-
-        -- Actualiza la descripcion si se proporciona
         IF p_descripcion IS NOT NULL THEN
             UPDATE `cupones` SET `descripcion` = p_descripcion WHERE `cupones_id` = p_cupones_id;
         END IF;
-
-        -- Actualiza la fecha de inicio si se proporciona
         IF p_fecha_inicio IS NOT NULL THEN
             UPDATE `cupones` SET `fecha_inicio` = p_fecha_inicio WHERE `cupones_id` = p_cupones_id;
         END IF;
-
-        -- Actualiza la fecha de vencimiento si se proporciona
         IF p_fecha_vencimiento IS NOT NULL THEN
             UPDATE `cupones` SET `fecha_vencimiento` = p_fecha_vencimiento WHERE `cupones_id` = p_cupones_id;
         END IF;
-
-        -- Repite el proceso para los demás campos...
-
+        IF p_precio_normal IS NOT NULL THEN
+            UPDATE `cupones` SET `precio_normal` = p_precio_normal WHERE `cupones_id` = p_cupones_id;
+        END IF;
+        IF p_precio_oferta IS NOT NULL THEN
+            UPDATE `cupones` SET `precio_oferta` = p_precio_oferta WHERE `cupones_id` = p_cupones_id;
+        END IF;
+        IF p_porcentaje_descuento IS NOT NULL THEN
+            UPDATE `cupones` SET `porcentaje_descuento` = p_porcentaje_descuento WHERE `cupones_id` = p_cupones_id;
+        END IF;
+        IF p_diseño_oferta_foto IS NOT NULL THEN
+            UPDATE `cupones` SET `diseno_oferta_foto` = p_diseno_oferta_foto WHERE `cupones_id` = p_cupones_id;
+        END IF;
+        IF p_terminos_condiciones IS NOT NULL THEN
+            UPDATE `cupones` SET `terminos_condiciones` = p_terminos_condiciones WHERE `cupones_id` = p_cupones_id;
+        END IF;
         SELECT 'El cupón ha sido actualizado con éxito' AS `mensaje_exito`;
     ELSE
-        -- El cupón no existe
-        SELECT 'El cupón con el ID proporcionado no existe' AS `mensaje_error`;
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: El cupón no está vinculado al cliente_tienda';
     END IF;
 END$$
 DELIMITER ;

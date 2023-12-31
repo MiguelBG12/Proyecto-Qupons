@@ -9,24 +9,22 @@ router = APIRouter()
 
 @router.post("/crear_admin")
 async def crear_admin(admin_request: AdminCreateRequest):
-    hashed_password = hashlib.sha256(admin_request.contraseña.encode()).hexdigest()
     params = [
         admin_request.nombre,
         admin_request.cargo,
         admin_request.correo,
-        hashed_password
+        admin_request.contraseña
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_admin', params)
         
 @router.put("/actualizar_admin")
 async def actualizar_admin(admin_request: AdminUpdateRequest):
-    hashed_password = hashlib.sha256(admin_request.nueva_contraseña.encode()).hexdigest()
     params = [
         admin_request.admin_id,
         admin_request.nombre,
         admin_request.nuevo_cargo,
         admin_request.nuevo_correo,
-        hashed_password
+        admin_request.nueva_contraseña
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_admin', params)
 

@@ -28,6 +28,7 @@ CREATE TABLE `cliente_tienda` (
   `direccion` VARCHAR(60) NULL,
   `correo` VARCHAR(45) NOT NULL,
   `nombre_contacto` VARCHAR(60) NOT NULL,
+  `logo_tienda` VARCHAR(100) NOT NULL,
   `contraseña` VARCHAR(64) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`cliente_tienda_id`));
@@ -36,7 +37,7 @@ DROP TABLE IF EXISTS `categorias` ;
 
 CREATE TABLE `categorias` (
   `categorias_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(20) NOT NULL,
+  `nombre` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`categorias_id`));
   
 DROP TABLE IF EXISTS `cupones` ;
@@ -50,7 +51,7 @@ CREATE TABLE `cupones` (
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
   `porcentaje_descuento` FLOAT NOT NULL,
-  `diseño_oferta_foto` VARCHAR(45) NOT NULL,
+  `diseño_oferta_foto` VARCHAR(100) NOT NULL,
   `terminos_condiciones` VARCHAR(400) NOT NULL,
   `cliente_tienda_id` INT NOT NULL,
   `categorias_id` INT NOT NULL,
@@ -89,20 +90,6 @@ CREATE TABLE `cupon_comprado` (
         REFERENCES `db_webcuponera`.`cupones` (`cupones_id`)
         ON DELETE CASCADE
         ON UPDATE NO ACTION
-);
-
-DROP TABLE IF EXISTS `subcategorias` ;
-
-CREATE TABLE `subcategorias` (
-  `subcategorias_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(20) NOT NULL,
-  `descripcion` VARCHAR(45) NULL,
-  `categorias_id` INT NOT NULL,
-  PRIMARY KEY (`subcategorias_id`),
-  INDEX `fk_SUBCATEGORIAS_CATEGORIAS1_idx` (`categorias_id` ASC) VISIBLE,
-  CONSTRAINT `fk_SUBCATEGORIAS_CATEGORIAS1`
-    FOREIGN KEY (`categorias_id`)
-    REFERENCES `db_webcuponera`.`CATEGORIAS` (`categorias_id`)
 );
 
 DROP TABLE IF EXISTS `administradores` ;
