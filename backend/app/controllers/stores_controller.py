@@ -92,8 +92,8 @@ async def ver_cupontienda(cliente_tienda_id: int):
     result = data_conexion.ejecutar_procedure('sp_ver_cupontienda', params)
     return result
 
-@router.get("/ver_perfil_tienda/{ruc}/{nombre_empresa}")
-async def ver_perfiltienda(p_ruc: str, p_nombre_empresa: str):
-    params = [p_ruc, p_nombre_empresa]
+@router.get("/ver_perfil_tienda/{cliente_tienda_id}")
+async def ver_perfiltienda(cliente_tienda_id: int):
+    params = [cliente_tienda_id]
     result = data_conexion.ejecutar_procedure('sp_verperfil_tienda', params)
     return result
