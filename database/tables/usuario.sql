@@ -9,8 +9,8 @@ CREATE TABLE `usuario` (
   `fecha_nacimiento` DATE NOT NULL,
   `direccion` VARCHAR(60) NOT NULL,
   `departamento` VARCHAR(15) NOT NULL,
-  `correo` VARCHAR(20) NOT NULL,
-  `contraseña` VARCHAR(20) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  `contraseña` VARCHAR(64) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
   );
