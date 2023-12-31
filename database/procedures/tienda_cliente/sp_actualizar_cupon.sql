@@ -39,7 +39,7 @@ BEGIN
             UPDATE `cupones` SET `porcentaje_descuento` = p_porcentaje_descuento WHERE `cupones_id` = p_cupones_id;
         END IF;
         IF p_diseño_oferta_foto IS NOT NULL THEN
-            UPDATE `cupones` SET `diseno_oferta_foto` = p_diseno_oferta_foto WHERE `cupones_id` = p_cupones_id;
+            UPDATE `cupones` SET `diseño_oferta_foto` = p_diseño_oferta_foto WHERE `cupones_id` = p_cupones_id;
         END IF;
         IF p_terminos_condiciones IS NOT NULL THEN
             UPDATE `cupones` SET `terminos_condiciones` = p_terminos_condiciones WHERE `cupones_id` = p_cupones_id;
