@@ -30,6 +30,8 @@ const Seccion_formulario_usuario = () => {
             <br />
             <input type="text" placeholder="Dirección:" required />
             <br />
+            <input type="text" placeholder="Departamento:" required />
+            <br />
             <br />
             <label htmlFor="">Fecha de nacimiento </label>
             <input
