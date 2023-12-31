@@ -16,6 +16,7 @@ class CuponCreateRequest(BaseModel):
 
 class CuponUpdateRequest(BaseModel):
     # Define la estructura de la creacion de cupones
+    cupones_id: int
     titulo: Optional[str] = None
     descripcion: Optional[str] = None
     fecha_inicio: Optional[str] = None
@@ -25,5 +26,5 @@ class CuponUpdateRequest(BaseModel):
     porcentaje_descuento: Optional[float] = None
     diseño_oferta_foto: Optional[str] = None
     terminos_condiciones: Optional[str] = None
-    #cliente_tienda_id: Optional[int] = None
+    cliente_tienda_id: Optional[int] = None
     categorias_id: Optional[int] = None
