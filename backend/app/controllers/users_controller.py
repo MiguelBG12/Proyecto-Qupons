@@ -25,12 +25,8 @@ async def crear_user(user_request: UserCreateRequest):
         
 @router.put("/actualizar_user")
 async def actualizar_user(user_request: UserUpdateRequest):
-    formatted_fecha_nacimiento = datetime.strptime(user_request.fecha_nacimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
     params = [
-        user_request.nombres_completos,
-        user_request.dni,
-        user_request.genero,
-        formatted_fecha_nacimiento,
+        user_request.usuario_id,
         user_request.direccion,
         user_request.departamento,
         user_request.correo,
