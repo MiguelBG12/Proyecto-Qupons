@@ -13,6 +13,7 @@ BEGIN
             `precio_normal`,
             `precio_oferta`,
             `porcentaje_descuento`,
+            `stock`,
             `terminos_condiciones`,
             `cliente_tienda_id`,
             `categorias_id`

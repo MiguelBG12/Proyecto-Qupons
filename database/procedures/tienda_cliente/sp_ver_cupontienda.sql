@@ -21,6 +21,7 @@ BEGIN
             `precio_normal`,
             `precio_oferta`,
             `porcentaje_descuento`,
+            `stock`,
             `diseño_oferta_foto`,
             `terminos_condiciones`,
             `cliente_tienda_id`,

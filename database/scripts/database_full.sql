@@ -51,6 +51,7 @@ CREATE TABLE `cupones` (
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
   `porcentaje_descuento` FLOAT NOT NULL,
+  `stock` INT NOT NULL,
   `diseño_oferta_foto` VARCHAR(100) NOT NULL,
   `terminos_condiciones` VARCHAR(400) NOT NULL,
   `cliente_tienda_id` INT NOT NULL,

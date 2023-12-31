@@ -9,6 +9,7 @@ CREATE PROCEDURE `sp_crear_cupon`(
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
     IN p_porcentaje_descuento FLOAT,
+    IN p_stock INT,
     IN p_diseño_oferta_foto VARCHAR(45),
     IN p_terminos_condiciones VARCHAR(400),
     IN p_cliente_tienda_id INT,
@@ -19,7 +20,6 @@ BEGIN
     SELECT COUNT(*) INTO tienda_count
     FROM `cliente_tienda`
     WHERE `cliente_tienda_id` = p_cliente_tienda_id;
-
     IF tienda_count > 0 THEN
         INSERT INTO `cupones` (
             `titulo`,
@@ -29,6 +29,7 @@ BEGIN
             `precio_normal`,
             `precio_oferta`,
             `porcentaje_descuento`,
+            `stock`,
             `diseño_oferta_foto`,
             `terminos_condiciones`,
             `cliente_tienda_id`,
@@ -41,6 +42,7 @@ BEGIN
             p_precio_normal,
             p_precio_oferta,
             p_porcentaje_descuento,
+            p_stock,
             p_diseño_oferta_foto,
             p_terminos_condiciones,
             p_cliente_tienda_id,
