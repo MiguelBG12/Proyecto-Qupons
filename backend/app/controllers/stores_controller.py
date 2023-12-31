@@ -30,9 +30,6 @@ async def actualizar_store(store_request: StoreUpdateRequest):
     hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
     params = [
         store_request.cliente_tienda_id,
-        store_request.nombre_empresa,
-        #store_request.ruc,
-        store_request.razon_social,
         store_request.direccion,
         store_request.correo,
         store_request.nombre_contacto,
