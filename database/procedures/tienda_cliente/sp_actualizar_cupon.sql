@@ -1,5 +1,4 @@
 DELIMITER $$
-
 DROP PROCEDURE IF EXISTS `sp_actualizar_cupon` $$
 CREATE PROCEDURE `sp_actualizar_cupon`(
     IN p_cupones_id INT,
@@ -9,9 +8,7 @@ CREATE PROCEDURE `sp_actualizar_cupon`(
     IN p_fecha_vencimiento DATE,
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
-    IN p_porcentaje_descuento FLOAT,
     IN p_diseño_oferta_foto VARCHAR(45),
-    IN p_terminos_condiciones VARCHAR(400),
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )
@@ -35,14 +32,8 @@ BEGIN
         IF p_precio_oferta IS NOT NULL THEN
             UPDATE `cupones` SET `precio_oferta` = p_precio_oferta WHERE `cupones_id` = p_cupones_id;
         END IF;
-        IF p_porcentaje_descuento IS NOT NULL THEN
-            UPDATE `cupones` SET `porcentaje_descuento` = p_porcentaje_descuento WHERE `cupones_id` = p_cupones_id;
-        END IF;
         IF p_diseño_oferta_foto IS NOT NULL THEN
-            UPDATE `cupones` SET `diseño_oferta_foto` = p_diseño_oferta_foto WHERE `cupones_id` = p_cupones_id;
-        END IF;
-        IF p_terminos_condiciones IS NOT NULL THEN
-            UPDATE `cupones` SET `terminos_condiciones` = p_terminos_condiciones WHERE `cupones_id` = p_cupones_id;
+            UPDATE `cupones` SET `diseno_oferta_foto` = p_diseno_oferta_foto WHERE `cupones_id` = p_cupones_id;
         END IF;
         SELECT 'El cupón ha sido actualizado con éxito' AS `mensaje_exito`;
     ELSE

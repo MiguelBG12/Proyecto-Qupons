@@ -1,5 +1,7 @@
 DELIMITER $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_verperfil_usuario`(
+
+DROP PROCEDURE IF EXISTS `sp_verperfil_usuario`$$
+CREATE PROCEDURE `sp_verperfil_usuario`(
     IN p_usuario_id INT
 )
 BEGIN

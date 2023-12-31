@@ -50,10 +50,7 @@ CREATE TABLE `cupones` (
   `fecha_vencimiento` DATE NOT NULL,
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
-  `porcentaje_descuento` FLOAT NOT NULL,
-  `stock` INT NOT NULL,
   `diseño_oferta_foto` VARCHAR(100) NOT NULL,
-  `terminos_condiciones` VARCHAR(400) NOT NULL,
   `cliente_tienda_id` INT NOT NULL,
   `categorias_id` INT NOT NULL,
   PRIMARY KEY (`cupones_id`),
@@ -74,7 +71,6 @@ DROP TABLE IF EXISTS `cupon_comprado` ;
 
 CREATE TABLE `cupon_comprado` (
     `fecha_compra` DATE NOT NULL,
-    `cantidad_comprada` INT NOT NULL,
     `estado_cupon` ENUM('canjeado', 'no canjeado', 'vencido') NOT NULL,
     `usuario_id` INT NOT NULL,
     `cupones_id` INT NOT NULL,
