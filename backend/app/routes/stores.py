@@ -21,8 +21,8 @@ async def route_crear_cupon(cupon_data: CuponCreateRequest):
    return await crear_cupon(cupon_data)
 
 @router.put("/actualizar_store")
-async def route_actualizar_store(sotre_data: StoreUpdateRequest):
-    return await actualizar_store(sotre_data)
+async def route_actualizar_store(store_data: StoreUpdateRequest):
+    return await actualizar_store(store_data)
 
 @router.put("/actualizar_cupon")
 async def route_actualizar_cupon(cupon_data: CuponUpdateRequest):
@@ -32,10 +32,10 @@ async def route_actualizar_cupon(cupon_data: CuponUpdateRequest):
 async def route_borrar_cupontienda(cupones_id: int):
     return await borrar_cupontienda(cupones_id)
 
-@router.get("/ver_cupontienda/{cliente_tienda_id}")
+@router.get("/ver_cupon_tienda/{cliente_tienda_id}")
 async def route_ver_cupontienda(cliente_tienda_id: int):
     return await ver_cupontienda(cliente_tienda_id)
 
-@router.get("ver_perfiltienda/{p_correo}/{p_contraseña}")
-async def route_ver_perfiltienda(p_correo: str, p_contraseña: str):
-    return await ver_perfiltienda(p_correo, p_contraseña)
+@router.get("ver_perfil_tienda/{ruc}/{nombre_empresa}")
+async def route_ver_perfiltienda(p_ruc: str, p_nombre_empresa: str):
+    return await ver_perfiltienda(p_ruc, p_nombre_empresa)
