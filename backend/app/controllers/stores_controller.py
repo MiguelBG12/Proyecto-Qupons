@@ -11,15 +11,16 @@ router = APIRouter()
 
 @router.post("/crear_store")
 async def crear_store(store_request: StoreCreateRequest):
-    hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
+    #hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
     params = [
         store_request.nombre_empresa,
         store_request.ruc,
         store_request.razon_social,
         store_request.direccion,
         store_request.correo,
+        store_request.logo_tienda,
         store_request.nombre_contacto,
-        hashed_password,
+        store_request.contraseña,
         store_request.telefono
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
@@ -27,13 +28,13 @@ async def crear_store(store_request: StoreCreateRequest):
 
 @router.put("/actualizar_store")
 async def actualizar_store(store_request: StoreUpdateRequest):
-    hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
+    #hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
     params = [
         store_request.cliente_tienda_id,
         store_request.direccion,
         store_request.correo,
         store_request.nombre_contacto,
-        hashed_password,
+        store_request.contraseña,
         store_request.telefono
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_tienda', params)
@@ -50,9 +51,7 @@ async def crear_cupon(cupon_request: CuponCreateRequest):
         formatted_fecha_vencimiento,
         cupon_request.precioOG,
         cupon_request.precioNew,
-        cupon_request.porcentaje_descuento,
         cupon_request.diseño_oferta_foto,
-        cupon_request.terminos_condiciones,
         cupon_request.cliente_tienda_id,
         cupon_request.categorias_id
     ]
@@ -71,9 +70,7 @@ async def actualizar_cupon(cupon_request: CuponUpdateRequest):
         formatted_fecha_vencimiento,
         cupon_request.precioOG,
         cupon_request.precioNew,
-        cupon_request.porcentaje_descuento,
         cupon_request.diseño_oferta_foto,
-        cupon_request.terminos_condiciones,
         cupon_request.cliente_tienda_id,
         cupon_request.categorias_id
     ]

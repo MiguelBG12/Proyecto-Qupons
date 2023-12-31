@@ -8,6 +8,7 @@ class StoreCreateRequest(BaseModel):
     razon_social: str
     direccion: str
     correo: str
+    logo_tienda: str
     nombre_contacto: str
     contraseña: str
     telefono: int

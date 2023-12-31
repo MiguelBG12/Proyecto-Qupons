@@ -72,7 +72,7 @@ BEGIN
             UPDATE `cupones` SET `precio_oferta` = p_precio_oferta WHERE `cupones_id` = p_cupones_id;
         END IF;
         IF p_diseño_oferta_foto IS NOT NULL THEN
-            UPDATE `cupones` SET `diseno_oferta_foto` = p_diseno_oferta_foto WHERE `cupones_id` = p_cupones_id;
+            UPDATE `cupones` SET `diseño_oferta_foto` = p_diseño_oferta_foto WHERE `cupones_id` = p_cupones_id;
         END IF;
         SELECT 'El cupón ha sido actualizado con éxito' AS `mensaje_exito`;
     ELSE
