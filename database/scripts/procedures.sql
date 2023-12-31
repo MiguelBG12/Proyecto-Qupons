@@ -127,8 +127,6 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_usuario` $$
 CREATE PROCEDURE `sp_actualizar_usuario`(
     IN p_usuario_id INT,
-    IN p_correo VARCHAR(45),
-    IN p_contraseña VARCHAR(64),
     IN p_direccion VARCHAR(60),
     IN p_departamento VARCHAR(15),
     IN p_nuevo_correo VARCHAR(45),
