@@ -4,7 +4,7 @@ import hashlib
 from typing import List
 from app.config.db_conexion import data_conexion
 from app.utils import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
-from app.models.administrator import AdminCreateRequest, AdminUpdateRequest
+from app.models.administrator import AdminCreateRequest, AdminUpdateRequest, AdminLoginRequest
 from app.models.category import CategoriasCreateRequest
 
 router = APIRouter()
@@ -91,16 +91,8 @@ async def ver_cupones():
 @router.post("/login_admin")
 async def login_admin(admin_request: AdminCreateRequest):
     params = [
-        admin_request.nombre,
+        admin_request.correo,
         admin_request.contraseña
     ]
     result = data_conexion.ejecutar_procedure('sp_login_administrador', params)
 
-    # Comprueba el resultado del procedimiento almacenado
-    if result and result.get("administrador_id"):
-        # Si el procedimiento retorna un ID de administrador, las credenciales son válidas
-        access_token = create_access_token(data={"sub": admin_request.nombre})
-        return {"access_token": access_token, "token_type": "bearer"}
-    else:
-        # Si no hay ID de administrador, las credenciales son inválidas
-        raise HTTPException(status_code=401, detail="Credenciales inválidas")

@@ -17,6 +17,5 @@ class AdminUpdateRequest(BaseModel):
     nueva_contraseña: Optional[str] = None
 
 class AdminLoginRequest(BaseModel):
-    nombre: str
     correo: str
     contraseña: str

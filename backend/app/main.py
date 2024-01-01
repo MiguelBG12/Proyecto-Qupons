@@ -47,7 +47,7 @@ async def protected_route(current_user: str = Depends(get_current_user)):
 
 @app.post("/token")
 def login(form_data: OAuth2PasswordRequestForm = Depends ()):
-    if form_data.username != "username" or form_data.password != "password":
+    if form_data.username != "correo" or form_data.password != "contraseña":
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Credenciales incorrectas",
