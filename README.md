@@ -19,7 +19,7 @@ Inicializar proyecto:
 
 Iniciar el Backend (FastAPI):
 Desde el directorio raíz del proyecto (donde se encuentra el archivo main.py), ejecuta:
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 
 Iniciar el Frontend (Vite con React):
 Desde el directorio frontend, ejecuta:
