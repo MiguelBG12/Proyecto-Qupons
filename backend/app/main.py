@@ -68,7 +68,7 @@ async def admin_token_validation(request: Request, call_next):
             username: str = payload.get("sub")
 
             # Verificar si el usuario autenticado es un administrador
-            is_admin = data_conexion.verificar_administrador(username)  # Debes implementar esta función
+            is_admin = data_conexion.verificar_credenciales(username)  # Debes implementar esta función
 
             if not is_admin:
                 raise HTTPException(status_code=403, detail="No tienes permiso para acceder")
