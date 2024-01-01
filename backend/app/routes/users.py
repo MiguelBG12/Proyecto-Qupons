@@ -17,9 +17,9 @@ async def route_crear_user(user_data: UserCreateRequest):
 async def route_actualizar_user(user_data: UserUpdateRequest):
     return await actualizar_user(user_data)
 
-@router.get("/verperfil_usuario")
-async def route_verperfil_usuario():
-    return await verperfil_usuario()
+@router.get("/ver_perfil_usuario/{usuario_id}")
+async def route_verperfil_usuario(usuario_id: int):
+    return await verperfil_usuario(usuario_id)
 
 @router.get("/vercupones_adquiridos")
 async def route_vercupones_adquiridos():

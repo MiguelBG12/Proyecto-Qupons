@@ -35,9 +35,9 @@ async def actualizar_user(user_request: UserUpdateRequest):
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_usuario', params)
 
-@router.get("/verperfil_usuario/{p_correo}/{p_contraseña}")
-async def verperfil_usuario(p_correo: str, p_contraseña: str):
-    params = [p_correo, p_contraseña]
+@router.get("/ver_perfil_usuario/{usuario_id}")
+async def verperfil_usuario(usuario_id: int):
+    params = [usuario_id]
     result = data_conexion.ejecutar_procedure('sp_verperfil_usuario', params)
     return result
 
