@@ -14,8 +14,7 @@ from app.controllers.admin_controller import (
     ver_cupones,
     create_categoria,
     borrar_categoria,
-    ver_categorias,
-    login_admin
+    ver_categorias
 )
 
 router = APIRouter()
@@ -72,6 +71,3 @@ async def route_ver_usuarios():
 async def route_ver_cupones():
     return await ver_cupones()
 
-@router.post("/login_admin")
-async def route_login_admin(admin_data: AdminLoginRequest):
-    return await login_admin(admin_data)

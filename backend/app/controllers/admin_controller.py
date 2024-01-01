@@ -4,7 +4,7 @@ import hashlib
 from typing import List
 from app.config.db_conexion import data_conexion
 from app.utils import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
-from app.models.administrator import AdminCreateRequest, AdminUpdateRequest, AdminLoginRequest
+from app.models.administrator import AdminCreateRequest, AdminUpdateRequest
 from app.models.category import CategoriasCreateRequest
 
 router = APIRouter()
@@ -87,12 +87,3 @@ async def ver_usuarios():
 async def ver_cupones():
     result = data_conexion.ejecutar_procedure('sp_ver_cupones', [])
     return result
-
-@router.post("/login_admin")
-async def login_admin(admin_request: AdminCreateRequest):
-    params = [
-        admin_request.correo,
-        admin_request.contraseña
-    ]
-    result = data_conexion.ejecutar_procedure('sp_login_administrador', params)
-
