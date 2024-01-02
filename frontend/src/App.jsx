@@ -6,6 +6,8 @@ import Cupones from "./pages/cupones";
 import Registrar_tienda from "./pages/registrar-tienda";
 import Registrate from "./pages/registrate";
 import Login from "./pages/login";
+import Recuperar_contraseña from "./pages/recuperar-contraseña";
+import Notificar_correo from "./pages/notificar-correo";
 
 import Panel_administrador from "./pages/vistas-internas/paginas-administrador/panel-administrador";
 import Perfil_administrador from "./pages/vistas-internas/paginas-administrador/perfil-administrador";
@@ -43,6 +45,8 @@ const App = () => {
           <Route path="/registrar-tienda" element={<Registrar_tienda/>} />
           <Route path="/registrar-usuario" element={<Registrate/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/recuperar-contraseña" element={<Recuperar_contraseña/>} />
+          <Route path="/notificacion-enviada" element={<Notificar_correo/>} />
           
           <Route path="/adminitrador-panel" element={<Panel_administrador/>} exact />
           <Route path="/adminitrador-perfil" element={<Perfil_administrador/>} />
