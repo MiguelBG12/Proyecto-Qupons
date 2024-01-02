@@ -17,8 +17,11 @@ const Iniciar_sesion_administrador = () => {
         body: JSON.stringify({ email, password }),
       });
 
-      if (response.ok) {
-        // La solicitud fue exitosa, puedes manejar la lógica de autenticación aquí
+      if ((response.status >= 200 && response.status < 300)) {
+        const data = await response.json();
+        const token = data.token;
+        // imprimimos mensajes en la consola del navegador para comprobar
+        console.log("Token recibido:", token);
         console.log("Login exitoso");
       } else {
         // La solicitud falló, puedes manejar errores aquí
