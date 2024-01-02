@@ -1,17 +1,17 @@
 import React from "react";
 import Header from "./componentes/header";
 import Footer from "./componentes/footer";
-import Iniciar_sesion_administrador from "./componentes/sesion-administrador";
+import Login_general from "./componentes/login-general";
 
 
-const Acceso_administrador = () => {
+const Login = () => {
     return (
         <>
         <Header/>
-        <Iniciar_sesion_administrador/>
+        <Login_general/>
         <Footer/>
         </>
     );
 };
 
-export default Acceso_administrador;
+export default Login;
