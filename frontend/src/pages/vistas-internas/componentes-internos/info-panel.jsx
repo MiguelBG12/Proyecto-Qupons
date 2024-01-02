@@ -7,6 +7,9 @@ import Img3 from "../../../assets/img/img-3.png";
 import Img4 from "../../../assets/img/img-4.png";
 
 const Info_panel = () => {
+
+  
+
   return (
     <>
       <div className="containewr-imagenes-panel">

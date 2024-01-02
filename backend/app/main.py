@@ -38,13 +38,27 @@ async def obtener_admins(admin_request: AdminCreateRequest):
 async def login_admin(admin_request: AdminLoginRequest):
     params = [
         admin_request.correo,
-        admin_request.contraseña
+        admin_request.contrasenna
     ]
-    result = data_conexion.ejecutar_procedure('sp_login_administrador', params)
+    admins = data_conexion.ejecutar_procedure('sp_login_administrador', params)
 
-    if result:
+    stores = data_conexion.ejecutar_procedure('sp_login_tienda', params)
+
+    users = data_conexion.ejecutar_procedure('sp_login_usuario', params)
+
+    user = None
+    if admins is not None:
+        user = admins[0]
+        
+    if stores is not None:
+        user = stores[0]
+        
+    if users is not None:
+        user = users[0]
+
+    if user is not None:
         # Generar token JWT si las credenciales son válidas
-        access_token = create_access_token(data={"sub": admin_request.correo})
+        access_token = create_access_token(data=user) #access_token = create_access_token(data={"sub": admin_request.correo})
         return {"access_token": access_token, "token_type": "bearer"}
     else:
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
@@ -56,34 +70,26 @@ async def get_admin_profile(current_user: str = Depends(get_current_user)):
 
 # Middleware para validar el token en las rutas del administrador
 async def admin_token_validation(request: Request, call_next):
-    if request.url.path.startswith("/admin"):
+    if request.url.path.startswith("/login") == False:
         token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        #username: str = payload.get("username")
+        role_id: int = payload.get("rol_id")
 
-        if not token:
-            print("Token no proporcionado")
+        if request.url.path.startswith("/admin"):
+            verified = (role_id == 1)
+            
+        if request.url.path.startswith("/stores"):
+            verified = (role_id == 2)
+
+        if request.url.path.startswith("/users"):
+            verified = (role_id == 3)
+
+        if verified:
             return await call_next(request)
-
-        try:
-            payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-            username: str = payload.get("sub")
-
-            # Verificar si el usuario autenticado es un administrador
-            is_admin = data_conexion.verificar_credenciales(username)  # Debes implementar esta función
-
-            if not is_admin:
-                raise HTTPException(status_code=403, detail="No tienes permiso para acceder")
-        except jwt.ExpiredSignatureError as e:
-            print("Token expirado:", e)
-            raise HTTPException(status_code=401, detail="Token expirado")
-        except jwt.DecodeError as e:
-            print("Error de decodificación del token:", e)
-            raise HTTPException(status_code=401, detail=f"Token inválido: {str(e)}")
-        except JWTError as e:
-            print("Error de decodificación del token:", e)
-            raise HTTPException(status_code=401, detail=f"Token inválido: {str(e)}")
-        except Exception as e:
-            print("Otro error al procesar el token:", e)
-            raise HTTPException(status_code=401, detail=f"Error al procesar el token: {str(e)}")
+        else:
+            #print("Token no proporcionado")
+            raise HTTPException(status_code=403, detail="No tienes permiso para acceder")
 
     return await call_next(request)
 

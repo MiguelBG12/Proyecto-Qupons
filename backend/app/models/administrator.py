@@ -18,4 +18,4 @@ class AdminUpdateRequest(BaseModel):
 
 class AdminLoginRequest(BaseModel):
     correo: str
-    contraseña: str
+    contrasenna: str

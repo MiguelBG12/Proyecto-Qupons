@@ -5,7 +5,7 @@ CREATE TABLE `administradores` (
   `nombre` VARCHAR(60) NOT NULL,
   `cargo` VARCHAR(30) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
-  `contraseña` VARCHAR(64) NOT NULL,
+  `contrasenna` VARCHAR(64) NOT NULL,
   PRIMARY KEY (`administrador_id`));
  
   /*INSERT INTO administradores(nombre, cargo, correo, contraseña) VALUES ('Carlos', 'admin', 'carlos@gmail.com', 'fjnefike29392' )*/
