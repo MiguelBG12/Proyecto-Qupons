@@ -5,7 +5,7 @@ import Inicio from "./pages/inicio";
 import Cupones from "./pages/cupones";
 import Registrar_tienda from "./pages/registrar-tienda";
 import Registrate from "./pages/registrate";
-import Login from "./pages/iniciar-sesion-administrador";
+import Login from "./pages/login";
 
 import Panel_administrador from "./pages/vistas-internas/paginas-administrador/panel-administrador";
 import Perfil_administrador from "./pages/vistas-internas/paginas-administrador/perfil-administrador";
