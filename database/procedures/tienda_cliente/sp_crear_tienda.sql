@@ -16,7 +16,7 @@ BEGIN
     DECLARE tienda_count INT;
     DECLARE hashedPassword VARCHAR(256);
 
-    SET hashedPassword = SHA2(p_contraseña, 256);
+    SET hashedPassword = SHA2(p_contrasenna, 256);
 
     SELECT COUNT(*) INTO tienda_count
     FROM `cliente_tienda`

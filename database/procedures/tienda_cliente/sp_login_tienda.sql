@@ -8,7 +8,7 @@ CREATE PROCEDURE `sp_login_tienda`(
 BEGIN
     DECLARE hashedPasswordDB VARCHAR(256);
 
-    SELECT contraseña INTO hashedPasswordDB FROM cliente_tienda WHERE correo = p_correo;
+    SELECT contrasenna INTO hashedPasswordDB FROM cliente_tienda WHERE correo = p_correo;
     IF hashedPasswordDB IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: Tienda o contraseña incorrectos';
