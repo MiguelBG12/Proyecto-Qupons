@@ -6,7 +6,7 @@ CREATE PROCEDURE `sp_actualizar_admin`(
     IN p_nombre VARCHAR(60),
     IN p_nuevo_cargo VARCHAR(30),
     IN p_nuevo_correo VARCHAR(45),
-    IN p_nueva_contraseña VARCHAR(64)
+    IN p_nueva_contrasenna VARCHAR(256)
 )
 BEGIN
     DECLARE admin_count INT;
@@ -29,8 +29,8 @@ BEGIN
             UPDATE `administradores` SET `correo` = p_nuevo_correo WHERE `administrador_id` = p_administrador_id;
         END IF;
 
-        IF p_nueva_contraseña IS NOT NULL THEN
-            UPDATE `administradores` SET `contraseña` = SHA2(p_nueva_contraseña, 256) WHERE `administrador_id` = p_administrador_id;
+        IF p_nueva_contrasenna IS NOT NULL THEN
+            UPDATE `administradores` SET `contrasenna` = SHA2(p_nueva_contrasenna, 256) WHERE `administrador_id` = p_administrador_id;
         END IF;
 
         SELECT 'Administrador actualizado con éxito' AS `mensaje_exito`;

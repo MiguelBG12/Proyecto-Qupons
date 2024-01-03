@@ -1,4 +1,4 @@
-/*DROP TABLE IF EXISTS `cupones` ;*/
+DROP TABLE IF EXISTS `cupones` ;
 
 CREATE TABLE `cupones` (
   `cupones_id` INT NOT NULL AUTO_INCREMENT, 
@@ -8,9 +8,7 @@ CREATE TABLE `cupones` (
   `fecha_vencimiento` DATE NOT NULL,
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
-  `porcentaje_descuento` FLOAT NOT NULL,
-  `diseño_oferta_foto` VARCHAR(45) NOT NULL,
-  `terminos_condiciones` VARCHAR(400) NOT NULL,
+  `disenno_oferta_foto` VARCHAR(100) NOT NULL,
   `cliente_tienda_id` INT NOT NULL,
   `categorias_id` INT NOT NULL,
   PRIMARY KEY (`cupones_id`),
@@ -26,6 +24,3 @@ CREATE TABLE `cupones` (
     REFERENCES `db_webcuponera`.`categorias` (`categorias_id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
-    
-/*INSERT INTO cupones(titulo, descripcion, fecha_inicio, fecha_vencimiento, precio_normal, precio_oferta, porcentaje_descuento, diseño_oferta_foto, terminos_condiciones, cliente_tienda_id, categorias_id) VALUES ('Nuevo descuento escolar', 'Aprovecha este 20% de decuento en tu segunda compra de utiles escolares', '2023-12-11', '2023-12-30', 150.26, 125.6, 20, '/images/libros.png', 'Solo 1 cupon por persona sera permitido, valido de lunes a viernes', 1, 1)
-INSERT INTO cupones(titulo, descripcion, fecha_inicio, fecha_vencimiento, precio_normal, precio_oferta, porcentaje_descuento, diseño_oferta_foto, terminos_condiciones, cliente_tienda_id, categorias_id) VALUES ('Alisado brasileño', 'De regalo rizado de pestañas', '2024-01-02', '2024-01-13', 120.20, 100, 15, '/images/alisado.png', 'Solo 2 cupon por persona sera permitido, valido de lunes a viernes', 1, 2)*/

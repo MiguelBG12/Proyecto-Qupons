@@ -20,7 +20,7 @@ BEGIN
             `fecha_vencimiento`,
             `precio_normal`,
             `precio_oferta`,
-            `diseño_oferta_foto`,
+            `disenno_oferta_foto`,
             `cliente_tienda_id`,
             `categorias_id`
         FROM `cupones`

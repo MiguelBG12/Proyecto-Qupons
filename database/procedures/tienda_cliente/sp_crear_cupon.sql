@@ -8,7 +8,7 @@ CREATE PROCEDURE `sp_crear_cupon`(
     IN p_fecha_vencimiento DATE,
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
-    IN p_diseño_oferta_foto VARCHAR(45),
+    IN p_disenno_oferta_foto VARCHAR(100),
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )
@@ -25,7 +25,7 @@ BEGIN
             `fecha_vencimiento`,
             `precio_normal`,
             `precio_oferta`,
-            `diseño_oferta_foto`,
+            `disenno_oferta_foto`,
             `cliente_tienda_id`,
             `categorias_id`
         ) VALUES (
@@ -35,7 +35,7 @@ BEGIN
             p_fecha_vencimiento,
             p_precio_normal,
             p_precio_oferta,
-            p_diseño_oferta_foto,
+            p_disenno_oferta_foto,
             p_cliente_tienda_id,
             p_categorias_id
         );

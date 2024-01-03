@@ -13,7 +13,7 @@ CREATE TABLE `usuario` (
   `direccion` VARCHAR(60) NOT NULL,
   `departamento` VARCHAR(15) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
-  `contraseña` VARCHAR(64) NOT NULL,
+  `contrasenna` VARCHAR(256) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
   );
@@ -29,7 +29,7 @@ CREATE TABLE `cliente_tienda` (
   `correo` VARCHAR(45) NOT NULL,
   `nombre_contacto` VARCHAR(60) NOT NULL,
   `logo_tienda` VARCHAR(100) NOT NULL,
-  `contraseña` VARCHAR(64) NOT NULL,
+  `contrasenna` VARCHAR(256) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`cliente_tienda_id`));
 
@@ -50,7 +50,7 @@ CREATE TABLE `cupones` (
   `fecha_vencimiento` DATE NOT NULL,
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
-  `diseño_oferta_foto` VARCHAR(100) NOT NULL,
+  `disenno_oferta_foto` VARCHAR(100) NOT NULL,
   `cliente_tienda_id` INT NOT NULL,
   `categorias_id` INT NOT NULL,
   PRIMARY KEY (`cupones_id`),
@@ -70,8 +70,6 @@ CREATE TABLE `cupones` (
 DROP TABLE IF EXISTS `cupon_comprado` ;
 
 CREATE TABLE `cupon_comprado` (
-    `fecha_compra` DATE NOT NULL,
-    `estado_cupon` ENUM('canjeado', 'no canjeado', 'vencido') NOT NULL,
     `usuario_id` INT NOT NULL,
     `cupones_id` INT NOT NULL,
     PRIMARY KEY (`usuario_id`, `cupones_id`),
@@ -96,6 +94,6 @@ CREATE TABLE `administradores` (
   `nombre` VARCHAR(60) NOT NULL,
   `cargo` VARCHAR(30) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
-  `contraseña` VARCHAR(64) NOT NULL,
+  `contrasenna` VARCHAR(256) NOT NULL,
   PRIMARY KEY (`administrador_id`));
  

@@ -1,10 +1,6 @@
-/*DROP TABLE IF EXISTS `cupon_comprado` ;*/
+DROP TABLE IF EXISTS `cupon_comprado` ;
 
 CREATE TABLE `cupon_comprado` (
-    `fecha_compra` DATE NOT NULL,
-    `codigo_venta` INT NOT NULL,
-    `cantidad_comprada` INT NOT NULL,
-    `estado_cupon` ENUM('canjeado', 'no canjeado', 'vencido') NOT NULL,
     `usuario_id` INT NOT NULL,
     `cupones_id` INT NOT NULL,
     PRIMARY KEY (`usuario_id`, `cupones_id`),
@@ -21,5 +17,3 @@ CREATE TABLE `cupon_comprado` (
         ON DELETE CASCADE
         ON UPDATE NO ACTION
 );
-
-/*INSERT INTO cupon_comprado(fecha_compra, codigo_venta, cantidad_comprada, estado_cupon, usuario_id, cupones_id) VALUES ('2023-12-11', '202345754', '2', 'canjeado', '1', '1')*/
