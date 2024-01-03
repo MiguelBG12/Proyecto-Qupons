@@ -37,15 +37,15 @@ async def login_admin(admin_request: AdminLoginRequest):
     users = data_conexion.ejecutar_procedure('sp_login_usuario', params)
 
     user = None
-    if admins is not None:
-        user = admins[0]
+    if admins is not None and 'result' in admins and admins['result']:
+        user = admins['result'][0][0]
         
-    if stores is not None:
-        user = stores[0]
-        
-    if users is not None:
-        user = users[0]
+    if stores is not None and 'result' in stores and stores['result']:
+        user = stores['result'][0][0]
 
+    if users is not None and 'result' in users and users['result']:
+        user = users['result'][0][0]
+        
     if user is not None:
         # Generar token JWT si las credenciales son válidas
         access_token = create_access_token(data=user) #access_token = create_access_token(data={"sub": admin_request.correo})
