@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import hashlib
 from typing import List
 from app.config.db_conexion import data_conexion
-from app.utils import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
+from backend.app.utils.utils import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token
 from app.models.administrator import AdminCreateRequest, AdminUpdateRequest
 from app.models.category import CategoriasCreateRequest
 
