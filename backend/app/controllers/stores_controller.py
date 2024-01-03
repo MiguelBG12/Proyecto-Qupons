@@ -83,10 +83,9 @@ async def borrar_cupon_tienda(cupones_id: int):
     result = data_conexion.ejecutar_procedure('sp_borrar_cupontienda', params)
     return result
 
-@router.get("/ver_cupon_tienda/{cliente_tienda_id}")
-async def ver_cupon_tienda(cliente_tienda_id: int):
-    params = [cliente_tienda_id]
-    result = data_conexion.ejecutar_procedure('sp_ver_cupontienda', params)
+@router.get("/ver_cupones_en_tienda")
+async def ver_cupones_en_tienda():
+    result = data_conexion.ejecutar_procedure('sp_ver_cupones', [])
     return result
 
 @router.get("/ver_perfil_tienda/{cliente_tienda_id}")

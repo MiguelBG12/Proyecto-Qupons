@@ -1,12 +1,13 @@
 from fastapi import APIRouter
 from app.controllers.stores_controller import StoreCreateRequest, StoreUpdateRequest, CuponCreateRequest, CuponUpdateRequest
+from app.config.db_conexion import data_conexion
 from app.controllers.stores_controller import (
     crear_tienda, 
     actualizar_tienda, 
     crear_cupon, 
     actualizar_cupon_tienda,
     borrar_cupon_tienda,
-    ver_cupon_tienda,
+    ver_cupones_en_tienda,
     ver_perfil_tienda,
 )
 
@@ -32,10 +33,13 @@ async def route_actualizar_cupon(cupon_data: CuponUpdateRequest):
 async def route_borrar_cupontienda(cupones_id: int):
     return await borrar_cupon_tienda(cupones_id)
 
-@router.get("/ver_cupon_tienda/{cliente_tienda_id}")
-async def route_ver_cupontienda(cliente_tienda_id: int):
-    return await ver_cupon_tienda(cliente_tienda_id)
+# En esta parte la tienda tiene que ver todos los cupones, no solo de la misma tienda
+# Necesitamos verificar que funcione
+
+@router.get("/ver_cupones_en_tienda")
+async def route_ver_perfil_tienda(store_data: StoreCreateRequest):
+    return await ver_cupones_en_tienda(store_data)
 
 @router.get("/ver_perfil_tienda/{cliente_tienda_id}")
-async def route_ver_perfiltienda(cliente_tienda_id: int):
+async def route_ver_perfil_tienda(cliente_tienda_id: int):
     return await ver_perfil_tienda(cliente_tienda_id)
