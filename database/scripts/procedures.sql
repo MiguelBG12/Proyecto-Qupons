@@ -147,8 +147,8 @@ DELIMITER ;
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS sp_crear_admin $$
-CREATE PROCEDURE sp_crear_admin(
+DROP PROCEDURE IF EXISTS `sp_crear_admin` $$
+CREATE PROCEDURE `sp_crear_admin`(
     IN p_nombre VARCHAR(60),
     IN p_cargo VARCHAR(30),
     IN p_correo VARCHAR(45),
@@ -177,8 +177,8 @@ DELIMITER ;
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS sp_login_administrador $$
-CREATE PROCEDURE sp_login_administrador(
+DROP PROCEDURE IF EXISTS `sp_login_administrador` $$
+CREATE PROCEDURE `sp_login_administrador`(
     IN p_correo VARCHAR(45),
     IN p_contrasenna VARCHAR(256)
 )
@@ -203,8 +203,8 @@ DELIMITER ;
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS sp_obtener_admins $$
-CREATE PROCEDURE sp_obtener_admins(
+DROP PROCEDURE IF EXISTS `sp_obtener_admins` $$
+CREATE PROCEDURE `sp_obtener_admins`(
     IN p_admin_id INT,
     IN p_correo VARCHAR(45)
 )
@@ -795,6 +795,22 @@ BEGIN
     ELSE
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: El usuario no existe';
+    END IF;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_verperfil_tienda` $$
+CREATE PROCEDURE `sp_verperfil_tienda`(
+    IN p_cliente_tienda_id INT
+)
+BEGIN
+    IF (SELECT COUNT(*) FROM `cliente_tienda` WHERE `cliente_tienda_id` = p_cliente_tienda_id) > 0 THEN
+        SELECT * FROM `cliente_tienda` WHERE `cliente_tienda_id` = p_cliente_tienda_id;
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se encontró el cliente_tienda';
     END IF;
 END$$
 DELIMITER ;
