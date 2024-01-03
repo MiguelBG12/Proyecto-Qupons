@@ -11,6 +11,8 @@ const Login_general = () => {
 		password: ''
 	});
 
+	const [isLoading, setIsLoading] = useState(false);
+
 	useEffect(() => {
         // load default data
     });
@@ -36,6 +38,8 @@ const Login_general = () => {
 		
 		const url = "http://localhost:8000/login";
 
+		setIsLoading(true); // Activar el indicador de carga
+
 		axios({
             method: "post",
             url: url,
@@ -54,7 +58,11 @@ const Login_general = () => {
             .catch(function(response) {
                 alert("Error al consultar los datos");
 				console.log(response);
-            });
+            })
+
+			.finally(() => {
+				setIsLoading(false);
+			});
 	};
 
 	return (
@@ -64,12 +72,12 @@ const Login_general = () => {
 				<div className="contenedor-formulario">
 					<h1>Iniciar sesión</h1>
 					<form onSubmit={handleSubmit}>
-						<input type="text" placeholder="Correo electronico:" name="email" onChange={handleInputChange} value={datos.email} required />
+						<input type="text" placeholder="Correo electronico:" name="correo" onChange={handleInputChange} value={datos.email} required />
 						<br />
-						<input type="password" placeholder="Contraseña:" name="password" onChange={handleInputChange} value={datos.password} required />
+						<input type="password" placeholder="Contraseña:" name="contrasenna" onChange={handleInputChange} value={datos.password} required />
 						<br />
-						<button type="submit" className="btn-enviar">
-							Enviar
+						<button type="submit" className="btn-enviar" disabled={isLoading}>
+							{isLoading ? 'Enviando...' : 'Enviar'}
 						</button>
 					</form>
 					<a href="/recuperar-contraseña"><button className="btn-recuperar-contraseña">Olvide mi contraseña</button></a>

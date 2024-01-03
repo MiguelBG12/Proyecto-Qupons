@@ -34,7 +34,6 @@ async def route_borrar_cupontienda(cupones_id: int):
 
 # En esta parte la tienda tiene que ver todos los cupones, no solo de la misma tienda
 # Necesitamos verificar que funcione
-
 @router.get("/ver_cupones_en_tienda")
 async def route_ver_perfil_tienda(store_data: StoreCreateRequest):
     return await ver_cupones_en_tienda(store_data)
