@@ -28,11 +28,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-# Endpoint para obtener administradores
-async def obtener_admins(admin_request: AdminCreateRequest):
-    result = data_conexion.ejecutar_procedure('sp_obtener_admins', [])
-    return result
-
 # Endpoint para autenticar y generar tokens de acceso
 @app.post("/login")
 async def login_admin(admin_request: AdminLoginRequest):

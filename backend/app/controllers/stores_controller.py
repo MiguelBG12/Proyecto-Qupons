@@ -20,7 +20,7 @@ async def crear_tienda(store_request: StoreCreateRequest):
         store_request.correo,
         store_request.logo_tienda,
         store_request.nombre_contacto,
-        store_request.contraseña,
+        store_request.contrasenna,
         store_request.telefono
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
@@ -34,7 +34,7 @@ async def actualizar_tienda(store_request: StoreUpdateRequest):
         store_request.direccion,
         store_request.correo,
         store_request.nombre_contacto,
-        store_request.contraseña,
+        store_request.contrasenna,
         store_request.telefono
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_tienda', params)
@@ -51,7 +51,7 @@ async def crear_cupon(cupon_request: CuponCreateRequest):
         formatted_fecha_vencimiento,
         cupon_request.precioOG,
         cupon_request.precioNew,
-        cupon_request.diseño_oferta_foto,
+        cupon_request.disenno_oferta_foto,
         cupon_request.cliente_tienda_id,
         cupon_request.categorias_id
     ]
@@ -70,7 +70,7 @@ async def actualizar_cupon_tienda(cupon_request: CuponUpdateRequest):
         formatted_fecha_vencimiento,
         cupon_request.precioOG,
         cupon_request.precioNew,
-        cupon_request.diseño_oferta_foto,
+        cupon_request.disenno_oferta_foto,
         cupon_request.cliente_tienda_id,
         cupon_request.categorias_id
     ]

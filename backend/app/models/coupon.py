@@ -8,7 +8,7 @@ class CuponCreateRequest(BaseModel):
     fecha_vencimiento: str
     precioOG: float
     precioNew: float
-    diseño_oferta_foto: str
+    disenno_oferta_foto: str
     cliente_tienda_id: int
     categorias_id: int
 
@@ -21,6 +21,6 @@ class CuponUpdateRequest(BaseModel):
     fecha_vencimiento: Optional[str] = None
     precioOG: Optional[float] = None
     precioNew: Optional[float] = None
-    diseño_oferta_foto: Optional[str] = None
+    disenno_oferta_foto: Optional[str] = None
     cliente_tienda_id: Optional[int] = None
     categorias_id: Optional[int] = None

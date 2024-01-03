@@ -10,7 +10,7 @@ class StoreCreateRequest(BaseModel):
     correo: str
     logo_tienda: str
     nombre_contacto: str
-    contraseña: str
+    contrasenna: str
     telefono: int
 
 class StoreUpdateRequest(BaseModel):
@@ -19,5 +19,5 @@ class StoreUpdateRequest(BaseModel):
     direccion: Optional[str] = None
     correo: Optional[str] = None
     nombre_contacto: Optional[str] = None
-    contraseña: Optional[str] = None
+    contrasenna: Optional[str] = None
     telefono: Optional[int] = None

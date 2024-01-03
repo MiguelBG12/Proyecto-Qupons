@@ -10,7 +10,7 @@ class UserCreateRequest(BaseModel):
     direccion: str
     departamento: str
     correo: str
-    contraseña: str
+    contrasenna: str
     telefono: int
 
 class UserUpdateRequest(BaseModel):
@@ -19,16 +19,16 @@ class UserUpdateRequest(BaseModel):
     direccion: Optional[str] = None
     departamento: Optional[str] = None
     correo: Optional[str] = None
-    contraseña: Optional[str] = None
+    contrasenna: Optional[str] = None
     telefono: Optional[int] = None
 
 class UserDataToken(BaseModel):
     id: int
     nombres_completos: str
     correo: str
-    contraseña: str
+    contrasenna: str
     exp: int 
 
 class LoginFormData(BaseModel):
-    username: str
-    password: str
+    correo: str
+    contrasenna: str

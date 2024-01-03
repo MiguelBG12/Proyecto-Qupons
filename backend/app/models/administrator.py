@@ -6,7 +6,7 @@ class AdminCreateRequest(BaseModel):
     nombre: str
     cargo: str
     correo: str
-    contraseña: str
+    contrasenna: str
 
 class AdminUpdateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
@@ -14,7 +14,7 @@ class AdminUpdateRequest(BaseModel):
     nombre: Optional[str] = None
     nuevo_cargo: Optional[str] = None
     nuevo_correo: Optional[str] = None
-    nueva_contraseña: Optional[str] = None
+    nueva_contrasenna: Optional[str] = None
 
 class AdminLoginRequest(BaseModel):
     correo: str

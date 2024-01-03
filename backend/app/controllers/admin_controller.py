@@ -15,7 +15,7 @@ async def crear_admin(admin_request: AdminCreateRequest):
         admin_request.nombre,
         admin_request.cargo,
         admin_request.correo,
-        admin_request.contraseña
+        admin_request.contrasenna
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_admin', params)
     return result
@@ -27,7 +27,7 @@ async def actualizar_admin(admin_request: AdminUpdateRequest):
         admin_request.nombre,
         admin_request.nuevo_cargo,
         admin_request.nuevo_correo,
-        admin_request.nueva_contraseña
+        admin_request.nueva_contrasenna
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_admin', params)
     return result

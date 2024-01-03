@@ -18,7 +18,7 @@ async def crear_user(user_request: UserCreateRequest):
         user_request.direccion,
         user_request.departamento,
         user_request.correo,
-        user_request.contraseña,
+        user_request.contrasenna,
         user_request.telefono
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_usuario', params)
@@ -31,7 +31,7 @@ async def actualizar_user(user_request: UserUpdateRequest):
         user_request.direccion,
         user_request.departamento,
         user_request.correo,
-        user_request.contraseña,
+        user_request.contrasenna,
         user_request.telefono
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_usuario', params)
