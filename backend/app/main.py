@@ -1,14 +1,9 @@
-from jose import jwt
-from jose.exceptions import JWTError
-from datetime import datetime, timedelta
-from fastapi import FastAPI, Depends, HTTPException, status, Request
-from app.routes.admin import router as admin_router
+from fastapi import FastAPI, Depends, HTTPException, Request
 from app.routes import admin
 from app.routes import users
 from app.routes import stores
-from app.models.administrator import AdminCreateRequest, AdminLoginRequest
-from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm 
+from app.models.administrator import AdminLoginRequest
+from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 from app.config.db_conexion import data_conexion
 from fastapi.middleware.cors import CORSMiddleware
 
