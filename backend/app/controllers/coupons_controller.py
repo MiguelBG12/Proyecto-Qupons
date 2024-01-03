@@ -1,39 +1,32 @@
 from fastapi import APIRouter, HTTPException
-from typing import List
+from app.config.db_conexion import data_conexion
+from app.models.coupon import CuponCreateRequest, CuponUpdateRequest
+from datetime import datetime
 
 # Importar aquí modelos, lógica de negocios, o servicios necesarios
 
 router = APIRouter()
 
-# Endpoint para obtener información de todos los cupones
-@router.get("/coupons/", response_model=List[Coupon])
-async def get_coupons():
-    """
-    Obtiene una lista de cupones disponibles.
-    """
-    # Lógica para obtener la lista de cupones desde la base de datos o servicio
 
-    return coupons
+"""
+# Endpoint para crear cupones
+@router.get("/crear_cupon")
+async def crear_cupon(cupon_request: CuponCreateRequest):
+    formatted_fecha_inicio = datetime.strptime(cupon_request.fecha_inicio, '%Y-%m-%d').strftime('%Y-%m-%d')
+    formatted_fecha_vencimiento = datetime.strptime(cupon_request.fecha_vencimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
+    params = [
+        cupon_request.titulo,
+        cupon_request.descripcion,
+        formatted_fecha_inicio,
+        formatted_fecha_vencimiento,
+        cupon_request.precioOG,
+        cupon_request.precioNew,
+        cupon_request.diseño_oferta_foto,
+        cupon_request.cliente_tienda_id,
+        cupon_request.categorias_id
+    ]
+    result = data_conexion.ejecutar_procedure('sp_crear_cupon', params)
+    return result
 
-# Endpoint para obtener información de un cupón específico
-@router.get("/coupons/{coupon_id}", response_model=Coupon)
-async def get_coupon(coupon_id: int):
-    """
-    Obtiene un cupón específico por ID.
-    """
-    # Lógica para obtener un cupón específico por su ID
 
-    if not coupon:
-        raise HTTPException(status_code=404, detail="Cupón no encontrado")
-    
-    return coupon
-
-# Endpoint para crear un nuevo cupón
-@router.post("/coupons/", response_model=Coupon)
-async def create_coupon(coupon: CouponCreate):
-    """
-    Crea un nuevo cupón.
-    """
-    # Lógica para crear un nuevo cupón en la base de datos
-
-    return coupon
+"""

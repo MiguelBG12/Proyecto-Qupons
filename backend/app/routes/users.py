@@ -4,7 +4,7 @@ from app.controllers.users_controller import (
     crear_user,
     actualizar_user,
     verperfil_usuario,
-    vercupones_adquiridos,
+    ver_cupones_adquiridos,
 )
 
 router = APIRouter()
@@ -21,6 +21,6 @@ async def route_actualizar_user(user_data: UserUpdateRequest):
 async def route_verperfil_usuario(usuario_id: int):
     return await verperfil_usuario(usuario_id)
 
-@router.get("/vercupones_adquiridos")
-async def route_vercupones_adquiridos():
-    return await vercupones_adquiridos()
+@router.get("/ver_cupones_adquiridos")
+async def route_ver_cupones_adquiridos():
+    return await ver_cupones_adquiridos()

@@ -1,7 +1,7 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sp_vercupones_adquiridos`$$
-CREATE PROCEDURE `sp_vercupones_adquiridos`(
+DROP PROCEDURE IF EXISTS `sp_ver_cupones_adquiridos`$$
+CREATE PROCEDURE `sp_ver_cupones_adquiridos`(
     IN p_usuario_id INT
 )
 BEGIN

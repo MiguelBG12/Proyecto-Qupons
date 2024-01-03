@@ -18,6 +18,7 @@ async def crear_admin(admin_request: AdminCreateRequest):
         admin_request.contraseña
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_admin', params)
+    return result
         
 @router.put("/actualizar_admin")
 async def actualizar_admin(admin_request: AdminUpdateRequest):

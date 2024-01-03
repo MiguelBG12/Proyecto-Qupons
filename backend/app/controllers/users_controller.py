@@ -43,7 +43,7 @@ async def verperfil_usuario(usuario_id: int):
     result = data_conexion.ejecutar_procedure('sp_verperfil_usuario', params)
     return result
 
-@router.get("/vercupones_adquiridos", response_model=List[dict])
-async def vercupones_adquiridos():
-    result = data_conexion.ejecutar_procedure('sp_vercupones_adquiridos', [])
+@router.get("/ver_cupones_adquiridos", response_model=List[dict])
+async def ver_cupones_adquiridos():
+    result = data_conexion.ejecutar_procedure('sp_ver_cupones_adquiridos', [])
     return result

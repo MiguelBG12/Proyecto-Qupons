@@ -9,8 +9,8 @@ from datetime import datetime
 
 router = APIRouter()
 
-@router.post("/crear_store")
-async def crear_store(store_request: StoreCreateRequest):
+@router.post("/crear_tienda")
+async def crear_tienda(store_request: StoreCreateRequest):
     #hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
     params = [
         store_request.nombre_empresa,
@@ -26,8 +26,8 @@ async def crear_store(store_request: StoreCreateRequest):
     result = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
     return result
 
-@router.put("/actualizar_store")
-async def actualizar_store(store_request: StoreUpdateRequest):
+@router.put("/actualizar_tienda")
+async def actualizar_tienda(store_request: StoreUpdateRequest):
     #hashed_password = hashlib.sha256(store_request.contraseña.encode()).hexdigest()
     params = [
         store_request.cliente_tienda_id,
@@ -40,7 +40,7 @@ async def actualizar_store(store_request: StoreUpdateRequest):
     result = data_conexion.ejecutar_procedure('sp_actualizar_tienda', params)
     return result
 
-@router.post("/crear_cupon")
+@router.post("/crear_cupon_tienda")
 async def crear_cupon(cupon_request: CuponCreateRequest):
     formatted_fecha_inicio = datetime.strptime(cupon_request.fecha_inicio, '%Y-%m-%d').strftime('%Y-%m-%d')
     formatted_fecha_vencimiento = datetime.strptime(cupon_request.fecha_vencimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
@@ -58,8 +58,8 @@ async def crear_cupon(cupon_request: CuponCreateRequest):
     result = data_conexion.ejecutar_procedure('sp_crear_cupon', params)
     return result
 
-@router.post("/actualizar_cupon")
-async def actualizar_cupon(cupon_request: CuponUpdateRequest):
+@router.post("/actualizar_cupon_tienda")
+async def actualizar_cupon_tienda(cupon_request: CuponUpdateRequest):
     formatted_fecha_inicio = datetime.strptime(cupon_request.fecha_inicio, '%Y-%m-%d').strftime('%Y-%m-%d')
     formatted_fecha_vencimiento = datetime.strptime(cupon_request.fecha_vencimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
     params = [
@@ -78,19 +78,19 @@ async def actualizar_cupon(cupon_request: CuponUpdateRequest):
     return result
 
 @router.delete("/borrar_cupon_tienda/{cupones_id}")
-async def borrar_cupontienda(cupones_id: int):
+async def borrar_cupon_tienda(cupones_id: int):
     params = [cupones_id]
     result = data_conexion.ejecutar_procedure('sp_borrar_cupontienda', params)
     return result
 
 @router.get("/ver_cupon_tienda/{cliente_tienda_id}")
-async def ver_cupontienda(cliente_tienda_id: int):
+async def ver_cupon_tienda(cliente_tienda_id: int):
     params = [cliente_tienda_id]
     result = data_conexion.ejecutar_procedure('sp_ver_cupontienda', params)
     return result
 
 @router.get("/ver_perfil_tienda/{cliente_tienda_id}")
-async def ver_perfiltienda(cliente_tienda_id: int):
+async def ver_perfil_tienda(cliente_tienda_id: int):
     params = [cliente_tienda_id]
     result = data_conexion.ejecutar_procedure('sp_verperfil_tienda', params)
     return result
