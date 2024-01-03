@@ -6,13 +6,13 @@ DROP TABLE IF EXISTS `usuario` ;
 
 CREATE TABLE `usuario` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
-  `nombres_completos` VARCHAR(60) NOT NULL,
+  `nombres_completos` VARCHAR(255) NOT NULL,
   `dni` INT NOT NULL,
-  `genero` VARCHAR(15) NULL,
+  `genero` VARCHAR(255) NULL,
   `fecha_nacimiento` DATE NOT NULL,
-  `direccion` VARCHAR(60) NOT NULL,
-  `departamento` VARCHAR(15) NOT NULL,
-  `correo` VARCHAR(45) NOT NULL,
+  `direccion` VARCHAR(255) NOT NULL,
+  `departamento` VARCHAR(255) NOT NULL,
+  `correo` VARCHAR(255) NOT NULL,
   `contrasenna` VARCHAR(256) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
@@ -22,13 +22,13 @@ DROP TABLE IF EXISTS `cliente_tienda`;
 
 CREATE TABLE `cliente_tienda` (
   `cliente_tienda_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre_empresa` VARCHAR(45) NOT NULL,
-  `ruc` VARCHAR(11) NOT NULL,
-  `razon_social` VARCHAR(45) NOT NULL,
-  `direccion` VARCHAR(60) NULL,
-  `correo` VARCHAR(45) NOT NULL,
-  `nombre_contacto` VARCHAR(60) NOT NULL,
-  `logo_tienda` VARCHAR(100) NOT NULL,
+  `nombre_empresa` VARCHAR(255) NOT NULL,
+  `ruc` VARCHAR(255) NOT NULL,
+  `razon_social` VARCHAR(255) NOT NULL,
+  `direccion` VARCHAR(255) NULL,
+  `correo` VARCHAR(255) NOT NULL,
+  `nombre_contacto` VARCHAR(255) NOT NULL,
+  `logo_tienda` VARCHAR(255) NOT NULL,
   `contrasenna` VARCHAR(256) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`cliente_tienda_id`));
@@ -37,20 +37,20 @@ DROP TABLE IF EXISTS `categorias` ;
 
 CREATE TABLE `categorias` (
   `categorias_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(30) NOT NULL,
+  `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`categorias_id`));
   
 DROP TABLE IF EXISTS `cupones` ;
 
 CREATE TABLE `cupones` (
   `cupones_id` INT NOT NULL AUTO_INCREMENT, 
-  `titulo` VARCHAR(60) NOT NULL,
-  `descripcion` VARCHAR(200) NOT NULL,
+  `titulo` VARCHAR(255) NOT NULL,
+  `descripcion` VARCHAR(255) NOT NULL,
   `fecha_inicio` DATE NOT NULL,
   `fecha_vencimiento` DATE NOT NULL,
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
-  `disenno_oferta_foto` VARCHAR(100) NOT NULL,
+  `disenno_oferta_foto` VARCHAR(255) NOT NULL,
   `cliente_tienda_id` INT NOT NULL,
   `categorias_id` INT NOT NULL,
   PRIMARY KEY (`cupones_id`),
@@ -91,8 +91,8 @@ DROP TABLE IF EXISTS `administradores` ;
 
 CREATE TABLE `administradores` (
   `administrador_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(60) NOT NULL,
-  `cargo` VARCHAR(30) NOT NULL,
+  `nombre` VARCHAR(255) NOT NULL,
+  `cargo` VARCHAR(255) NOT NULL,
   `correo` VARCHAR(45) NOT NULL,
   `contrasenna` VARCHAR(256) NOT NULL,
   PRIMARY KEY (`administrador_id`));

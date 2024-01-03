@@ -3,9 +3,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_admin` $$
 CREATE PROCEDURE `sp_actualizar_admin`(
     IN p_administrador_id INT,
-    IN p_nombre VARCHAR(60),
-    IN p_nuevo_cargo VARCHAR(30),
-    IN p_nuevo_correo VARCHAR(45),
+    IN p_nombre VARCHAR(255),
+    IN p_nuevo_cargo VARCHAR(255),
+    IN p_nuevo_correo VARCHAR(255),
     IN p_nueva_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -149,9 +149,9 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_admin` $$
 CREATE PROCEDURE `sp_crear_admin`(
-    IN p_nombre VARCHAR(60),
-    IN p_cargo VARCHAR(30),
-    IN p_correo VARCHAR(45),
+    IN p_nombre VARCHAR(255),
+    IN p_cargo VARCHAR(255),
+    IN p_correo VARCHAR(255),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -179,7 +179,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_login_administrador` $$
 CREATE PROCEDURE `sp_login_administrador`(
-    IN p_correo VARCHAR(45),
+    IN p_correo VARCHAR(255),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -402,13 +402,13 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_cupon` $$
 CREATE PROCEDURE `sp_actualizar_cupon`(
     IN p_cupones_id INT,
-    IN p_titulo VARCHAR(60),
-    IN p_descripcion VARCHAR(200),
+    IN p_titulo VARCHAR(255),
+    IN p_descripcion VARCHAR(255),
     IN p_fecha_inicio DATE,
     IN p_fecha_vencimiento DATE,
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
-    IN p_disenno_oferta_foto VARCHAR(45),
+    IN p_disenno_oferta_foto VARCHAR(255),
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )
@@ -448,9 +448,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_tienda` $$
 CREATE PROCEDURE `sp_actualizar_tienda`(
     IN p_tienda_id INT,
-    IN p_direccion VARCHAR(60),
-    IN p_nombre_contacto VARCHAR(60),
-    IN p_nuevo_correo VARCHAR(45),
+    IN p_direccion VARCHAR(255),
+    IN p_nombre_contacto VARCHAR(255),
+    IN p_nuevo_correo VARCHAR(255),
     IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
@@ -507,13 +507,13 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_cupon` $$
 CREATE PROCEDURE `sp_crear_cupon`(
-    IN p_titulo VARCHAR(60),
-    IN p_descripcion VARCHAR(200),
+    IN p_titulo VARCHAR(255),
+    IN p_descripcion VARCHAR(255),
     IN p_fecha_inicio DATE,
     IN p_fecha_vencimiento DATE,
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
-    IN p_disenno_oferta_foto VARCHAR(100),
+    IN p_disenno_oferta_foto VARCHAR(255),
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )
@@ -556,13 +556,13 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_tienda`$$
 CREATE PROCEDURE `sp_crear_tienda`(
-    IN p_nombre_empresa VARCHAR(45),
-    IN p_ruc VARCHAR(11),
-    IN p_razon_social VARCHAR(45),
-    IN p_direccion VARCHAR(60),
-    IN p_correo VARCHAR(45),
-    IN p_nombre_contacto VARCHAR(60),
-    IN p_logo_tienda VARCHAR(100),
+    IN p_nombre_empresa VARCHAR(255),
+    IN p_ruc VARCHAR(255),
+    IN p_razon_social VARCHAR(255),
+    IN p_direccion VARCHAR(255),
+    IN p_correo VARCHAR(255),
+    IN p_nombre_contacto VARCHAR(255),
+    IN p_logo_tienda VARCHAR(255),
     IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
@@ -591,7 +591,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_login_tienda` $$
 CREATE PROCEDURE `sp_login_tienda`(
-    IN p_correo VARCHAR(45),
+    IN p_correo VARCHAR(255),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -651,9 +651,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_usuario` $$
 CREATE PROCEDURE `sp_actualizar_usuario`(
     IN p_usuario_id INT,
-    IN p_direccion VARCHAR(60),
-    IN p_departamento VARCHAR(15),
-    IN p_nuevo_correo VARCHAR(45),
+    IN p_direccion VARCHAR(255),
+    IN p_departamento VARCHAR(255),
+    IN p_nuevo_correo VARCHAR(255),
     IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
@@ -720,13 +720,13 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_usuario`$$
 CREATE PROCEDURE `sp_crear_usuario`(
-    IN p_nombres_completos VARCHAR(60),
+    IN p_nombres_completos VARCHAR(255),
     IN p_dni INT,
-    IN p_genero VARCHAR(15),
+    IN p_genero VARCHAR(255),
     IN p_fecha_nacimiento DATE,
-    IN p_direccion VARCHAR(60),
-    IN p_departamento VARCHAR(15),
-    IN p_correo VARCHAR(45),
+    IN p_direccion VARCHAR(255),
+    IN p_departamento VARCHAR(255),
+    IN p_correo VARCHAR(255),
     IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
@@ -755,7 +755,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_login_usuario` $$
 CREATE PROCEDURE `sp_login_usuario`(
-    IN p_correo VARCHAR(45),
+    IN p_correo VARCHAR(255),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
