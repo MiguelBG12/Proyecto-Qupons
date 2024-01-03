@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.models.administrator import AdminCreateRequest, AdminUpdateRequest, AdminLoginRequest
+from app.models.administrator import AdminCreateRequest, AdminUpdateRequest
 from app.models.category import CategoriasCreateRequest
 from app.controllers.admin_controller import (
     crear_admin, 

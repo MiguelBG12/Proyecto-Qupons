@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from app.controllers.stores_controller import StoreCreateRequest, StoreUpdateRequest, CuponCreateRequest, CuponUpdateRequest
-from app.config.db_conexion import data_conexion
 from app.controllers.stores_controller import (
     crear_tienda, 
     actualizar_tienda, 

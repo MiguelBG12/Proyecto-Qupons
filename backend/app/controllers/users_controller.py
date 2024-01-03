@@ -1,13 +1,7 @@
-from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
-import hashlib
-from typing import List
 from app.config.db_conexion import data_conexion
 from datetime import datetime
 from app.models.user import UserCreateRequest, UserUpdateRequest
-router = APIRouter()
 
-@router.post("/crear_user")
 async def crear_user(user_request: UserCreateRequest):
     formatted_fecha_nacimiento = datetime.strptime(user_request.fecha_nacimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
     params = [
@@ -23,8 +17,7 @@ async def crear_user(user_request: UserCreateRequest):
     ]
     result = data_conexion.ejecutar_procedure('sp_crear_usuario', params)
     return result
-        
-@router.put("/actualizar_user")
+
 async def actualizar_user(user_request: UserUpdateRequest):
     params = [
         user_request.usuario_id,
@@ -37,13 +30,11 @@ async def actualizar_user(user_request: UserUpdateRequest):
     result = data_conexion.ejecutar_procedure('sp_actualizar_usuario', params)
     return result
 
-@router.get("/ver_perfil_usuario/{usuario_id}")
 async def verperfil_usuario(usuario_id: int):
     params = [usuario_id]
     result = data_conexion.ejecutar_procedure('sp_verperfil_usuario', params)
     return result
 
-@router.get("/ver_cupones_adquiridos", response_model=List[dict])
 async def ver_cupones_adquiridos():
     result = data_conexion.ejecutar_procedure('sp_ver_cupones_adquiridos', [])
     return result

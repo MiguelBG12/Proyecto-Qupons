@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from typing import Optional
+
 class CuponCreateRequest(BaseModel):
     # Define la estructura de la creacion de cupones
     titulo: str
