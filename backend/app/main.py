@@ -1,3 +1,4 @@
+from jose import jwt
 from fastapi import FastAPI, Depends, HTTPException, Request
 from app.routes import admin
 from app.routes import users
@@ -47,6 +48,12 @@ async def login_admin(admin_request: AdminLoginRequest):
         user = users['result'][0][0]
         
     if user is not None:
+        if user is not None:
+        # Convertir la fecha de nacimiento para que se pueda visualisar de manera correcta
+            fecha_nacimiento = user.get("fecha_nacimiento")
+        if fecha_nacimiento:
+            user["fecha_nacimiento"] = fecha_nacimiento.isoformat()
+
         # Generar token JWT si las credenciales son válidas
         access_token = create_access_token(data=user) #access_token = create_access_token(data={"sub": admin_request.correo})
         return {"access_token": access_token, "token_type": "bearer"}
