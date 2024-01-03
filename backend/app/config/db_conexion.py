@@ -71,51 +71,5 @@ class DataConexion:
         else:
             return {'result': [], 'params': args}
     
-    def verificar_credenciales(self, correo, contraseña):
-        """
-        Verifica las credenciales en diferentes tipos de usuarios almacenados en la base de datos.
-
-        - correo: Correo electrónico del usuario.
-        - contraseña: Contraseña del usuario.
-
-        Retorna True si las credenciales son válidas, False en caso contrario.
-        """
-        try:
-            connection = self.conectar()
-            if connection is not None:
-                cursor = connection.cursor()
-
-                cursor.callproc('sp_obtener_admins')
-                admin_data = cursor.fetchall()
-
-                cursor.callproc('sp_obtener_tiendas')
-                tienda_data = cursor.fetchall()
-
-                cursor.callproc('sp_obtener_usuarios')
-                usuario_data = cursor.fetchall()
-
-                for admin in admin_data:
-                    if admin[2] == correo and admin[3] == contraseña:
-                        return True
-
-                for tienda in tienda_data:
-                    if tienda[2] == correo and tienda[3] == contraseña:
-                        return True
-
-                for user in usuario_data:
-                    if user[2] == correo and user[3] == contraseña:
-                        return True
-
-                return False  # Credenciales no encontradas
-
-        except Error as e:
-            print("Error al verificar credenciales:", e)
-            return False  # En caso de error, asumimos credenciales inválidas
-
-        finally:
-            if connection and connection.is_connected():
-                cursor.close()
-                connection.close()
-
 # Crear una instancia de la clase DataConexion
 data_conexion = DataConexion()
