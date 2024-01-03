@@ -29,6 +29,7 @@ async def actualizar_admin(admin_request: AdminUpdateRequest):
         admin_request.nueva_contraseña
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_admin', params)
+    return result
 
 @router.post("/crear_categoria")
 async def create_categoria(categorias_request:CategoriasCreateRequest):
@@ -42,6 +43,7 @@ async def create_categoria(categorias_request:CategoriasCreateRequest):
 async def borrar_categoria(categorias_id: int):
     params = [categorias_id]
     result = data_conexion.ejecutar_procedure('sp_eliminar_categoria', params)
+    return result
 
 @router.get("/ver_categorias", response_model=List[dict])
 async def ver_categorias():
@@ -52,21 +54,25 @@ async def ver_categorias():
 async def borrar_admin(admin_id: int):
     params = [admin_id]
     result = data_conexion.ejecutar_procedure('sp_borrar_admin', params)
+    return result
 
 @router.delete("/borrar_cliente/{cliente_tienda_id}")
 async def borrar_cliente(cliente_tienda_id: int):
     params = [cliente_tienda_id]
     result = data_conexion.ejecutar_procedure('sp_borrar_cliente', params)
+    return result
 
 @router.delete("/borrar_cupon/{cupones_id}")
 async def borrar_cupon(cupones_id: int):
     params = [cupones_id]
     result = data_conexion.ejecutar_procedure('sp_borrar_cupon', params)
+    return result
 
 @router.delete("/borrar_usuario/{usuario_id}")
 async def borrar_usuario(usuario_id: int):
     params = [usuario_id]
     result = data_conexion.ejecutar_procedure('sp_borrar_usuario', params)
+    return result
 
 @router.get("/ver_administradores", response_model=List[dict])
 async def ver_administradores():
