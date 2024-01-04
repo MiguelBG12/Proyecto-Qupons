@@ -48,15 +48,15 @@ const App = () => {
           <Route path="/recuperar-contraseña" element={<Recuperar_contraseña/>} />
           <Route path="/notificacion-enviada" element={<Notificar_correo/>} />
           
-          <Route path="/adminitrador-panel" element={<Panel_administrador/>} exact />
-          <Route path="/adminitrador-perfil" element={<Perfil_administrador/>} />
-          <Route path="/adminitrador-estadisticas" element={<Estadisticas_administrador/>} />
-          <Route path="/adminitrador-ver-tiendas" element={<Tiendas/>} />
-          <Route path="/adminitrador-crear-tienda" element={<Crear_tienda/>} />
-          <Route path="/adminitrador-ver-cupones" element={<Cupones_administrador/>} />
-          <Route path="/adminitrador-crear-cupones" element={<Crear_cupones_administrador/>} />
-          <Route path="/adminitrador-cupones-obtenidos" element={<Cupones_obtenidos_administrador/>} />
-          <Route path="/adminitrador-crear-categorias" element={<Crear_categorias/>} />
+          <Route path="/administrador-panel" element={<Panel_administrador/>} exact />
+          <Route path="/administrador-perfil" element={<Perfil_administrador/>} />
+          <Route path="/administrador-estadisticas" element={<Estadisticas_administrador/>} />
+          <Route path="/administrador-ver-tiendas" element={<Tiendas/>} />
+          <Route path="/administrador-crear-tienda" element={<Crear_tienda/>} />
+          <Route path="/administrador-ver-cupones" element={<Cupones_administrador/>} />
+          <Route path="/administrador-crear-cupones" element={<Crear_cupones_administrador/>} />
+          <Route path="/administrador-cupones-obtenidos" element={<Cupones_obtenidos_administrador/>} />
+          <Route path="/administrador-crear-categorias" element={<Crear_categorias/>} />
 
           <Route path="/tienda-panel" element={<Panel_tienda/>} exact />
           <Route path="/tienda-perfil" element={<Perfil_tienda/>} />
