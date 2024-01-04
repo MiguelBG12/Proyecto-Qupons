@@ -4,11 +4,9 @@ import { useEffect, useState } from "react";
 
 const Login_general = () => {
   const [datos, setDatos] = useState({
-    correo: '',
-    contrasenna: ''
+    email: '',
+    password: ''
   });
-
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // load default data
@@ -29,35 +27,31 @@ const Login_general = () => {
     event.preventDefault();
 
     const json = {
-      username: datos.correo,
-      password: datos.contrasenna
-    };
+		correo: datos.email,
+		contrasenna: datos.password
+	};
+	console.log(json)
 
     const url = "http://localhost:8000/login";
-
-    setIsLoading(true);
 
     axios({
       method: "post",
       url: url,
       data: json,
-      //responseType: 'application/json'
     })
       .then(function (response) {
         const data = response.data;
         if (data && data.access_token !== "") {
-          localStorage.setItem("token", data.access_token);
-          document.location.href = "/administrador-panel";
+          // No manejar el token de acceso aquí
+          // localStorage.setItem("token", data.access_token);
+          document.location.href = "/adminitrador-panel";
         } else {
           alert("Usuario o contraseña incorrectos");
         }
       })
       .catch(function (error) {
         alert("Error al consultar los datos");
-        console.log("Error al consultar los datos", error.response.data); // Agregado console.log
-      })
-      .finally(() => {
-        setIsLoading(false);
+        console.log("Error al consultar los datos", error);
       });
   };
 
@@ -68,31 +62,15 @@ const Login_general = () => {
         <div className="contenedor-formulario">
           <h1>Iniciar sesión</h1>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Correo electrónico:"
-              name="correo"
-              onChange={handleInputChange}
-              value={datos.correo}
-              required
-            />
+            <input type="text" placeholder="Correo electrónico:" name="email" onChange={handleInputChange} value={datos.email} required />
             <br />
-            <input
-              type="password"
-              placeholder="Contraseña:"
-              name="contrasenna"
-              onChange={handleInputChange}
-              value={datos.contrasenna}
-              required
-            />
+            <input type="password" placeholder="Contraseña:" name="password" onChange={handleInputChange} value={datos.password} required />
             <br />
-            <button type="submit" className="btn-enviar" disabled={isLoading}>
-              {isLoading ? 'Enviando...' : 'Enviar'}
+            <button type="submit" className="btn-enviar">
+              Enviar
             </button>
           </form>
-          <a href="/recuperar-contraseña">
-            <button className="btn-recuperar-contraseña">Olvidé mi contraseña</button>
-          </a>
+          <a href="/recuperar-contraseña"><button className="btn-recuperar-contraseña">Olvidé mi contraseña</button></a>
         </div>
       </section>
       <section className="top-para-footer"></section>
