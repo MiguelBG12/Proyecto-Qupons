@@ -8,13 +8,13 @@ CREATE TABLE `usuario` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
   `nombres_completos` VARCHAR(255) NOT NULL,
   `dni` INT NOT NULL,
-  `genero` VARCHAR(255) NULL,
+  `genero` VARCHAR(255) NOT NULL,
   `fecha_nacimiento` DATE NOT NULL,
   `direccion` VARCHAR(255) NOT NULL,
   `departamento` VARCHAR(255) NOT NULL,
   `correo` VARCHAR(255) NOT NULL,
   `contrasenna` VARCHAR(255) NOT NULL,
-  `telefono` INT NULL,
+  `telefono` INT NOT NULL,
   PRIMARY KEY (`usuario_id`)
   );
 
@@ -25,12 +25,12 @@ CREATE TABLE `cliente_tienda` (
   `nombre_empresa` VARCHAR(255) NOT NULL,
   `ruc` VARCHAR(255) NOT NULL,
   `razon_social` VARCHAR(255) NOT NULL,
-  `direccion` VARCHAR(255) NULL,
+  `direccion` VARCHAR(255) NOT NULL,
   `correo` VARCHAR(255) NOT NULL,
   `nombre_contacto` VARCHAR(255) NOT NULL,
   `logo_tienda` VARCHAR(255) NOT NULL,
   `contrasenna` VARCHAR(255) NOT NULL,
-  `telefono` INT NULL,
+  `telefono` INT NOT NULL,
   PRIMARY KEY (`cliente_tienda_id`));
 
 DROP TABLE IF EXISTS `categorias` ;
