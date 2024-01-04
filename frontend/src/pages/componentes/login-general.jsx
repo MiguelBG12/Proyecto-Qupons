@@ -45,7 +45,7 @@ const Login_general = () => {
           // No manejar el token de acceso aquí
           localStorage.setItem("access_token", data.access_token);
           console.log(data.access_token)
-          document.location.href = "/adminitrador-panel";
+          document.location.href = "/administrador-panel";
         } else {
           alert("Usuario o contraseña incorrectos");
         }
