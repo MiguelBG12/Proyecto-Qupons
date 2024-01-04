@@ -1,12 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./css/seccion-iniciar-sesion.css";
 import { useEffect, useState } from "react";
 
 const Login_general = () => {
   const [datos, setDatos] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
+
+  // Agrega un estado para manejar la redirección
+  const navigate = useNavigate();
 
   useEffect(() => {
     // load default data
@@ -14,12 +18,12 @@ const Login_general = () => {
 
   const handleInputChange = (event) => {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     setDatos({
       ...datos,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -27,10 +31,10 @@ const Login_general = () => {
     event.preventDefault();
 
     const json = {
-		correo: datos.email,
-		contrasenna: datos.password
-	};
-	console.log(json)
+      correo: datos.email,
+      contrasenna: datos.password,
+    };
+    console.log(json);
 
     const url = "http://localhost:8000/login";
 
@@ -42,10 +46,22 @@ const Login_general = () => {
       .then(function (response) {
         const data = response.data;
         if (data && data.access_token !== "") {
-          // No manejar el token de acceso aquí
-          localStorage.setItem("access_token", data.access_token);
-          console.log(data.access_token)
-          document.location.href = "/adminitrador-panel";
+          // Verifica el tipo de usuario y establece la ruta de redirección
+          if (data.rol_id === "1") {
+            navigate("/administrador-panel");
+          } else if (data.rol_id === "2") {
+            navigate("/tienda-panel");
+          } else if (data.rol_id === "3") {
+            navigate("/usuario-panel");
+          } else {
+            alert("Tipo de usuario no reconocido");
+          }
+
+          // // No manejar el token de acceso aquí
+          // localStorage.setItem("access_token", data.access_token);
+          // console.log(data.access_token)
+          // document.location.href = "/administrador-panel";
+
         } else {
           alert("Usuario o contraseña incorrectos");
         }
@@ -63,15 +79,33 @@ const Login_general = () => {
         <div className="contenedor-formulario">
           <h1>Iniciar sesión</h1>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Correo electrónico:" name="email" onChange={handleInputChange} value={datos.email} required />
+            <input
+              type="text"
+              placeholder="Correo electrónico:"
+              name="email"
+              onChange={handleInputChange}
+              value={datos.email}
+              required
+            />
             <br />
-            <input type="password" placeholder="Contraseña:" name="password" onChange={handleInputChange} value={datos.password} required />
+            <input
+              type="password"
+              placeholder="Contraseña:"
+              name="password"
+              onChange={handleInputChange}
+              value={datos.password}
+              required
+            />
             <br />
             <button type="submit" className="btn-enviar">
               Enviar
             </button>
           </form>
-          <a href="/recuperar-contraseña"><button className="btn-recuperar-contraseña">Olvidé mi contraseña</button></a>
+          <a href="/recuperar-contraseña">
+            <button className="btn-recuperar-contraseña">
+              Olvidé mi contraseña
+            </button>
+          </a>
         </div>
       </section>
       <section className="top-para-footer"></section>
