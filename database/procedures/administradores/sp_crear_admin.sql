@@ -2,16 +2,16 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS sp_crear_admin $$
 CREATE PROCEDURE sp_crear_admin(
-    IN p_nombre VARCHAR(60),
-    IN p_cargo VARCHAR(30),
-    IN p_correo VARCHAR(45),
-    IN p_contrasenna VARCHAR(256)
+    IN p_nombre VARCHAR(255),
+    IN p_cargo VARCHAR(255),
+    IN p_correo VARCHAR(255),
+    IN p_contrasenna VARCHAR(255)
 )
 BEGIN
     DECLARE admin_count INT;
-    DECLARE hashedPassword VARCHAR(256);
+    DECLARE hashedPassword VARCHAR(255);
     
-    SET hashedPassword = SHA2(p_contrasenna, 256);
+    SET hashedPassword = SHA2(p_contrasenna, 255);
 
     SELECT COUNT(*) INTO admin_count
     FROM administradores

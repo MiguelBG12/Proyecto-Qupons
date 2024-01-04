@@ -2,21 +2,21 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_usuario`$$
 CREATE PROCEDURE `sp_crear_usuario`(
-    IN p_nombres_completos VARCHAR(60),
+    IN p_nombres_completos VARCHAR(255),
     IN p_dni INT,
-    IN p_genero VARCHAR(15),
+    IN p_genero VARCHAR(255),
     IN p_fecha_nacimiento DATE,
-    IN p_direccion VARCHAR(60),
-    IN p_departamento VARCHAR(15),
-    IN p_correo VARCHAR(45),
-    IN p_contrasenna VARCHAR(256),
+    IN p_direccion VARCHAR(255),
+    IN p_departamento VARCHAR(255),
+    IN p_correo VARCHAR(255),
+    IN p_contrasenna VARCHAR(255),
     IN p_telefono INT
 )
 BEGIN
     DECLARE usuario_count INT;
-    DECLARE hashedPassword VARCHAR(256);
+    DECLARE hashedPassword VARCHAR(255);
     
-    SET hashedPassword = SHA2(p_contrasenna, 256);
+    SET hashedPassword = SHA2(p_contrasenna, 255);
 
     SELECT COUNT(*) INTO usuario_count
     FROM `usuario`
