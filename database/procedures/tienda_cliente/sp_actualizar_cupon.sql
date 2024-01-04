@@ -2,13 +2,13 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_cupon` $$
 CREATE PROCEDURE `sp_actualizar_cupon`(
     IN p_cupones_id INT,
-    IN p_titulo VARCHAR(255),
-    IN p_descripcion VARCHAR(255),
+    IN p_titulo VARCHAR(60),
+    IN p_descripcion VARCHAR(200),
     IN p_fecha_inicio DATE,
     IN p_fecha_vencimiento DATE,
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
-    IN p_disenno_oferta_foto VARCHAR(255),
+    IN p_disenno_oferta_foto VARCHAR(45),
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )

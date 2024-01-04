@@ -6,7 +6,7 @@ CREATE PROCEDURE `sp_actualizar_admin`(
     IN p_nombre VARCHAR(255),
     IN p_nuevo_cargo VARCHAR(255),
     IN p_nuevo_correo VARCHAR(255),
-    IN p_nueva_contrasenna VARCHAR(255)
+    IN p_nueva_contrasenna VARCHAR(256)
 )
 BEGIN
     DECLARE admin_count INT;
@@ -30,7 +30,7 @@ BEGIN
         END IF;
 
         IF p_nueva_contrasenna IS NOT NULL THEN
-            UPDATE `administradores` SET `contrasenna` = SHA2(p_nueva_contrasenna, 255) WHERE `administrador_id` = p_administrador_id;
+            UPDATE `administradores` SET `contrasenna` = SHA2(p_nueva_contrasenna, 256) WHERE `administrador_id` = p_administrador_id;
         END IF;
 
         SELECT 'Administrador actualizado con éxito' AS `mensaje_exito`;
@@ -152,13 +152,13 @@ CREATE PROCEDURE `sp_crear_admin`(
     IN p_nombre VARCHAR(255),
     IN p_cargo VARCHAR(255),
     IN p_correo VARCHAR(255),
-    IN p_contrasenna VARCHAR(255)
+    IN p_contrasenna VARCHAR(256)
 )
 BEGIN
     DECLARE admin_count INT;
-    DECLARE hashedPassword VARCHAR(255);
+    DECLARE hashedPassword VARCHAR(256);
     
-    SET hashedPassword = SHA2(p_contrasenna, 255);
+    SET hashedPassword = SHA2(p_contrasenna, 256);
 
     SELECT COUNT(*) INTO admin_count
     FROM administradores
@@ -180,10 +180,10 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_login_administrador` $$
 CREATE PROCEDURE `sp_login_administrador`(
     IN p_correo VARCHAR(255),
-    IN p_contrasenna VARCHAR(255)
+    IN p_contrasenna VARCHAR(256)
 )
 BEGIN
-    DECLARE hashedPasswordDB VARCHAR(255);
+    DECLARE hashedPasswordDB VARCHAR(256);
     
     SELECT contrasenna INTO hashedPasswordDB FROM administradores WHERE correo = p_correo;
     
@@ -191,7 +191,7 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: Administrador o contraseña incorrectos';
     ELSE
-        IF hashedPasswordDB = SHA2(p_contrasenna, 255) THEN
+        IF hashedPasswordDB = SHA2(p_contrasenna, 256) THEN
             SELECT `administrador_id`,`nombre`,`cargo`,`correo`,`contrasenna`, 1 AS `rol_id` FROM administradores WHERE correo = p_correo;
         ELSE
             SIGNAL SQLSTATE '45000'
@@ -206,7 +206,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_obtener_admins` $$
 CREATE PROCEDURE `sp_obtener_admins`(
     IN p_admin_id INT,
-    IN p_correo VARCHAR(255)
+    IN p_correo VARCHAR(45)
 )
 BEGIN
     IF p_admin_id IS NOT NULL THEN
@@ -451,7 +451,7 @@ CREATE PROCEDURE `sp_actualizar_tienda`(
     IN p_direccion VARCHAR(255),
     IN p_nombre_contacto VARCHAR(255),
     IN p_nuevo_correo VARCHAR(255),
-    IN p_nueva_contrasenna VARCHAR(255),
+    IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
 BEGIN
@@ -471,7 +471,7 @@ BEGIN
             UPDATE `cliente_tienda` SET `correo` = p_nuevo_correo WHERE `cliente_tienda_id` = p_tienda_id;
         END IF;
         IF p_nueva_contrasenna IS NOT NULL THEN
-            UPDATE `cliente_tienda` SET `contrasenna` = SHA2(p_nueva_contrasenna, 255) WHERE `cliente_tienda_id` = p_tienda_id;
+            UPDATE `cliente_tienda` SET `contrasenna` = SHA2(p_nueva_contrasenna, 256) WHERE `cliente_tienda_id` = p_tienda_id;
         END IF;
         IF p_telefono IS NOT NULL THEN
             UPDATE `cliente_tienda` SET `telefono` = p_telefono WHERE `cliente_tienda_id` = p_tienda_id;
@@ -563,14 +563,14 @@ CREATE PROCEDURE `sp_crear_tienda`(
     IN p_correo VARCHAR(255),
     IN p_nombre_contacto VARCHAR(255),
     IN p_logo_tienda VARCHAR(255),
-    IN p_contrasenna VARCHAR(255),
+    IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
 BEGIN
     DECLARE tienda_count INT;
-    DECLARE hashedPassword VARCHAR(255);
+    DECLARE hashedPassword VARCHAR(256);
 
-    SET hashedPassword = SHA2(p_contrasenna, 255);
+    SET hashedPassword = SHA2(p_contrasenna, 256);
 
     SELECT COUNT(*) INTO tienda_count
     FROM `cliente_tienda`
@@ -592,17 +592,17 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_login_tienda` $$
 CREATE PROCEDURE `sp_login_tienda`(
     IN p_correo VARCHAR(255),
-    IN p_contrasenna VARCHAR(255)
+    IN p_contrasenna VARCHAR(256)
 )
 BEGIN
-    DECLARE hashedPasswordDB VARCHAR(255);
+    DECLARE hashedPasswordDB VARCHAR(256);
 
     SELECT contrasenna INTO hashedPasswordDB FROM cliente_tienda WHERE correo = p_correo;
     IF hashedPasswordDB IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: Tienda o contraseña incorrectos';
     ELSE
-        IF hashedPasswordDB = SHA2(p_contrasenna, 255) THEN
+        IF hashedPasswordDB = SHA2(p_contrasenna, 256) THEN
             SELECT `cliente_tienda_id`,`nombre_empresa`,`ruc`, `razon_social`, `direccion`, `correo`, `nombre_contacto`, `logo_tienda`, `contrasenna`, `telefono`, 2 AS `rol_id` FROM cliente_tienda WHERE correo = p_correo;
         ELSE
             SIGNAL SQLSTATE '45000'
@@ -654,7 +654,7 @@ CREATE PROCEDURE `sp_actualizar_usuario`(
     IN p_direccion VARCHAR(255),
     IN p_departamento VARCHAR(255),
     IN p_nuevo_correo VARCHAR(255),
-    IN p_nueva_contrasenna VARCHAR(255),
+    IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
 BEGIN
@@ -674,7 +674,7 @@ BEGIN
             UPDATE `usuario` SET `correo` = p_nuevo_correo WHERE `usuario_id` = p_usuario_id;
         END IF;
         IF p_nueva_contrasenna IS NOT NULL THEN
-            UPDATE `usuario` SET `contrasenna` = SHA2(p_nueva_contrasenna, 255) WHERE `usuario_id` = p_usuario_id;
+            UPDATE `usuario` SET `contrasenna` = SHA2(p_nueva_contrasenna, 256) WHERE `usuario_id` = p_usuario_id;
         END IF;
         IF p_telefono IS NOT NULL THEN
             UPDATE `usuario` SET `telefono` = p_telefono WHERE `usuario_id` = p_usuario_id;
@@ -727,14 +727,14 @@ CREATE PROCEDURE `sp_crear_usuario`(
     IN p_direccion VARCHAR(255),
     IN p_departamento VARCHAR(255),
     IN p_correo VARCHAR(255),
-    IN p_contrasenna VARCHAR(255),
+    IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
 BEGIN
     DECLARE usuario_count INT;
-    DECLARE hashedPassword VARCHAR(255);
+    DECLARE hashedPassword VARCHAR(256);
     
-    SET hashedPassword = SHA2(p_contrasenna, 255);
+    SET hashedPassword = SHA2(p_contrasenna, 256);
 
     SELECT COUNT(*) INTO usuario_count
     FROM `usuario`
@@ -756,17 +756,17 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_login_usuario` $$
 CREATE PROCEDURE `sp_login_usuario`(
     IN p_correo VARCHAR(255),
-    IN p_contrasenna VARCHAR(255)
+    IN p_contrasenna VARCHAR(256)
 )
 BEGIN
-    DECLARE hashedPasswordDB VARCHAR(255);
+    DECLARE hashedPasswordDB VARCHAR(256);
     
     SELECT contrasenna INTO hashedPasswordDB FROM usuario WHERE correo = p_correo;
     IF hashedPasswordDB IS NULL THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: Usuario o contraseña incorrectos';
     ELSE
-        IF hashedPasswordDB = SHA2(p_contrasenna, 255) THEN
+        IF hashedPasswordDB = SHA2(p_contrasenna, 256) THEN
             SELECT `usuario_id`,`nombres_completos`, `dni`, `genero`, `fecha_nacimiento`, `direccion`, `departamento`, `correo`, `contrasenna`, `telefono`, 3 AS `rol_id` FROM usuario WHERE correo = p_correo;
         ELSE
             SIGNAL SQLSTATE '45000'

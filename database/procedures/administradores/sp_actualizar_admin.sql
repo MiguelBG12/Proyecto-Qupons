@@ -3,10 +3,10 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_admin` $$
 CREATE PROCEDURE `sp_actualizar_admin`(
     IN p_administrador_id INT,
-    IN p_nombre VARCHAR(255),
-    IN p_nuevo_cargo VARCHAR(255),
-    IN p_nuevo_correo VARCHAR(255),
-    IN p_nueva_contrasenna VARCHAR(255)
+    IN p_nombre VARCHAR(60),
+    IN p_nuevo_cargo VARCHAR(30),
+    IN p_nuevo_correo VARCHAR(45),
+    IN p_nueva_contrasenna VARCHAR(256)
 )
 BEGIN
     DECLARE admin_count INT;
@@ -30,7 +30,7 @@ BEGIN
         END IF;
 
         IF p_nueva_contrasenna IS NOT NULL THEN
-            UPDATE `administradores` SET `contrasenna` = SHA2(p_nueva_contrasenna, 255) WHERE `administrador_id` = p_administrador_id;
+            UPDATE `administradores` SET `contrasenna` = SHA2(p_nueva_contrasenna, 256) WHERE `administrador_id` = p_administrador_id;
         END IF;
 
         SELECT 'Administrador actualizado con éxito' AS `mensaje_exito`;

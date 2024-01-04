@@ -3,10 +3,10 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_tienda` $$
 CREATE PROCEDURE `sp_actualizar_tienda`(
     IN p_tienda_id INT,
-    IN p_direccion VARCHAR(255),
-    IN p_nombre_contacto VARCHAR(255),
-    IN p_nuevo_correo VARCHAR(255),
-    IN p_nueva_contrasenna VARCHAR(255),
+    IN p_direccion VARCHAR(60),
+    IN p_nombre_contacto VARCHAR(60),
+    IN p_nuevo_correo VARCHAR(45),
+    IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
 BEGIN
@@ -26,7 +26,7 @@ BEGIN
             UPDATE `cliente_tienda` SET `correo` = p_nuevo_correo WHERE `cliente_tienda_id` = p_tienda_id;
         END IF;
         IF p_nueva_contrasenna IS NOT NULL THEN
-            UPDATE `cliente_tienda` SET `contrasenna` = SHA2(p_nueva_contrasenna, 255) WHERE `cliente_tienda_id` = p_tienda_id;
+            UPDATE `cliente_tienda` SET `contrasenna` = SHA2(p_nueva_contrasenna, 256) WHERE `cliente_tienda_id` = p_tienda_id;
         END IF;
         IF p_telefono IS NOT NULL THEN
             UPDATE `cliente_tienda` SET `telefono` = p_telefono WHERE `cliente_tienda_id` = p_tienda_id;

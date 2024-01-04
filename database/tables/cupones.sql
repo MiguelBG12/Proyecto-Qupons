@@ -2,13 +2,13 @@ DROP TABLE IF EXISTS `cupones` ;
 
 CREATE TABLE `cupones` (
   `cupones_id` INT NOT NULL AUTO_INCREMENT, 
-  `titulo` VARCHAR(255) NOT NULL,
-  `descripcion` VARCHAR(255) NOT NULL,
+  `titulo` VARCHAR(60) NOT NULL,
+  `descripcion` VARCHAR(200) NOT NULL,
   `fecha_inicio` DATE NOT NULL,
   `fecha_vencimiento` DATE NOT NULL,
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
-  `disenno_oferta_foto` VARCHAR(255) NOT NULL,
+  `disenno_oferta_foto` VARCHAR(100) NOT NULL,
   `cliente_tienda_id` INT NOT NULL,
   `categorias_id` INT NOT NULL,
   PRIMARY KEY (`cupones_id`),

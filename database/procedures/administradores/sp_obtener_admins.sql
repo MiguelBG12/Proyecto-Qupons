@@ -3,7 +3,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_obtener_admins` $$
 CREATE PROCEDURE `sp_obtener_admins`(
     IN p_admin_id INT,
-    IN p_correo VARCHAR(255)
+    IN p_correo VARCHAR(45)
 )
 BEGIN
     IF p_admin_id IS NOT NULL THEN
