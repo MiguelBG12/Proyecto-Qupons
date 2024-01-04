@@ -46,10 +46,22 @@ const Login_general = () => {
       .then(function (response) {
         const data = response.data;
         if (data && data.access_token !== "") {
-          // No manejar el token de acceso aquí
-          localStorage.setItem("access_token", data.access_token);
-          console.log(data.access_token)
-          document.location.href = "/adminitrador-panel";
+          // Verifica el tipo de usuario y establece la ruta de redirección
+          if (data.rol_id === 1) {
+            navigate("/administrador-panel");
+          } else if (data.rol_id === 2) {
+            navigate("/tienda-panel");
+          } else if (data.rol_id === 3) {
+            navigate("/usuario-panel");
+          } else {
+            alert("Tipo de usuario no reconocido");
+          }
+
+          // // No manejar el token de acceso aquí
+          // localStorage.setItem("access_token", data.access_token);
+          // console.log(data.access_token)
+          // document.location.href = "/administrador-panel";
+          
         } else {
           alert("Usuario o contraseña incorrectos");
         }
