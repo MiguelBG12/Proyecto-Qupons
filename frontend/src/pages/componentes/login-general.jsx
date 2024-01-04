@@ -43,7 +43,8 @@ const Login_general = () => {
         const data = response.data;
         if (data && data.access_token !== "") {
           // No manejar el token de acceso aquí
-          // localStorage.setItem("token", data.access_token);
+          localStorage.setItem("access_token", data.access_token);
+          console.log(data.access_token)
           document.location.href = "/adminitrador-panel";
         } else {
           alert("Usuario o contraseña incorrectos");

@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException, Response
+from fastapi import Request
 from app.routes.admin import router as admin_router
 from app.routes import admin
 from app.routes import users
@@ -6,7 +7,10 @@ from app.routes import stores
 from app.routes import registro
 from app.models.administrator import AdminCreateRequest, AdminLoginRequest
 from app.config.db_conexion import data_conexion
+from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 from fastapi.middleware.cors import CORSMiddleware
+import jwt  # Asegúrate de importar el módulo jwt
+from fastapi.responses import JSONResponse
 
 # Configuración de orígenes permitidos para CORS
 origins = [
@@ -24,10 +28,8 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
-# Endpoint para autenticar y verificar en la base de datos
 @app.post("/login")
-async def login_admin(admin_request: AdminLoginRequest):
+async def login_admin(admin_request: AdminLoginRequest, response: Response):
     params = [
         admin_request.correo,
         admin_request.contrasenna
@@ -38,18 +40,56 @@ async def login_admin(admin_request: AdminLoginRequest):
         user = admins['result'][0][0]
 
     if user is not None:
-        # Agregar el encabezado CORS después de la autenticación exitosa
-        response = Response(content="Usuario autenticado correctamente")
-        response.headers["Access-Control-Allow-Origin"] = "http://localhost:5173"
-        return response
-    else:
-        raise HTTPException(status_code=401, detail="Credenciales incorrectas")
+        access_token = create_access_token(data=user)
+
+        # Establecer la cookie con el token
+        response.set_cookie(
+            key="access_token",
+            value=access_token,
+            httponly=True,
+            max_age=1800  # max_age en segundos (ej. 1800 = 30 minutos)
+        )
+
+        return {"access_token": access_token, "token_type": "bearer"}
+
+    # La respuesta CORS debe ir después de devolver el token
+    response.headers["Access-Control-Allow-Origin"] = "http://localhost:5173"
+    raise HTTPException(status_code=401, detail="Credenciales incorrectas")
+
+# Obtener el perfil del administrador
+async def get_admin_profile(current_user: str = Depends(get_current_user)):
+    admin_profile = {"username": current_user, "email": "admin@example.com"}
+    return admin_profile
+
+# Middleware para validar el token en las rutas del administrador
+async def admin_token_validation(request: Request, call_next):
+    if request.url.path.startswith("/login") == False:
+        token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        # username: str = payload.get("username")
+        role_id: int = payload.get("rol_id")
+
+        if request.url.path.startswith("/admin"):
+            verified = (role_id == 1)
+        elif request.url.path.startswith("/stores"):
+            verified = (role_id == 2)
+        elif request.url.path.startswith("/users"):
+            verified = (role_id == 3)
+        else:
+            verified = False
+
+        if verified:
+            return await call_next(request)
+        else:
+            raise HTTPException(status_code=403, detail="No tienes permiso para acceder")
+
+    return await call_next(request)
 
 # Rutas
 app.include_router(registro.router, prefix="/registro", tags=["Registro"])
 app.include_router(admin.router, prefix="/admin", tags=["Admin"])
 app.include_router(users.router, prefix="/user", tags=["User"])
-app.include_router(stores.router, prefix= "/store", tags=["Store"])
+app.include_router(stores.router, prefix="/store", tags=["Store"])
 
 # Ejecución de la aplicación
 if __name__ == "__main__":
