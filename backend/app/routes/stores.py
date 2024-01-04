@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from app.controllers.stores_controller import StoreCreateRequest, StoreUpdateRequest, CuponCreateRequest, CuponUpdateRequest
 from app.controllers.stores_controller import (
-    crear_tienda, 
     actualizar_tienda, 
     crear_cupon, 
     actualizar_cupon_tienda,
@@ -11,10 +10,6 @@ from app.controllers.stores_controller import (
 )
 
 router = APIRouter()
-
-@router.post("/crear_tienda")
-async def route_crear_tienda(store_data: StoreCreateRequest):
-   return await crear_tienda(store_data)
 
 @router.post("/crear_cupon_tienda")
 async def route_crear_cupon(cupon_data: CuponCreateRequest):

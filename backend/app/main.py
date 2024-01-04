@@ -3,6 +3,7 @@ from fastapi import FastAPI, Depends, HTTPException, Request
 from app.routes import admin
 from app.routes import users
 from app.routes import stores
+from app.routes import registro
 from app.models.administrator import AdminLoginRequest
 from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 from app.config.db_conexion import data_conexion
@@ -91,6 +92,7 @@ async def admin_token_validation(request: Request, call_next):
     return await call_next(request)
 
 # Rutas
+app.include_router(registro.router, prefix="/registro", tags=["Registro"])
 app.include_router(admin.router, prefix="/admin", tags=["Admin"], dependencies=[Depends(get_current_user), Depends(admin_token_validation)])
 app.include_router(users.router, prefix="/user", tags=["User"])
 app.include_router(stores.router, prefix= "/store", tags=["Store"])

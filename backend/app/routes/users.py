@@ -1,17 +1,12 @@
 from fastapi import APIRouter
-from app.controllers.users_controller import UserCreateRequest, UserUpdateRequest
+from app.controllers.users_controller import UserUpdateRequest
 from app.controllers.users_controller import (
-    crear_user,
     actualizar_user,
     verperfil_usuario,
     ver_cupones_adquiridos,
 )
 
 router = APIRouter()
-
-@router.post("/crear_user")
-async def route_crear_user(user_data: UserCreateRequest):
-    return await crear_user(user_data)
 
 @router.put("/actualizar_user")
 async def route_actualizar_user(user_data: UserUpdateRequest):

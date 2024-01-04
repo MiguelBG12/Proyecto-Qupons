@@ -1,8 +1,7 @@
 from fastapi import APIRouter
-from app.models.administrator import AdminCreateRequest, AdminUpdateRequest
+from app.models.administrator import AdminUpdateRequest
 from app.models.category import CategoriasCreateRequest
 from app.controllers.admin_controller import (
-    crear_admin, 
     actualizar_admin, 
     borrar_admin,
     borrar_cliente,
@@ -18,10 +17,6 @@ from app.controllers.admin_controller import (
 )
 
 router = APIRouter()
-
-@router.post("/crear_admin")
-async def route_crear_admin(admin_data: AdminCreateRequest):
-    return await crear_admin(admin_data)
 
 @router.put("/actualizar_admin")
 async def route_actualizar_admin(admin_data: AdminUpdateRequest):
