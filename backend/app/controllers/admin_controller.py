@@ -75,3 +75,8 @@ async def ver_usuarios():
 async def ver_cupones():
     result = data_conexion.ejecutar_procedure('sp_ver_cupones', [])
     return result
+
+async def ver_perfil_administrador(admin_id: int):
+    params = [admin_id]
+    result = data_conexion.ejecutar_procedure('sp_verperfil_administrador', params)
+    return result

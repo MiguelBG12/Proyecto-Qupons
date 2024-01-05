@@ -1,6 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from app.models.administrator import AdminUpdateRequest
 from app.models.category import CategoriasCreateRequest
+from jose import jwt
+from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
+
 from app.controllers.admin_controller import (
     actualizar_admin, 
     borrar_admin,
@@ -13,10 +16,14 @@ from app.controllers.admin_controller import (
     ver_cupones,
     create_categoria,
     borrar_categoria,
-    ver_categorias
+    ver_categorias,
+    ver_perfil_administrador,
 )
+"""from app.main import get_admin_profile"""
 
 router = APIRouter()
+"""profile_admin = get_admin_profile()
+print(profile_admin)"""
 
 @router.put("/actualizar_admin")
 async def route_actualizar_admin(admin_data: AdminUpdateRequest):
@@ -66,3 +73,9 @@ async def route_ver_usuarios():
 async def route_ver_cupones():
     return await ver_cupones()
 
+@router.get("/ver_perfil_administrador")
+async def route_ver_perfil_administrador(request: Request):
+    token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    admin_id: int = payload.get("administrador_id")
+    return await ver_perfil_administrador(admin_id)
