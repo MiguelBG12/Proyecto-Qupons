@@ -50,6 +50,7 @@ const Login_general = () => {
         console.log("rol_id:", payloadJson.rol_id);
 
         if (payloadJson && payloadJson.access_token !== "") {
+          localStorage.setItem("access_token", token);
           if (payloadJson.rol_id === 1) {
             navigate("/administrador-panel");
           } else if (payloadJson.rol_id === 2) {
