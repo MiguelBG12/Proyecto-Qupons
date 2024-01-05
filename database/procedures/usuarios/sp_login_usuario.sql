@@ -7,7 +7,6 @@ CREATE PROCEDURE `sp_login_usuario`(
 BEGIN
     DECLARE hashedPasswordDB VARCHAR(256);
 
-    SELECT contraseña INTO hashedPasswordDB FROM usuario WHERE correo = p_correo;
     SELECT contrasenna INTO hashedPasswordDB FROM usuario WHERE correo = p_correo;
     IF hashedPasswordDB IS NULL THEN
         SIGNAL SQLSTATE '45000'
