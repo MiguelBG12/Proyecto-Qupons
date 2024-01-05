@@ -1,46 +1,36 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./css/info-cupones-administrador.css";
 import Cupon from "../../../componentes/cupon";
 
 const Info_cupones_administrador = () => {
+  const [cupones, setCupones] = useState([]);
 
   useEffect(() => {
-    
-		const url = "http://localhost:8000/login";
-    const token = localStorage.getItem("token");
+    // Obtener la lista de cupones al cargar la página
+    obtenerCupones();
+  }, []);
 
-		axios({
-            method: "post",
-            url: url,
-            data: json,
-            headers: { 'Authorization': "Bearer " + token }
-            //headers: { 'autorization': token }
-            //responseType: 'application/json'
-        })
-            .then(function(response) {
-                const data = response.data;
-                if (data && data.access_token != "") {
-					localStorage.setItem("token", data.access_token);
-                    document.location.href = "/adminitrador-panel";
-                } else {
-                    alert("Usuario o password errados");
-                }
-            })
-            .catch(function(response) {
-                alert("Error al consultar los datos");
-				console.log(response);
-            });
-  });
+  const obtenerCupones = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/admin/ver_cupones");
+      const data = response.data.result[0]; // Obtener la lista de cupones del resultado
+      setCupones(data);
+    } catch (error) {
+      console.error("Error al obtener la lista de cupones", error);
+      // Manejar el error de alguna manera (por ejemplo, mostrar un mensaje de error)
+    }
+  };
 
   return (
     <>
-    <div className="container-cupones">
-
-    <Cupon object={cupon}/>
-
-    </div>
+      <div className="container-cupones">
+        {cupones.map((cupon) => (
+          <Cupon key={cupon.cupones_id} object={cupon} />
+        ))}
+      </div>
     </>
   );
 };
+
 export default Info_cupones_administrador;
