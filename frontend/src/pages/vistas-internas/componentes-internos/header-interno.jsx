@@ -11,7 +11,7 @@ const Header_interno = () => {
             </div>
             <nav>
               <div className="menu">
-                <a href="/iniciar-sesion" className="btn-header-interno">CERRAR SESIÓN</a>
+                <a href="/" className="btn-header-interno">CERRAR SESIÓN</a>
               </div>
             </nav>
           </div>

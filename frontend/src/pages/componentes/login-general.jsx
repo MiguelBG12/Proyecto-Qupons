@@ -9,11 +9,9 @@ const Login_general = () => {
     password: "",
   });
 
-  // Agrega un estado para manejar la redirección
   const navigate = useNavigate();
 
   useEffect(() => {
-    // load default data
   }, []);
 
   const handleInputChange = (event) => {
@@ -44,7 +42,7 @@ const Login_general = () => {
       data: json,
     })
       .then(function (response) {
-        const token = response.data.access_token;  // Reemplaza esto con tu token real
+        const token = response.data.access_token; 
         const payloadBase64 = token.split('.')[1];
         const payloadJson = JSON.parse(atob(payloadBase64));
         
@@ -52,7 +50,6 @@ const Login_general = () => {
         console.log("rol_id:", payloadJson.rol_id);
 
         if (payloadJson && payloadJson.access_token !== "") {
-          // Verifica el tipo de usuario y establece la ruta de redirección
           if (payloadJson.rol_id === 1) {
             navigate("/administrador-panel");
           } else if (payloadJson.rol_id === 2) {
@@ -62,11 +59,6 @@ const Login_general = () => {
           } else {
             alert("Tipo de usuario no reconocido");
           }
-
-          // // No manejar el token de acceso aquí
-          // localStorage.setItem("access_token", data.access_token);
-          // console.log(data.access_token)
-          // document.location.href = "/administrador-panel";
           
         } else {
           alert("Usuario o contraseña incorrectos");
