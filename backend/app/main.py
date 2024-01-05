@@ -53,12 +53,15 @@ async def login_admin(admin_request: AdminLoginRequest, response: Response):
         if user is not None:
         # Convertir la fecha de nacimiento para que se pueda visualisar de manera correcta
             fecha_nacimiento = user.get("fecha_nacimiento")
+            contrasenna = user.get("contrasenna")
         if fecha_nacimiento:
             user["fecha_nacimiento"] = fecha_nacimiento.isoformat()
+        if contrasenna:
+            user["contrasenna"] = ""
 
         # Generar token JWT si las credenciales son válidas
         access_token = create_access_token(data=user) #access_token = create_access_token(data={"sub": admin_request.correo})
-        
+        print(user)
         # Establecer la cookie con el token
         response.set_cookie(
             key="access_token",
