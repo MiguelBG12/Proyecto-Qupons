@@ -31,7 +31,7 @@ const InfoPerfilAdministrador = () => {
 
         axios({
           method: "get",
-          url: `http://localhost:8000/admin/ver_perfil_administrador`,
+          url: "http://localhost:8000/admin/ver_perfil_administrador",
           headers: {
             Authorization: `Bearer ${storedToken}`,
           },
