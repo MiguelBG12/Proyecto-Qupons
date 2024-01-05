@@ -44,14 +44,20 @@ const Login_general = () => {
       data: json,
     })
       .then(function (response) {
-        const data = response.data;
-        if (data && data.access_token !== "") {
+        const token = response.data.access_token;  // Reemplaza esto con tu token real
+        const payloadBase64 = token.split('.')[1];
+        const payloadJson = JSON.parse(atob(payloadBase64));
+        
+        console.log("Payload decodificado:", payloadJson);
+        console.log("rol_id:", payloadJson.rol_id);
+
+        if (payloadJson && payloadJson.access_token !== "") {
           // Verifica el tipo de usuario y establece la ruta de redirección
-          if (data.rol_id === 1) {
+          if (payloadJson.rol_id === 1) {
             navigate("/administrador-panel");
-          } else if (data.rol_id === 2) {
-            navigate("/tienda-panel");
-          } else if (data.rol_id === 3) {
+          } else if (payloadJson.rol_id === 2) {
+            navigate("/tienda-panel")
+          } else if (payloadJson.rol_id === 3) {
             navigate("/usuario-panel");
           } else {
             alert("Tipo de usuario no reconocido");
