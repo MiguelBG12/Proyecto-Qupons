@@ -7,20 +7,16 @@ const Info_cupones_administrador = () => {
   const [cupones, setCupones] = useState([]);
 
   useEffect(() => {
-    // Obtener la lista de cupones al cargar la página
-    obtenerCupones();
-  }, []);
-
-  const obtenerCupones = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/admin/ver_cupones");
-      const data = response.data.result[0]; // Obtener la lista de cupones del resultado
-      setCupones(data);
-    } catch (error) {
+    // Obtener la lista de clientes al cargar la página
+    axios.get("http://localhost:8000/admin/ver_cupones")
+    .then((response) => {
+      const dataCupones = response.data.result[0]; // Obtener la lista de clientes del resultado
+      setCupones(dataCupones);
+    })
+    .catch((error) => {
       console.error("Error al obtener la lista de cupones", error);
-      // Manejar el error de alguna manera (por ejemplo, mostrar un mensaje de error)
-    }
-  };
+    });
+  }, []);
 
   return (
     <>

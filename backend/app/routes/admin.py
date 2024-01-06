@@ -19,14 +19,16 @@ from app.controllers.admin_controller import (
     ver_categorias,
     ver_perfil_administrador,
 )
-"""from app.main import get_admin_profile"""
 
 router = APIRouter()
-"""profile_admin = get_admin_profile()
-print(profile_admin)"""
 
 @router.put("/actualizar_admin")
-async def route_actualizar_admin(admin_data: AdminUpdateRequest):
+async def route_actualizar_admin(admin_data: AdminUpdateRequest, request: Request):
+    token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    admin_id: int = payload.get("administrador_id")
+
+    admin_data.admin_id = admin_id
     return await actualizar_admin(admin_data)
 
 @router.post("/crear_categoria")
