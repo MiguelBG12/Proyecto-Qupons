@@ -1,22 +1,7 @@
 from app.config.db_conexion import data_conexion
-from app.models.store import StoreCreateRequest, StoreUpdateRequest
+from app.models.store import StoreUpdateRequest
 from app.models.coupon import CuponCreateRequest, CuponUpdateRequest
 from datetime import datetime
-
-async def crear_tienda(store_request: StoreCreateRequest):
-    params = [
-        store_request.nombre_empresa,
-        store_request.ruc,
-        store_request.razon_social,
-        store_request.direccion,
-        store_request.correo,
-        store_request.logo_tienda,
-        store_request.nombre_contacto,
-        store_request.contrasenna,
-        store_request.telefono
-    ]
-    result = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
-    return result
 
 async def actualizar_tienda(store_request: StoreUpdateRequest):
     params = [
