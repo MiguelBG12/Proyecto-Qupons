@@ -6,6 +6,7 @@ CREATE PROCEDURE `sp_actualizar_admin`(
     IN p_nombre VARCHAR(60),
     IN p_nuevo_cargo VARCHAR(30),
     IN p_nuevo_correo VARCHAR(45),
+    IN p_contrasenna VARCHAR(256),
     IN p_nueva_contrasenna VARCHAR(256)
 )
 BEGIN
