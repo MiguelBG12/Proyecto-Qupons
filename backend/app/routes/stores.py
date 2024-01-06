@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from app.controllers.stores_controller import StoreCreateRequest, StoreUpdateRequest, CuponCreateRequest, CuponUpdateRequest
+from app.models.store import StoreCreateRequest, StoreUpdateRequest
+from app.models.coupon import CuponCreateRequest, CuponUpdateRequest
 from app.controllers.stores_controller import (
     actualizar_tienda, 
     crear_cupon, 

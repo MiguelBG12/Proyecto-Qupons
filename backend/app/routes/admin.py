@@ -1,10 +1,12 @@
 from fastapi import APIRouter, Request
 from app.models.administrator import AdminUpdateRequest
 from app.models.category import CategoriasCreateRequest
+from app.controllers.admin_controller import AdminCreateRequest
 from jose import jwt
 from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 
 from app.controllers.admin_controller import (
+    crear_admin,
     actualizar_admin, 
     borrar_admin,
     borrar_cliente,
@@ -21,6 +23,10 @@ from app.controllers.admin_controller import (
 )
 
 router = APIRouter()
+
+@router.post("/Registrar_admin")
+async def route_crear_admin(admin_data: AdminCreateRequest):
+    return await crear_admin(admin_data)
 
 @router.put("/actualizar_admin")
 async def route_actualizar_admin(admin_data: AdminUpdateRequest, request: Request):
