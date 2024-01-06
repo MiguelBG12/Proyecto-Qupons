@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./css/info-perfil-administrador.css";
 
@@ -10,6 +10,45 @@ const InfoPerfilAdministrador = () => {
     nuevaContrasenna: "",
     repetirContrasenna: "",
   });
+
+  const [perfilLoaded, setPerfilLoaded] = useState(false);
+  const [exitoMensaje, setExitoMensaje] = useState(null);
+
+  useEffect(() => {
+    const obtenerDatosActuales = () => {
+      const storedToken = localStorage.getItem("access_token");
+
+      axios({
+        method: "get",
+        url: "http://localhost:8000/admin/ver_perfil_administrador",
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      })
+        .then(function (response) {
+          const adminData = response.data.result[0][0];
+
+          if (adminData && adminData.administrador_id) {
+            setDatos({
+              nombre: adminData.nombre,
+              cargo: adminData.cargo,
+              correo: adminData.correo,
+            });
+            setPerfilLoaded(true);
+          } else {
+            console.error(
+              "La respuesta del servidor no contiene el administrador_id esperado."
+            );
+          }
+        })
+        .catch(function (error) {
+          alert("Error al consultar los datos");
+          console.log("Error al consultar los datos", error);
+        });
+    };
+
+    obtenerDatosActuales();
+  }, []);
 
   const handleInputChange = (e) => {
     const target = e.target;
@@ -30,18 +69,14 @@ const InfoPerfilAdministrador = () => {
     }
 
     const storedToken = localStorage.getItem("access_token");
-
-    // Obtener administrador_id del token
     const token = storedToken.split(".")[1];
     const payloadJson = JSON.parse(atob(token));
     const administrador_id = payloadJson.administrador_id;
 
-    // Actualizar state con administrador_id
     setDatos({
       ...datos,
       administrador_id: administrador_id,
     });
-    console.log(setDatos)
 
     axios({
       method: "put",
@@ -50,7 +85,7 @@ const InfoPerfilAdministrador = () => {
         Authorization: `Bearer ${storedToken}`,
       },
       data: {
-        admin_id: administrador_id,  // Agregar administrador_id al cuerpo de la solicitud
+        admin_id: administrador_id,
         ...datos,
       },
     })
@@ -58,8 +93,9 @@ const InfoPerfilAdministrador = () => {
         console.log(response);
         console.log("Perfil actualizado con éxito");
         console.log("Data en la respuesta:", response.data);
-        
-        // Resto del código...
+
+        // Mostrar mensaje de éxito
+        setExitoMensaje("¡Perfil actualizado con éxito!");
       })
       .catch(function (error) {
         console.error("Error al actualizar el perfil", error);
@@ -77,6 +113,7 @@ const InfoPerfilAdministrador = () => {
     <>
       <h1 className="titulo-intranet">Mantén tus datos actualizados</h1>
       <section className="formulario">
+      {exitoMensaje && <p className="mensaje-exito">{exitoMensaje}</p>}
         <form onSubmit={handleUpdate}>
           <input
             type="text"
