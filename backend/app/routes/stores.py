@@ -1,6 +1,8 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from jose import jwt
 from app.models.store import StoreCreateRequest, StoreUpdateRequest
 from app.models.coupon import CuponCreateRequest, CuponUpdateRequest
+from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 from app.controllers.stores_controller import (
     actualizar_tienda, 
     crear_cupon, 
@@ -34,6 +36,9 @@ async def route_borrar_cupontienda(cupones_id: int):
 async def route_ver_perfil_tienda(store_data: StoreCreateRequest):
     return await ver_cupones_en_tienda(store_data)
 
-@router.get("/ver_perfil_tienda/{cliente_tienda_id}")
-async def route_ver_perfil_tienda(cliente_tienda_id: int):
+@router.get("/ver_perfil_tienda")
+async def route_ver_perfil_tienda(request: Request):
+    token = request.headers.get("Authorization", "").replace("Bearer", "").strip()
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    cliente_tienda_id: int = payload.get("cliente_tienda_id")
     return await ver_perfil_tienda(cliente_tienda_id)

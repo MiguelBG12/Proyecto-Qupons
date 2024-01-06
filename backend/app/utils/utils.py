@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from fastapi import HTTPException
 
 # Clave secreta y algoritmo para codificar/descodificar JWT
-SECRET_KEY = "tu-clave-secreta"  # Cambia esto por una clave secreta segura
+SECRET_KEY = "tu-cupon-secreto"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30  # Tiempo de expiración del token en minutos
 

@@ -7,7 +7,7 @@ from datetime import datetime
 from app.models.administrator import AdminLoginRequest
 from app.models.user import UserCreateRequest
 from app.models.store import StoreCreateRequest
-from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
+from app.utils.utils import create_access_token, SECRET_KEY, ALGORITHM
 from app.config.db_conexion import data_conexion
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -77,11 +77,6 @@ async def login_admin(admin_request: AdminLoginRequest, response: Response):
     # La respuesta CORS debe ir después de devolver el token
     response.headers["Access-Control-Allow-Origin"] = "http://localhost:5173"
     raise HTTPException(status_code=401, detail="Credenciales incorrectas")
-
-# Obtener el perfil del administrador
-async def get_admin_profile(current_user: str = Depends(get_current_user)):
-    admin_profile = {"username": current_user, "email": "admin@example.com"}
-    return admin_profile
 
 # Middleware para validar el token en las rutas del administrador
 async def admin_token_validation(request: Request, call_next):

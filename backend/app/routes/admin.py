@@ -4,7 +4,6 @@ from app.models.category import CategoriasCreateRequest
 from app.controllers.admin_controller import AdminCreateRequest
 from jose import jwt
 from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
-
 from app.controllers.admin_controller import (
     crear_admin,
     actualizar_admin, 
