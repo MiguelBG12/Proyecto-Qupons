@@ -12,9 +12,10 @@ class AdminUpdateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
     admin_id: int
     nombre: Optional[str] = None
-    nuevo_cargo: Optional[str] = None
-    nuevo_correo: Optional[str] = None
-    nueva_contrasenna: Optional[str] = None
+    cargo: Optional[str] = None
+    correo: Optional[str] = None
+    contrasenna: Optional[str] = None
+    repetirContrasenna: Optional[str] = None
 
 class AdminLoginRequest(BaseModel):
     correo: str

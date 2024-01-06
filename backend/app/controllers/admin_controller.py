@@ -17,9 +17,10 @@ async def actualizar_admin(admin_request: AdminUpdateRequest):
     params = [
         admin_request.admin_id,
         admin_request.nombre,
-        admin_request.nuevo_cargo,
-        admin_request.nuevo_correo,
-        admin_request.nueva_contrasenna
+        admin_request.cargo,
+        admin_request.correo,
+        admin_request.contrasenna,
+        admin_request.repetirContrasenna
     ]
     result = data_conexion.ejecutar_procedure('sp_actualizar_admin', params)
     return result
