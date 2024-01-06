@@ -7,7 +7,7 @@ const Info_cupones_administrador = () => {
   const [cupones, setCupones] = useState([]);
 
   useEffect(() => {
-    // Obtener la lista de clientes al cargar la página
+    // Obtener la lista de cupones
     axios.get("http://localhost:8000/admin/ver_cupones")
     .then((response) => {
       const dataCupones = response.data.result[0]; // Obtener la lista de clientes del resultado
