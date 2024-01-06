@@ -28,10 +28,11 @@ CREATE TABLE `cliente_tienda` (
   `direccion` VARCHAR(255) NULL,
   `correo` VARCHAR(255) NOT NULL,
   `nombre_contacto` VARCHAR(255) NOT NULL,
-  `logo_tienda` VARCHAR(255) NOT NULL,
+  `logo_tienda` LONGBLOB,
   `contrasenna` VARCHAR(256) NULL,
   `telefono` INT NULL,
-  PRIMARY KEY (`cliente_tienda_id`));
+  PRIMARY KEY (`cliente_tienda_id`)
+);
 
 DROP TABLE IF EXISTS `categorias` ;
 
@@ -93,7 +94,8 @@ CREATE TABLE `administradores` (
   `administrador_id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   `cargo` VARCHAR(255) NOT NULL,
-  `correo` VARCHAR(45) NOT NULL,
+  `correo` VARCHAR(255) NOT NULL,
   `contrasenna` VARCHAR(256) NULL,
-  PRIMARY KEY (`administrador_id`));
+  PRIMARY KEY (`administrador_id`)
+  );
  

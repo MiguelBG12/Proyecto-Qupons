@@ -8,7 +8,7 @@ CREATE PROCEDURE `sp_crear_tienda`(
     IN p_direccion VARCHAR(60),
     IN p_correo VARCHAR(45),
     IN p_nombre_contacto VARCHAR(60),
-    IN p_logo_tienda VARCHAR(100),
+    IN p_logo_tienda LONGBLOB,
     IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
