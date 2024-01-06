@@ -16,6 +16,7 @@ BEGIN
             `direccion`,
             `correo`,
             `nombre_contacto`,
+            `logo_tienda`,
             `telefono`
         FROM
             `cliente_tienda`;
