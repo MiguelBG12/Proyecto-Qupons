@@ -3,8 +3,10 @@ from fastapi import FastAPI, Depends, HTTPException, Request, Response
 from app.routes import admin
 from app.routes import users
 from app.routes import stores
-from app.routes import registro
+from datetime import datetime
 from app.models.administrator import AdminLoginRequest
+from app.models.user import UserCreateRequest
+from app.models.store import StoreCreateRequest
 from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 from app.config.db_conexion import data_conexion
 from fastapi.middleware.cors import CORSMiddleware
@@ -109,8 +111,60 @@ async def admin_token_validation(request: Request, call_next):
 
     return await call_next(request)
 
+#----------------------------------------------------------------------------------------#
+@app.post("/registrar-usuario")
+async def crear_user(user_request: UserCreateRequest):
+    formatted_fecha_nacimiento = datetime.strptime(user_request.fecha_nacimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
+    params = [
+            user_request.nombres_completos,
+            user_request.dni,
+            user_request.genero,
+            formatted_fecha_nacimiento,
+            user_request.direccion,
+            user_request.departamento,
+            user_request.correo,
+            user_request.contrasenna,
+            user_request.telefono
+            ]
+    usuario = data_conexion.ejecutar_procedure('sp_crear_usuario', params)
+    return usuario 
+
+@app.post("/registrar-tienda")
+async def crear_tienda(store_request: StoreCreateRequest):
+    # Si logo_tienda es una cadena, asumimos que son los datos binarios de la imagen.
+    # Si es un objeto bytes, utilizamos esos datos directamente.
+    if isinstance(store_request.logo_tienda, str):
+        try:
+            # Convierte la representación hexadecimal de la cadena a bytes
+            logo_data = bytes.fromhex(store_request.logo_tienda)
+        except ValueError as e:
+            # Manejo de errores (puedes personalizar esto según tus necesidades)
+            print(f"Error al convertir la cadena hexadecimal a bytes: {e}")
+            return {'mensaje_error': 'Error en el formato de la imagen'}
+
+    elif isinstance(store_request.logo_tienda, bytes):
+        # Si ya tienes los datos binarios de la imagen, puedes usarlos directamente
+        logo_data = store_request.logo_tienda
+
+    else:
+        # Puedes manejar otros casos o lanzar una excepción si es necesario.
+        return {'mensaje_error': 'Formato de imagen no compatible'}
+    params = [
+        store_request.nombre_empresa,
+        store_request.ruc,
+        store_request.razon_social,
+        store_request.direccion,
+        store_request.correo,
+        logo_data,
+        store_request.nombre_contacto,
+        store_request.contrasenna,
+        store_request.telefono
+    ]
+    store = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
+    return store
+
+#-----------------------------------------------------------------------------------------------#
 # Rutas
-app.include_router(registro.router, prefix="/registro", tags=["Registro"])
 app.include_router(admin.router, prefix="/admin", tags=["Admin"])
 app.include_router(users.router, prefix="/users", tags=["User"])
 app.include_router(stores.router, prefix="/stores", tags=["Store"])
