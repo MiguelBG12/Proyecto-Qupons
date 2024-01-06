@@ -2,12 +2,12 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_tienda`$$
 CREATE PROCEDURE `sp_crear_tienda`(
-    IN p_nombre_empresa VARCHAR(45),
+    IN p_nombre_empresa VARCHAR(255),
     IN p_ruc VARCHAR(11),
-    IN p_razon_social VARCHAR(45),
-    IN p_direccion VARCHAR(60),
-    IN p_correo VARCHAR(45),
-    IN p_nombre_contacto VARCHAR(60),
+    IN p_razon_social VARCHAR(255),
+    IN p_direccion VARCHAR(255),
+    IN p_correo VARCHAR(255),
+    IN p_nombre_contacto VARCHAR(255),
     IN p_logo_tienda LONGBLOB,
     IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
