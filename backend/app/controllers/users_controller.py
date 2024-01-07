@@ -21,3 +21,7 @@ async def verperfil_usuario(usuario_id: int):
 async def ver_cupones_adquiridos():
     result = data_conexion.ejecutar_procedure('sp_ver_cupones_adquiridos', [])
     return result
+
+async def ver_cupones():
+    result = data_conexion.ejecutar_procedure('sp_ver_cupones', [])
+    return result

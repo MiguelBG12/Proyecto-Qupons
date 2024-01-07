@@ -267,6 +267,7 @@ BEGIN
             `razon_social`,
             `direccion`,
             `correo`,
+            `logo_tienda`,
             `nombre_contacto`,
             `telefono`
         FROM

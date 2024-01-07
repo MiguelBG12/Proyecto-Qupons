@@ -5,6 +5,7 @@ from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, A
 from app.controllers.users_controller import (
     actualizar_user,
     verperfil_usuario,
+    ver_cupones,
     ver_cupones_adquiridos,
 )
 
@@ -24,3 +25,7 @@ async def route_verperfil_usuario(request: Request):
 @router.get("/ver_cupones_adquiridos")
 async def route_ver_cupones_adquiridos():
     return await ver_cupones_adquiridos()
+
+@router.get("/ver_cupones")
+async def route_ver_cupones():
+    return await ver_cupones()

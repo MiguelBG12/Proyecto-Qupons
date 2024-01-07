@@ -150,8 +150,8 @@ async def crear_tienda(store_request: StoreCreateRequest):
         store_request.razon_social,
         store_request.direccion,
         store_request.correo,
-        logo_data,
         store_request.nombre_contacto,
+        logo_data,
         store_request.contrasenna,
         store_request.telefono
     ]
