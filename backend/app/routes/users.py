@@ -24,11 +24,17 @@ async def route_verperfil_usuario(request: Request):
     return await verperfil_usuario(usuario_id)
 
 @router.post("/adquirir_cupon")
-async def route_adquirir_cupon(usuario_id: int, cupon_id: int):
+async def route_adquirir_cupon(request: Request, cupon_id: int):
+    token = request.headers.get("Authorization", "").replace("Bearer", "").strip()
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    usuario_id = payload.get("usuario_id")
     return await adquirir_cupon(usuario_id, cupon_id)
 
 @router.get("/ver_cupones_adquiridos")
-async def route_ver_cupones_adquiridos(usuario_id: int):
+async def route_ver_cupones_adquiridos(request:Request):
+    token = request.headers.get("Authorization", "").replace("Bearer", "").strip()
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    usuario_id = payload.get("usuario_id")
     return await ver_cupones_adquiridos(usuario_id)
 
 @router.get("/ver_cupones")
