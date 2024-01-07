@@ -63,3 +63,7 @@ async def ver_perfil_tienda(cliente_tienda_id: int):
     params = [cliente_tienda_id]
     result = data_conexion.ejecutar_procedure('sp_verperfil_tienda', params)
     return result
+
+async def ver_cupones():
+    result = data_conexion.ejecutar_procedure('sp_ver_cupones', [])
+    return result

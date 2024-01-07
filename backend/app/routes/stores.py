@@ -6,6 +6,7 @@ from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, A
 from app.controllers.stores_controller import (
     actualizar_tienda, 
     crear_cupon, 
+    ver_cupones,
     actualizar_cupon_tienda,
     borrar_cupon_tienda,
     ver_cupones_en_tienda,
@@ -42,3 +43,7 @@ async def route_ver_perfil_tienda(request: Request):
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     cliente_tienda_id: int = payload.get("cliente_tienda_id")
     return await ver_perfil_tienda(cliente_tienda_id)
+
+@router.get("/ver_cupones")
+async def route_ver_cupones():
+    return await ver_cupones()
