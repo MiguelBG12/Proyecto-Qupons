@@ -11,6 +11,7 @@ class StoreCreateRequest(BaseModel):
     logo_tienda: Union[str, bytes]
     nombre_contacto: str
     contrasenna: str
+    repetircontrasenna: str
     telefono: int
 
 class StoreUpdateRequest(BaseModel):

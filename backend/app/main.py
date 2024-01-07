@@ -153,6 +153,7 @@ async def crear_tienda(store_request: StoreCreateRequest):
         store_request.nombre_contacto,
         logo_data,
         store_request.contrasenna,
+        store_request.repetircontrasenna,
         store_request.telefono
     ]
     store = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
