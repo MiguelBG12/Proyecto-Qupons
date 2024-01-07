@@ -49,8 +49,8 @@ async def route_borrar_admin(admin_id: int):
     return await borrar_admin(admin_id)
 
 @router.delete("/borrar_cliente/{cliente_tienda_id}")
-async def route_borrar_cliente(client_id: int):
-    return await borrar_cliente(client_id)
+async def route_borrar_cliente(cliente_tienda_id: int):
+    return await borrar_cliente(cliente_tienda_id)
 
 @router.delete("/borrar_cupon/{cupon_id}")
 async def route_borrar_cupon(cupones_id: int):
