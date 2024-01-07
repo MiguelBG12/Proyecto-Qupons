@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Union
 
 class CuponCreateRequest(BaseModel):
     # Define la estructura de la creacion de cupones
@@ -9,7 +9,7 @@ class CuponCreateRequest(BaseModel):
     fecha_vencimiento: str
     precioOG: float
     precioNew: float
-    disenno_oferta_foto: str
+    disenno_oferta_foto: Union[str, bytes]
     cliente_tienda_id: int
     categorias_id: int
 
