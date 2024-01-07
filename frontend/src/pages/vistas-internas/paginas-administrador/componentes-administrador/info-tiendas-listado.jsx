@@ -18,6 +18,20 @@ const InfoTiendasListado = () => {
     });
   }, []); // El array vacío indica que este efecto solo se ejecutará una vez al montar el componente
 
+  const handleEliminarClick = (cliente_tienda_id) => {
+    // Hacer la llamada a Axios para eliminar la tienda con el ID correspondiente
+    console.log("Antes de la llamada a Axios para eliminar:", cliente_tienda_id);
+    axios.delete(`http://localhost:8000/admin/borrar_cliente/${cliente_tienda_id}`)
+      .then(() => {
+        // Actualizar la lista de clientes después de eliminar
+        console.log("Eliminación exitosa. Actualizando lista de clientes...");
+        setClientes((prevClientes) => prevClientes.filter((cliente) => cliente.cliente_tienda_id !== cliente_tienda_id));
+      })
+      .catch((error) => {
+        console.error("Error al eliminar la tienda", error);
+      });
+  };
+
   return (
     <>
       {clientes.map((cliente) => (
@@ -35,8 +49,9 @@ const InfoTiendasListado = () => {
             <p>Teléfono: {cliente.telefono}</p>
           </div>
           <div className="botones-tienda-listado">
-            {/* Agrega los botones o acciones según tus necesidades */}
-            <button className="btn-eliminar"><i className="fa-solid fa-trash"></i>Eliminar</button>
+            <button className="btn-eliminar" onClick={() => handleEliminarClick(cliente.cliente_tienda_id)}>
+              <i className="fa-solid fa-trash"></i>Eliminar
+            </button>
           </div>
         </div>
       ))}
