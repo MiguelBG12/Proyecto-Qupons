@@ -51,7 +51,7 @@ CREATE TABLE `cupones` (
   `fecha_vencimiento` DATE NOT NULL,
   `precio_normal` FLOAT NOT NULL,
   `precio_oferta` FLOAT NOT NULL,
-  `disenno_oferta_foto` VARCHAR(255) NOT NULL,
+  `disenno_oferta_foto` LONGBLOB NOT NULL,
   `cliente_tienda_id` INT NOT NULL,
   `categorias_id` INT NOT NULL,
   PRIMARY KEY (`cupones_id`),

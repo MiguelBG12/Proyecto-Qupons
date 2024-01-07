@@ -12,6 +12,7 @@ BEGIN
             `fecha_vencimiento`,
             `precio_normal`,
             `precio_oferta`,
+            `disenno_oferta_foto`
             `cliente_tienda_id`,
             `categorias_id`
         FROM 

@@ -293,6 +293,7 @@ BEGIN
             `fecha_vencimiento`,
             `precio_normal`,
             `precio_oferta`,
+            `disenno_oferta_foto`,
             `cliente_tienda_id`,
             `categorias_id`
         FROM 
@@ -434,7 +435,7 @@ CREATE PROCEDURE `sp_actualizar_cupon`(
     IN p_fecha_vencimiento DATE,
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
-    IN p_disenno_oferta_foto VARCHAR(255),
+    IN p_disenno_oferta_foto LONGBLOB,
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )
@@ -539,7 +540,7 @@ CREATE PROCEDURE `sp_crear_cupon`(
     IN p_fecha_vencimiento DATE,
     IN p_precio_normal FLOAT,
     IN p_precio_oferta FLOAT,
-    IN p_disenno_oferta_foto VARCHAR(255),
+    IN p_disenno_oferta_foto LONGBLOB,
     IN p_cliente_tienda_id INT,
     IN p_categorias_id INT
 )
