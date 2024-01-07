@@ -3,6 +3,7 @@ from app.controllers.users_controller import UserUpdateRequest
 from jose import jwt
 from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 from app.controllers.users_controller import (
+    adquirir_cupon,
     actualizar_user,
     verperfil_usuario,
     ver_cupones,
@@ -22,9 +23,13 @@ async def route_verperfil_usuario(request: Request):
     usuario_id = payload.get("usuario_id")
     return await verperfil_usuario(usuario_id)
 
+@router.post("/adquirir_cupon")
+async def route_adquirir_cupon(usuario_id: int, cupon_id: int):
+    return await adquirir_cupon(usuario_id, cupon_id)
+
 @router.get("/ver_cupones_adquiridos")
-async def route_ver_cupones_adquiridos():
-    return await ver_cupones_adquiridos()
+async def route_ver_cupones_adquiridos(usuario_id: int):
+    return await ver_cupones_adquiridos(usuario_id)
 
 @router.get("/ver_cupones")
 async def route_ver_cupones():

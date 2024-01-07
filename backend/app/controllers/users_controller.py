@@ -18,10 +18,16 @@ async def verperfil_usuario(usuario_id: int):
     result = data_conexion.ejecutar_procedure('sp_verperfil_usuario', params)
     return result
 
-async def ver_cupones_adquiridos():
-    result = data_conexion.ejecutar_procedure('sp_ver_cupones_adquiridos', [])
+async def ver_cupones_adquiridos(usuario_id: int):
+    params = [usuario_id]
+    result = data_conexion.ejecutar_procedure('sp_ver_cupones_adquiridos', params)
     return result
 
 async def ver_cupones():
     result = data_conexion.ejecutar_procedure('sp_ver_cupones', [])
+    return result
+
+async def adquirir_cupon(usuario_id: int, cupon_id: int):
+    params = [usuario_id, cupon_id]
+    result = data_conexion.ejecutar_procedure('sp_adquirir_cupon', params)
     return result
