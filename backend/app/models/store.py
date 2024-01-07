@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, Union
+from typing import Optional
 
 class StoreCreateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
@@ -8,7 +8,7 @@ class StoreCreateRequest(BaseModel):
     razon_social: str
     direccion: str
     correo: str
-    logo_tienda: Union[str, bytes]
+    logo_tienda: bytes
     nombre_contacto: str
     contrasenna: str
     repetircontrasenna: str

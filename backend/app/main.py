@@ -125,25 +125,33 @@ async def crear_user(user_request: UserCreateRequest):
     return usuario 
 
 @app.post("/registrar-tienda")
-async def crear_tienda(store_request: StoreCreateRequest):
-    # Si logo_tienda es una cadena, asumimos que son los datos binarios de la imagen.
-    # Si es un objeto bytes, utilizamos esos datos directamente.
+async def crear_tienda(store_request: StoreCreateRequest):      
     if isinstance(store_request.logo_tienda, str):
         try:
-            # Convierte la representación hexadecimal de la cadena a bytes
+            # Intenta convertir la representación hexadecimal de la cadena a bytes
             logo_data = bytes.fromhex(store_request.logo_tienda)
         except ValueError as e:
             # Manejo de errores (puedes personalizar esto según tus necesidades)
             print(f"Error al convertir la cadena hexadecimal a bytes: {e}")
             return {'mensaje_error': 'Error en el formato de la imagen'}
-
     elif isinstance(store_request.logo_tienda, bytes):
         # Si ya tienes los datos binarios de la imagen, puedes usarlos directamente
         logo_data = store_request.logo_tienda
-
     else:
-        # Puedes manejar otros casos o lanzar una excepción si es necesario.
-        return {'mensaje_error': 'Formato de imagen no compatible'}
+        # Aquí puedes agregar la lógica para cargar la imagen desde un archivo
+        try:
+            print("Intentando cargar la imagen desde un archivo...")
+            with open('ruta_de_la_imagen.jpg', 'rb') as f:
+                # Lee los datos binarios de la imagen
+                logo_data = f.read()
+                print("Imagen cargada exitosamente desde el archivo.")
+        except FileNotFoundError:
+            print("Archivo de imagen no encontrado.")
+            return {'mensaje_error': 'Archivo de imagen no encontrado'}
+        except Exception as e:
+            print(f'Error al leer la imagen: {e}')
+            return {'mensaje_error': f'Error al leer la imagen: {e}'}
+
     params = [
         store_request.nombre_empresa,
         store_request.ruc,
@@ -153,7 +161,6 @@ async def crear_tienda(store_request: StoreCreateRequest):
         store_request.nombre_contacto,
         logo_data,
         store_request.contrasenna,
-        store_request.repetircontrasenna,
         store_request.telefono
     ]
     store = data_conexion.ejecutar_procedure('sp_crear_tienda', params)
