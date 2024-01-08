@@ -1,10 +1,14 @@
 DELIMITER $$
-
+ 
 DROP PROCEDURE IF EXISTS `sp_actualizar_usuario` $$
 CREATE PROCEDURE `sp_actualizar_usuario`(
     IN p_usuario_id INT,
-    IN p_direccion VARCHAR(60),
-    IN p_departamento VARCHAR(15),
+    IN p_nombres_completos VARCHAR(60),
+    IN p_dni INT,
+    IN p_genero VARCHAR(20),
+    IN p_fecha_nacimiento DATE,
+    IN p_direccion VARCHAR(100),
+    IN p_departamento VARCHAR(30),
     IN p_nuevo_correo VARCHAR(45),
     IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
@@ -16,6 +20,18 @@ BEGIN
     WHERE `usuario_id` = p_usuario_id;
 
     IF usuario_count = 1 THEN
+		IF p_nombres_completos IS NOT NULL THEN
+            UPDATE `usuario` SET `nombres_completos` = p_nombres_completos WHERE `usuario_id` = p_usuario_id;
+        END IF;
+        IF p_dni IS NOT NULL THEN
+            UPDATE `usuario` SET `dni` = p_dni WHERE `usuario_id` = p_usuario_id;
+        END IF;
+        IF p_genero IS NOT NULL THEN
+            UPDATE `usuario` SET `genero` = p_genero WHERE `usuario_id` = p_usuario_id;
+        END IF;
+        IF p_fecha_nacimiento IS NOT NULL THEN
+            UPDATE `usuario` SET `fecha_nacimiento` = p_fecha_nacimiento WHERE `usuario_id` = p_usuario_id;
+        END IF;
         IF p_direccion IS NOT NULL THEN
             UPDATE `usuario` SET `direccion` = p_direccion WHERE `usuario_id` = p_usuario_id;
         END IF;
@@ -37,5 +53,5 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: El usuario no existe';
     END IF;
-END$$
+END
 DELIMITER ;

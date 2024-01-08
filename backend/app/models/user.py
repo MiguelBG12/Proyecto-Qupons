@@ -16,6 +16,10 @@ class UserCreateRequest(BaseModel):
 class UserUpdateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
     usuario_id: int
+    nombres_completos: Optional[str] = None
+    dni: Optional[int] = None
+    genero: Optional[str] = None
+    fecha_nacimiento: Optional[str] = None
     direccion: Optional[str] = None
     departamento: Optional[str] = None
     correo: Optional[str] = None

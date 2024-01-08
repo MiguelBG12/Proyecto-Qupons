@@ -2,7 +2,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_categorias` $$
 CREATE PROCEDURE `sp_crear_categorias`(
-    IN p_nombre VARCHAR(255)
+    IN p_nombre VARCHAR(100)
 )
 BEGIN
     DECLARE categoria_count INT;

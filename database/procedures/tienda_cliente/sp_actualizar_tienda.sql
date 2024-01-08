@@ -3,8 +3,8 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_tienda` $$
 CREATE PROCEDURE `sp_actualizar_tienda`(
     IN p_tienda_id INT,
-    IN p_direccion VARCHAR(60),
-    IN p_nombre_contacto VARCHAR(60),
+    IN p_direccion VARCHAR(100),
+    IN p_nombre_contacto VARCHAR(100),
     IN p_nuevo_correo VARCHAR(45),
     IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT

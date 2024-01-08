@@ -6,13 +6,13 @@ DROP TABLE IF EXISTS `usuario` ;
 
 CREATE TABLE `usuario` (
   `usuario_id` INT NOT NULL AUTO_INCREMENT,
-  `nombres_completos` VARCHAR(255) NOT NULL,
+  `nombres_completos` VARCHAR(60) NOT NULL,
   `dni` INT NOT NULL,
-  `genero` VARCHAR(255) NULL,
+  `genero` VARCHAR(20) NULL,
   `fecha_nacimiento` DATE NOT NULL,
-  `direccion` VARCHAR(255) NOT NULL,
-  `departamento` VARCHAR(255) NOT NULL,
-  `correo` VARCHAR(255) NOT NULL,
+  `direccion` VARCHAR(100) NOT NULL,
+  `departamento` VARCHAR(30) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
   `contrasenna` VARCHAR(256) NOT NULL,
   `telefono` INT NULL,
   PRIMARY KEY (`usuario_id`)
@@ -22,12 +22,12 @@ DROP TABLE IF EXISTS `cliente_tienda`;
 
 CREATE TABLE `cliente_tienda` (
   `cliente_tienda_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre_empresa` VARCHAR(255) NOT NULL,
-  `ruc` VARCHAR(255) NOT NULL,
-  `razon_social` VARCHAR(255) NOT NULL,
-  `direccion` VARCHAR(255) NULL,
-  `correo` VARCHAR(255) NOT NULL,
-  `nombre_contacto` VARCHAR(255) NOT NULL,
+  `nombre_empresa` VARCHAR(100) NOT NULL,
+  `ruc` VARCHAR(11) NOT NULL,
+  `razon_social` VARCHAR(100) NOT NULL,
+  `direccion` VARCHAR(100) NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  `nombre_contacto` VARCHAR(100) NOT NULL,
   `logo_tienda` LONGBLOB,
   `contrasenna` VARCHAR(256) NULL,
   `telefono` INT NULL,
@@ -38,14 +38,14 @@ DROP TABLE IF EXISTS `categorias` ;
 
 CREATE TABLE `categorias` (
   `categorias_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(255) NOT NULL,
+  `nombre` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`categorias_id`));
   
 DROP TABLE IF EXISTS `cupones` ;
 
 CREATE TABLE `cupones` (
   `cupones_id` INT NOT NULL AUTO_INCREMENT, 
-  `titulo` VARCHAR(255) NOT NULL,
+  `titulo` VARCHAR(100) NOT NULL,
   `descripcion` VARCHAR(255) NOT NULL,
   `fecha_inicio` DATE NOT NULL,
   `fecha_vencimiento` DATE NOT NULL,
@@ -92,9 +92,9 @@ DROP TABLE IF EXISTS `administradores` ;
 
 CREATE TABLE `administradores` (
   `administrador_id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(255) NOT NULL,
-  `cargo` VARCHAR(255) NOT NULL,
-  `correo` VARCHAR(255) NOT NULL,
+  `nombre` VARCHAR(60) NOT NULL,
+  `cargo` VARCHAR(30) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
   `contrasenna` VARCHAR(256) NULL,
   PRIMARY KEY (`administrador_id`)
   );

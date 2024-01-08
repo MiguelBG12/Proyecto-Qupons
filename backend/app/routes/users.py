@@ -13,7 +13,12 @@ from app.controllers.users_controller import (
 router = APIRouter()
 
 @router.put("/actualizar_user")
-async def route_actualizar_user(user_data: UserUpdateRequest):
+async def route_actualizar_user(user_data: UserUpdateRequest, request: Request):
+    token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+    user_id: int = payload.get("usuario_id")
+
+    user_data.usuario_id = user_id
     return await actualizar_user(user_data)
 
 @router.get("/ver_perfil_usuario")

@@ -4,6 +4,10 @@ from app.models.user import UserUpdateRequest
 async def actualizar_user(user_request: UserUpdateRequest):
     params = [
         user_request.usuario_id,
+        user_request.nombres_completos,
+        user_request.dni,
+        user_request.genero,
+        user_request.fecha_nacimiento,
         user_request.direccion,
         user_request.departamento,
         user_request.correo,

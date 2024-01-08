@@ -150,9 +150,9 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_admin` $$
 CREATE PROCEDURE `sp_crear_admin`(
-    IN p_nombre VARCHAR(255),
-    IN p_cargo VARCHAR(255),
-    IN p_correo VARCHAR(255),
+    IN p_nombre VARCHAR(60),
+    IN p_cargo VARCHAR(30),
+    IN p_correo VARCHAR(45),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -180,7 +180,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_login_administrador` $$
 CREATE PROCEDURE `sp_login_administrador`(
-    IN p_correo VARCHAR(255),
+    IN p_correo VARCHAR(45),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -358,7 +358,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_categorias` $$
 CREATE PROCEDURE `sp_crear_categorias`(
-    IN p_nombre VARCHAR(255)
+    IN p_nombre VARCHAR(100)
 )
 BEGIN
     DECLARE categoria_count INT;
@@ -429,7 +429,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_cupon` $$
 CREATE PROCEDURE `sp_actualizar_cupon`(
     IN p_cupones_id INT,
-    IN p_titulo VARCHAR(255),
+    IN p_titulo VARCHAR(100),
     IN p_descripcion VARCHAR(255),
     IN p_fecha_inicio DATE,
     IN p_fecha_vencimiento DATE,
@@ -475,9 +475,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS `sp_actualizar_tienda` $$
 CREATE PROCEDURE `sp_actualizar_tienda`(
     IN p_tienda_id INT,
-    IN p_direccion VARCHAR(255),
-    IN p_nombre_contacto VARCHAR(255),
-    IN p_nuevo_correo VARCHAR(255),
+    IN p_direccion VARCHAR(100),
+    IN p_nombre_contacto VARCHAR(100),
+    IN p_nuevo_correo VARCHAR(45),
     IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
@@ -534,7 +534,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_cupon` $$
 CREATE PROCEDURE `sp_crear_cupon`(
-    IN p_titulo VARCHAR(255),
+    IN p_titulo VARCHAR(100),
     IN p_descripcion VARCHAR(255),
     IN p_fecha_inicio DATE,
     IN p_fecha_vencimiento DATE,
@@ -583,12 +583,12 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_tienda`$$
 CREATE PROCEDURE `sp_crear_tienda`(
-    IN p_nombre_empresa VARCHAR(255),
+    IN p_nombre_empresa VARCHAR(100),
     IN p_ruc VARCHAR(11),
-    IN p_razon_social VARCHAR(255),
-    IN p_direccion VARCHAR(255),
-    IN p_correo VARCHAR(255),
-    IN p_nombre_contacto VARCHAR(255),
+    IN p_razon_social VARCHAR(100),
+    IN p_direccion VARCHAR(100),
+    IN p_correo VARCHAR(45),
+    IN p_nombre_contacto VARCHAR(100),
     IN p_logo_tienda LONGBLOB,
     IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
@@ -618,7 +618,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_login_tienda` $$
 CREATE PROCEDURE `sp_login_tienda`(
-    IN p_correo VARCHAR(255),
+    IN p_correo VARCHAR(45),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -674,13 +674,17 @@ END$$
 DELIMITER ;
 
 DELIMITER $$
-
+ 
 DROP PROCEDURE IF EXISTS `sp_actualizar_usuario` $$
 CREATE PROCEDURE `sp_actualizar_usuario`(
     IN p_usuario_id INT,
-    IN p_direccion VARCHAR(255),
-    IN p_departamento VARCHAR(255),
-    IN p_nuevo_correo VARCHAR(255),
+    IN p_nombres_completos VARCHAR(60),
+    IN p_dni INT,
+    IN p_genero VARCHAR(20),
+    IN p_fecha_nacimiento DATE,
+    IN p_direccion VARCHAR(100),
+    IN p_departamento VARCHAR(30),
+    IN p_nuevo_correo VARCHAR(45),
     IN p_nueva_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
@@ -691,6 +695,18 @@ BEGIN
     WHERE `usuario_id` = p_usuario_id;
 
     IF usuario_count = 1 THEN
+		IF p_nombres_completos IS NOT NULL THEN
+            UPDATE `usuario` SET `nombres_completos` = p_nombres_completos WHERE `usuario_id` = p_usuario_id;
+        END IF;
+        IF p_dni IS NOT NULL THEN
+            UPDATE `usuario` SET `dni` = p_dni WHERE `usuario_id` = p_usuario_id;
+        END IF;
+        IF p_genero IS NOT NULL THEN
+            UPDATE `usuario` SET `genero` = p_genero WHERE `usuario_id` = p_usuario_id;
+        END IF;
+        IF p_fecha_nacimiento IS NOT NULL THEN
+            UPDATE `usuario` SET `fecha_nacimiento` = p_fecha_nacimiento WHERE `usuario_id` = p_usuario_id;
+        END IF;
         IF p_direccion IS NOT NULL THEN
             UPDATE `usuario` SET `direccion` = p_direccion WHERE `usuario_id` = p_usuario_id;
         END IF;
@@ -712,7 +728,7 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: El usuario no existe';
     END IF;
-END$$
+END
 DELIMITER ;
 
 DELIMITER $$
@@ -747,13 +763,13 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_crear_usuario`$$
 CREATE PROCEDURE `sp_crear_usuario`(
-    IN p_nombres_completos VARCHAR(255),
+    IN p_nombres_completos VARCHAR(60),
     IN p_dni INT,
-    IN p_genero VARCHAR(255),
+    IN p_genero VARCHAR(20),
     IN p_fecha_nacimiento DATE,
-    IN p_direccion VARCHAR(255),
-    IN p_departamento VARCHAR(255),
-    IN p_correo VARCHAR(255),
+    IN p_direccion VARCHAR(100),
+    IN p_departamento VARCHAR(30),
+    IN p_correo VARCHAR(45),
     IN p_contrasenna VARCHAR(256),
     IN p_telefono INT
 )
@@ -782,7 +798,7 @@ DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `sp_login_usuario` $$
 CREATE PROCEDURE `sp_login_usuario`(
-    IN p_correo VARCHAR(255),
+    IN p_correo VARCHAR(45),
     IN p_contrasenna VARCHAR(256)
 )
 BEGIN
@@ -822,6 +838,29 @@ BEGIN
     ELSE
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Error: El usuario no existe';
+    END IF;
+END$$
+DELIMITER ;
+
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS `sp_verperfil_usuario`$$
+CREATE PROCEDURE `sp_verperfil_usuario`(
+    IN p_usuario_id INT
+)
+BEGIN
+    DECLARE usuario_count INT;
+
+    SELECT COUNT(*)
+    INTO usuario_count
+    FROM `usuario`
+    WHERE `usuario_id` = p_usuario_id;
+
+    IF usuario_count = 1 THEN
+        SELECT * FROM `usuario` WHERE `usuario_id` = p_usuario_id;
+    ELSE
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Credenciales incorrectas';
     END IF;
 END$$
 DELIMITER ;
