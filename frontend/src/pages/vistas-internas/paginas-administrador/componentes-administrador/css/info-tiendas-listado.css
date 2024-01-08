@@ -2,7 +2,7 @@
 
 .tienda-listado {
     display: grid;
-    grid-template-columns: 1fr 5fr 3fr;
+    grid-template-columns: 2fr 5fr 1fr;
     gap: 1rem;
     align-items: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
