@@ -30,8 +30,19 @@ async def crear_cupon(cupon_request: CuponCreateRequest):
         disenno_data = cupon_request.disenno_oferta_foto
 
     else:
-        # Puedes manejar otros casos o lanzar una excepción si es necesario.
-        return {'mensaje_error': 'Formato de imagen no compatible'}
+     # Aquí puedes agregar la lógica para cargar la imagen desde un archivo
+        try:
+            print("Intentando cargar la imagen desde un archivo...")
+            with open('ruta_de_la_imagen.jpg', 'rb') as f:
+                # Lee los datos binarios de la imagen
+                disenno_data = f.read()
+                print("Imagen cargada exitosamente desde el archivo.")
+        except FileNotFoundError:
+            print("Archivo de imagen no encontrado.")
+            return {'mensaje_error': 'Archivo de imagen no encontrado'}
+        except Exception as e:
+            print(f'Error al leer la imagen: {e}')
+            return {'mensaje_error': f'Error al leer la imagen: {e}'}
 
     formatted_fecha_inicio = datetime.strptime(cupon_request.fecha_inicio, '%Y-%m-%d').strftime('%Y-%m-%d')
     formatted_fecha_vencimiento = datetime.strptime(cupon_request.fecha_vencimiento, '%Y-%m-%d').strftime('%Y-%m-%d')
