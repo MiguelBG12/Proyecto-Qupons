@@ -62,6 +62,10 @@ async def login_admin(admin_request: AdminLoginRequest, response: Response):
             user["contrasenna"] = ""
 
         # Generar token JWT si las credenciales son válidas
+        if isinstance(user.get("logo_tienda"), bytes):
+            logo_hex = user.get("logo_tienda").hex()
+            user["logo_tienda"] = logo_hex
+
         access_token = create_access_token(data=user) #access_token = create_access_token(data={"sub": admin_request.correo})
         print(user)
         # Establecer la cookie con el token
