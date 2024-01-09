@@ -7,8 +7,8 @@ class CuponCreateRequest(BaseModel):
     descripcion: str
     fecha_inicio: str
     fecha_vencimiento: str
-    precioOG: float
-    precioNew: float
+    precio_normal: float
+    precio_oferta: float
     disenno_oferta_foto: Union[str, bytes]
     cliente_tienda_id: int
     categorias_id: int
