@@ -80,11 +80,11 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 		
 **3.6 Ver lista usuarios existentes en MySQL**
 
-          mysql> SELECT user FROM mysql.user;
+        mysql> SELECT user FROM mysql.user;
 
 **3.7 Privilegios de usuario**
 
-          GRANT ALL PRIVILEGES ON *.* TO 'nombre_usuario'@'localhost';
+        GRANT ALL PRIVILEGES ON *.* TO 'nombre_usuario'@'localhost';
 
 **3.8 Crear la base de datos:**
 
@@ -94,7 +94,7 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 
 # 4. Backend:
 
-** 4.1 Crear el entorno virtual en WINDOWS:**
+**4.1 Crear el entorno virtual en WINDOWS:**
 
         # Instalar virtualenv desde la terminal
         pip install virtualenv
@@ -145,7 +145,7 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
         # Instala las dependencias
         $ pip install -r requirements.txt
 
-** 4.4 Iniciar el Backend (FastAPI):**
+**4.4 Iniciar el Backend (FastAPI):**
 
         # Activa el entorno virtual
         > venv\Scripts\activate
