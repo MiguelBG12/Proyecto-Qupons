@@ -6,8 +6,6 @@ const Info_cupones_obtenidos_usuario = () => {
     <>
     <div className="container-cupones">
         <Cupon_obtenido/>
-        <Cupon_obtenido/>
-        <Cupon_obtenido/>
     </div>
     </>
   );
