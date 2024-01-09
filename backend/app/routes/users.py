@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Request
 from app.controllers.users_controller import UserUpdateRequest
 from jose import jwt
+from typing import Dict
 from app.utils.utils import create_access_token, get_current_user, SECRET_KEY, ALGORITHM
 from app.controllers.users_controller import (
     adquirir_cupon,
@@ -29,11 +30,16 @@ async def route_verperfil_usuario(request: Request):
     return await verperfil_usuario(usuario_id)
 
 @router.post("/adquirir_cupon")
-async def route_adquirir_cupon(request: Request, cupon_id: int):
-    token = request.headers.get("Authorization", "").replace("Bearer", "").strip()
-    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-    usuario_id = payload.get("usuario_id")
-    return await adquirir_cupon(usuario_id, cupon_id)
+async def route_adquirir_cupon(request: Request, cupon_data: Dict):
+    try:
+        token = request.headers.get("Authorization", "").replace("Bearer", "").strip()
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        usuario_id = payload.get("usuario_id")
+        cupones_id = cupon_data.get("cupones_id")
+        return await adquirir_cupon(usuario_id, cupones_id)
+    except Exception as e:
+        print(f"Error en route_adquirir_cupon: {e}")
+        return {"error": str(e)}
 
 @router.get("/ver_cupones_adquiridos")
 async def route_ver_cupones_adquiridos(request:Request):
