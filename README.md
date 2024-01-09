@@ -74,10 +74,9 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 
 **3.5 Iniciar sesion en MySQL desde la terminal:**
 
-        ```bash
-            sudo mysql -u <Coloca tu usuario> -p
-            Enter password: <Coloca tu contraseña>
-        ```
+
+        sudo mysql -u <Coloca tu usuario> -p
+        Enter password: <Coloca tu contraseña>
 		
 **3.6 Ver lista usuarios existentes en MySQL**
 
