@@ -17,8 +17,12 @@ class StoreCreateRequest(BaseModel):
 class StoreUpdateRequest(BaseModel):
     # Define la estructura de la solicitud para la creación de administradores
     cliente_tienda_id: int
+    nombre_empresa: Optional[str] = None
+    ruc: Optional[str] = None
+    razon_social: Optional[str] = None
     direccion: Optional[str] = None
     correo: Optional[str] = None
+    logo_tienda: Optional[bytes] = None
     nombre_contacto: Optional[str] = None
     contrasenna: Optional[str] = None
     telefono: Optional[int] = None
