@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./css/cupon.css";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import promo4 from "../../assets/img/promo4.jpg";
 
 const Cupon_obtenido = () => {
@@ -42,10 +44,30 @@ const Cupon_obtenido = () => {
       });
   }, []);
 
+  const handleDownloadPDF = (cupon) => {
+    const pdfWidth = 110; // Tamaño en milímetros (A4)
+    const pdfHeight = 210; // Tamaño en milímetros (A4)
+  
+    const pdf = new jsPDF({
+      unit: 'mm',
+      format: [pdfWidth, pdfHeight],
+    });
+  
+    const cuponContainer = document.getElementById(`cupon-${cupon.cupones_id}`);
+  
+    if (cuponContainer) {
+      html2canvas(cuponContainer).then((canvas) => {
+        const imageData = canvas.toDataURL("image/png");
+        pdf.addImage(imageData, "PNG", 10, 10, pdfWidth - 20, pdfHeight - 20);
+        pdf.save(`${cupon.titulo}.pdf`);
+      });
+    }
+  };
+
   return (
     <>
       {cupones.map((cupon, index) => (
-        <div className="base-cupon" key={index}>
+        <div className="base-cupon" key={index} id={`cupon-${cupon.cupones_id}`}>
           <img src={promo4} alt="Promo" />
           <br />
           <h3 className="titulo-cupon">{cupon.titulo}</h3>
@@ -76,9 +98,12 @@ const Cupon_obtenido = () => {
             </div>
           </div>
 
-          <a href="#">
-            <button className="btn-obtener-cupon">Descargar PDF</button>
-          </a>
+          <button
+            className="btn-obtener-cupon"
+            onClick={() => handleDownloadPDF(cupon)}
+          >
+            Descargar PDF
+          </button>
         </div>
       ))}
     </>

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./css/info-cupones-tienda.css";
-// Importa la imagen promocional aquí
-//import promo4 from "./ruta/de/la/imagen.jpg";
 
 const Info_cupones_tienda = () => {
   const [cupones, setCupones] = useState([]);
@@ -49,8 +47,11 @@ const Info_cupones_tienda = () => {
     <>
       <div className="container-cupones-tienda">
         {cupones.map((cupon, index) => (
-          <div className="base-cupon" key={index}>
-            <img src={cupon.disenno_oferta_foto ? `data:image/jpeg;base64,${cupon.disenno_oferta_foto}` : ''}alt="Imagen" />
+          <div className="base-cupon" key={index} id={`cupon-${cupon.cupones_id}`}>
+            <img
+              src={cupon.disenno_oferta_foto ? `data:image/jpeg;base64,${cupon.disenno_oferta_foto}` : ''}
+              alt="Imagen"
+            />
             <br />
             <h3 className="titulo-cupon">{cupon.titulo}</h3>
             <p className="descripcion-cupon">{cupon.descripcion} </p>
@@ -58,8 +59,7 @@ const Info_cupones_tienda = () => {
             <h4 className="texto-descuento">
               <span className="porcentaje">
                 S/{(((cupon.precio_normal - cupon.precio_oferta) /
-                  cupon.precio_normal) *
-                  100).toFixed(2)}
+                  cupon.precio_normal) * 100).toFixed(2)}
               </span>{" "}
               de descuento
             </h4>
@@ -79,10 +79,6 @@ const Info_cupones_tienda = () => {
                 </h4>
               </div>
             </div>
-
-            <a href="#">
-              <button className="btn-obtener-cupon">Descargar PDF</button>
-            </a>
           </div>
         ))}
       </div>

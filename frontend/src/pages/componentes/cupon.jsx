@@ -44,7 +44,7 @@ const Cupon = ({ object }) => {
   return (
     <>
       <div className="base-cupon">
-        <img src={promo2} alt="Promo" />
+        <img src={object.disenno_oferta_foto} alt="cupon" />
 
         <br />
         <h3 className="titulo-cupon">{object.titulo}</h3>
