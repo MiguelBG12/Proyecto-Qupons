@@ -51,8 +51,8 @@ async def crear_cupon(cupon_request: CuponCreateRequest):
         cupon_request.descripcion,
         formatted_fecha_inicio,
         formatted_fecha_vencimiento,
-        cupon_request.precioOG,
-        cupon_request.precioNew,
+        cupon_request.precio_normal,
+        cupon_request.precio_oferta,
         disenno_data,
         cupon_request.cliente_tienda_id,
         cupon_request.categorias_id
