@@ -23,13 +23,17 @@ const Info_cupones_tienda = () => {
         console.log(cuponesData)
 
         if (cuponesData && cuponesData.length > 0) {
+          console.log("Data de la imagen:", cuponesData[0].disenno_oferta_foto);
           const mappedCupones = cuponesData.map((cuponData) => ({
             cupones_id: cuponData.cupones_id,
             titulo: cuponData.titulo,
             descripcion: cuponData.descripcion,
+            disenno_oferta_foto: cuponData.disenno_oferta_foto,
             precio_normal: cuponData.precio_normal,
             precio_oferta: cuponData.precio_oferta,
+            
           }));
+
           setCupones(mappedCupones);
         } else {
           console.error("La respuesta del servidor no contiene cupones para el usuario.");
@@ -46,7 +50,7 @@ const Info_cupones_tienda = () => {
       <div className="container-cupones-tienda">
         {cupones.map((cupon, index) => (
           <div className="base-cupon" key={index}>
-            <img src={Image} alt="Promo" />
+            <img src={cupon.disenno_oferta_foto ? `data:image/jpeg;base64,${cupon.disenno_oferta_foto}` : ''}alt="Imagen" />
             <br />
             <h3 className="titulo-cupon">{cupon.titulo}</h3>
             <p className="descripcion-cupon">{cupon.descripcion} </p>
