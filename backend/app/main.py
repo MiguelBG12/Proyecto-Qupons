@@ -110,6 +110,25 @@ async def admin_token_validation(request: Request, call_next):
 
     return await call_next(request)
 
+# Middleware para validar el token antes de generar el PDF del cupón
+async def cupon_token_validation(request: Request, call_next):
+    if request.url.path.startswith("/imprimir_cupon"):  # Ruta para imprimir el cupón en PDF
+        token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        role_id: int = payload.get("rol_id")
+        if  request.url.path.startswith("/users"):
+            verified = (role_id ==3)
+        else:
+            verified = False
+        
+        if verified:
+            return await call_next(request)
+        else:
+            #print("Token no proporcionado")
+            raise HTTPException(status_code=403, detail="No tienes permiso para imprimir cupones")
+
+    return await call_next(request)
+
 #----------------------------------------------------------------------------------------#
 @app.post("/registrar-usuario")
 async def crear_user(user_request: UserCreateRequest):
