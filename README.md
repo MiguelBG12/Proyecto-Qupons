@@ -151,7 +151,7 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
         > venv\Scripts\activate
 
         # Raíz: "backend/"
-        uvicorn app.main:app --reloa
+        uvicorn app.main:app --reload
 
 # 5. Frontend:
 
