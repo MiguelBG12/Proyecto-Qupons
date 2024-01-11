@@ -30,6 +30,7 @@ const Cupon_obtenido = () => {
             descripcion: cuponData.descripcion,
             precio_normal: cuponData.precio_normal,
             precio_oferta: cuponData.precio_oferta,
+            fecha_vencimiento: cuponData.fecha_vencimiento,
           }));
           setCupones(mappedCupones);
         } else {
@@ -45,6 +46,14 @@ const Cupon_obtenido = () => {
   }, []);
 
   const handleDownloadPDF = (cupon) => {
+    const storedToken = localStorage.getItem("access_token");
+    const token = storedToken.split(".")[1];
+    const payloadJson = JSON.parse(atob(token));
+    const nombres_completos = payloadJson.nombres_completos;
+    console.log(nombres_completos)
+    const dni = payloadJson.dni;
+    console.log(dni)
+
     const pdfWidth = 110; // Tamaño en milímetros (A4)
     const pdfHeight = 210; // Tamaño en milímetros (A4)
   
@@ -56,28 +65,42 @@ const Cupon_obtenido = () => {
     const cuponContainer = document.getElementById(`cupon-${cupon.cupones_id}`);
   
     if (cuponContainer) {
+      const { fecha_vencimiento } = cupon;
+  
       html2canvas(cuponContainer).then((canvas) => {
         const imageData = canvas.toDataURL("image/png");
-        pdf.addImage(imageData, "PNG", 10, 10, pdfWidth - 20, pdfHeight - 20);
+  
+        // Agregar imagen al PDF
+        pdf.addImage(imageData, "PNG", 10, 10, pdfWidth - 20, pdfHeight - 40);
+  
+        pdf.setFontSize(10);
+        pdf.text(`Fecha de Vencimiento: ${fecha_vencimiento}`, 15, pdfHeight - 25);
+        pdf.text(`Nombres Completos: ${nombres_completos}`, 15, pdfHeight - 20);
+        pdf.text(`DNI: ${dni}`, 15, pdfHeight - 15);
+  
+        // Guardar el PDF
         pdf.save(`${cupon.titulo}.pdf`);
       });
     }
-  };
+  };  
 
   return (
     <>
       {cupones.map((cupon, index) => (
         <div className="base-cupon" key={index} id={`cupon-${cupon.cupones_id}`}>
-          <img src={promo4} alt="Promo" />
+          <img
+              src={cupon.disenno_oferta_foto ? `data:image/jpeg;base64,${cupon.disenno_oferta_foto}` : ''}
+              alt="Imagen"
+            />
           <br />
           <h3 className="titulo-cupon">{cupon.titulo}</h3>
           <p className="descripcion-cupon">{cupon.descripcion} </p>
 
           <h4 className="texto-descuento">
             <span className="porcentaje">
-              S/{(((cupon.precio_normal - cupon.precio_oferta) /
+              {(((cupon.precio_normal - cupon.precio_oferta) /
                 cupon.precio_normal) *
-                100).toFixed(2)}
+                100).toFixed(0)}%
             </span>{" "}
             de descuento
           </h4>
