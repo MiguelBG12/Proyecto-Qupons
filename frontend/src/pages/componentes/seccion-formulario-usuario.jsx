@@ -60,9 +60,9 @@ const Seccion_formulario_usuario = () => {
       <section className="seccion-blanca-formulario">
         <div className="contenedor-formulario">
           <h1>Registrate</h1>
-          <p><span className="texto-formulario">con</span></p>
+          {/* <p><span className="texto-formulario">con</span></p>
           <button className="btn-gmail">Gmail</button>
-          <p><span className="texto-formulario">ó</span></p>
+          <p><span className="texto-formulario">ó</span></p> */}
           <form onSubmit={handleSubmit}>
             {exitoMensaje && <p className="mensaje-exito">{exitoMensaje}</p>}
             <input
