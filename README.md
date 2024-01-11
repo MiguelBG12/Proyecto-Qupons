@@ -147,9 +147,6 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 
 **4.4 Iniciar el Backend (FastAPI):**
 
-        # Activa el entorno virtual
-        > venv\Scripts\activate
-
         # Raíz: "backend/"
         uvicorn app.main:app --reload
 
