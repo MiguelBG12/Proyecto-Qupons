@@ -17,17 +17,17 @@ El proyecto aborda la dificultad que enfrentan los usuarios al intentar encontra
 
 A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 
-## 1. Clona este repositorio en tu computadora**
+# 1. Clona este repositorio en tu computadora**
 
 
     # Comando
     git clone <URL_del_repositorio>
 
 
-## 2. Instalar Python 
+# 2. Instalar Python 
 **2.1 Descargalo desde la pagina oficial: (https://www.python.org/downloads/)**
 
-## 3. Base de datos MySQL:
+# 3. Base de datos MySQL:
 
 **3.1 Instalación de MySQL en Windows:**
 - Descarga el instalador MSI de MySQL desde el sitio oficial: MySQL Community 	Downloads.
@@ -151,7 +151,7 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
         > venv\Scripts\activate
 
         # Raíz: "backend/"
-        uvicorn app.main:app --reloa
+        uvicorn app.main:app --reload
 
 # 5. Frontend:
 
@@ -160,6 +160,6 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
         # Instala las dependencias del archivo "package.json"
         npm install
 
-**5.2 Ejecucion del frontend "Proyecto-Qupons/frontend/src"**
+**5.2 Ejecución del frontend "Proyecto-Qupons/frontend/src"**
 
         npm run dev
