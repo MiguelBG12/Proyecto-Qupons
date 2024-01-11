@@ -160,6 +160,6 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
         # Instala las dependencias del archivo "package.json"
         npm install
 
-**5.2 Ejecucion del frontend "Proyecto-Qupons/frontend/src"**
+**5.2 Ejecución del frontend "Proyecto-Qupons/frontend/src"**
 
         npm run dev
