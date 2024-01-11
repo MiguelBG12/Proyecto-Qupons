@@ -30,7 +30,7 @@ app.add_middleware(
 
 # Endpoint para autenticar y generar tokens de acceso
 @app.post("/login")
-async def login_admin(admin_request: AdminLoginRequest, response: Response):
+async def login(admin_request: AdminLoginRequest, response: Response):
     params = [
         admin_request.correo,
         admin_request.contrasenna
@@ -112,7 +112,8 @@ async def admin_token_validation(request: Request, call_next):
 
 # Middleware para validar el token antes de generar el PDF del cupón
 async def cupon_token_validation(request: Request, call_next):
-    if request.url.path.startswith("/imprimir_cupon"):  # Ruta para imprimir el cupón en PDF
+    # Ruta para imprimir el cupón en PDF
+    if request.url.path.startswith("/adquirir_cupon"):
         token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         role_id: int = payload.get("rol_id")
