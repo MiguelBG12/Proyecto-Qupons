@@ -17,6 +17,6 @@ class AdminUpdateRequest(BaseModel):
     contrasenna: Optional[str] = None
     repetirContrasenna: Optional[str] = None
 
-class AdminLoginRequest(BaseModel):
+class UsersLoginRequest(BaseModel):
     correo: str
     contrasenna: str

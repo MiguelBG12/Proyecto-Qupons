@@ -4,7 +4,7 @@ from app.routes import admin
 from app.routes import users
 from app.routes import stores
 from datetime import datetime
-from app.models.administrator import AdminLoginRequest
+from app.models.administrator import UsersLoginRequest
 from app.models.user import UserCreateRequest
 from app.models.store import StoreCreateRequest
 from app.utils.utils import create_access_token, SECRET_KEY, ALGORITHM
@@ -30,10 +30,10 @@ app.add_middleware(
 
 # Endpoint para autenticar y generar tokens de acceso
 @app.post("/login")
-async def login(admin_request: AdminLoginRequest, response: Response):
+async def login(users_request: UsersLoginRequest, response: Response):
     params = [
-        admin_request.correo,
-        admin_request.contrasenna
+        users_request.correo,
+        users_request.contrasenna
     ]
     admins = data_conexion.ejecutar_procedure('sp_login_administrador', params)
 
@@ -66,8 +66,7 @@ async def login(admin_request: AdminLoginRequest, response: Response):
             logo_hex = user.get("logo_tienda").hex()
             user["logo_tienda"] = logo_hex
 
-        access_token = create_access_token(data=user) #access_token = create_access_token(data={"sub": admin_request.correo})
-        print(user)
+        access_token = create_access_token(data=user)
         # Establecer la cookie con el token
         response.set_cookie(
             key="access_token",
@@ -107,26 +106,6 @@ async def admin_token_validation(request: Request, call_next):
         else:
             #print("Token no proporcionado")
             raise HTTPException(status_code=403, detail="No tienes permiso para acceder")
-
-    return await call_next(request)
-
-# Middleware para validar el token antes de generar el PDF del cupón
-async def cupon_token_validation(request: Request, call_next):
-    # Ruta para imprimir el cupón en PDF
-    if request.url.path.startswith("/adquirir_cupon"):
-        token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        role_id: int = payload.get("rol_id")
-        if  request.url.path.startswith("/users"):
-            verified = (role_id ==3)
-        else:
-            verified = False
-        
-        if verified:
-            return await call_next(request)
-        else:
-            #print("Token no proporcionado")
-            raise HTTPException(status_code=403, detail="No tienes permiso para imprimir cupones")
 
     return await call_next(request)
 
