@@ -81,7 +81,7 @@ async def login(users_request: UsersLoginRequest, response: Response):
     response.headers["Access-Control-Allow-Origin"] = "http://localhost:5173"
     raise HTTPException(status_code=401, detail="Credenciales incorrectas")
 
-# Middleware para validar el token en las rutas del administrador
+# Middleware para validar el token en las rutas
 async def admin_token_validation(request: Request, call_next):
     if request.url.path.startswith("/login") == False:
         token = request.headers.get("Authorization", "").replace("Bearer ", "").strip()
