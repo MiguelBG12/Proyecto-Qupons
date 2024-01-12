@@ -3,7 +3,7 @@ import axios from "axios";
 import "./css/cupon.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-import promo4 from "../../assets/img/promo4.jpg";
+import promo13 from "../../assets/img/promo13.jpg";
 
 const Cupon_obtenido = () => {
   const [cupones, setCupones] = useState([]);
@@ -89,10 +89,7 @@ const Cupon_obtenido = () => {
     <>
       {cupones.map((cupon, index) => (
         <div className="base-cupon" key={index} id={`cupon-${cupon.cupones_id}`}>
-          <img
-          src={cupon.disenno_oferta_foto}
-          alt="Imagen"
-        />
+          <img src={(cupon.cupones_id && cupon.cupones_id >= 6) ? promo13 : (cupon.logo_tienda || promo13)} alt="Logo de tienda" />
           <br />
           <h3 className="titulo-cupon">{cupon.titulo}</h3>
           <p className="descripcion-cupon">{cupon.descripcion} </p>

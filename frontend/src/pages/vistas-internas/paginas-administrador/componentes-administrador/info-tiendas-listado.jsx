@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./css/info-tiendas-listado.css";
-//import LogoTienda from "../../../../assets/img/Logo-tienda.png";
+import logo6 from "../../../../assets/img/logo6.png";
 
 const InfoTiendasListado = () => {
   const [clientes, setClientes] = useState([]);
@@ -37,7 +37,8 @@ const InfoTiendasListado = () => {
       {clientes.map((cliente) => (
         <div key={cliente.cliente_tienda_id} className="tienda-listado">
           <div className="logo-tienda">
-            <img src={cliente.logo_tienda} alt="Logo de tienda" />
+          <img src={(cliente.cliente_tienda_id && cliente.cliente_tienda_id >= 6) ? logo6 : (cliente.logo_tienda || logo6)} alt="Logo de tienda" />
+
           </div>
           <div className="Datos-tienda-listado">
             <h4>{cliente.nombre_empresa}</h4>

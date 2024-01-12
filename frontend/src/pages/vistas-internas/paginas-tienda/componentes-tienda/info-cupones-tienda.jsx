@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./css/info-cupones-tienda.css";
-//import promo6 from "../../../../assets/img/promo6.jpg";
+import promo13 from "../../../../assets/img/promo13.jpg";
 
 const Info_cupones_tienda = () => {
   const [cupones, setCupones] = useState([]);
@@ -49,10 +49,7 @@ const Info_cupones_tienda = () => {
       <div className="container-cupones-tienda">
         {cupones.map((cupon, index) => (
           <div className="base-cupon" key={index} id={`cupon-${cupon.cupones_id}`}>
-            <img
-              src={cupon.disenno_oferta_foto}
-              alt="Imagen"
-            />
+            <img src={cupon.cupones_id >= 8 ? promo13 : (cupon.disenno_oferta_foto || promo13)} alt="cupon" />
             <br />
             <h3 className="titulo-cupon">{cupon.titulo}</h3>
             <p className="descripcion-cupon">{cupon.descripcion} </p>
