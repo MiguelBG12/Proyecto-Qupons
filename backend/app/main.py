@@ -104,7 +104,6 @@ async def admin_token_validation(request: Request, call_next):
         if verified:
             return await call_next(request)
         else:
-            #print("Token no proporcionado")
             raise HTTPException(status_code=403, detail="No tienes permiso para acceder")
 
     return await call_next(request)
