@@ -201,7 +201,7 @@ Desde el Frontend "http://localhost:5173/registrar-usuario" rellena el formulari
 ![registro-usuario](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/951c8ee9-b9d7-4096-a2e4-e9958f6c2fb4)
 
 ## **Paso 5: obtener cupon**
-El usuairo tiene desponible una seccion donde puede ver los cupones obtenidos y poder descargarlos en un archivo pdf
+El usuairo tiene desponible una seccion "http://localhost:5173/usuario-cupones-obtenidos" donde puede ver los cupones obtenidos y poder descargarlos en un archivo pdf
 ![cupone otenidos](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/75c2dbda-9878-4a8a-a1d4-1bda05a9d80a)
 
 
