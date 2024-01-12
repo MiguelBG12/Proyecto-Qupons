@@ -1,5 +1,5 @@
 # PROYECTO QUPONS
-![readme imagen 2](img-readme/readme imagen 2.jpg)
+![readme-imagen-2](img-readme/readme-imagen-2.jpg)
 
 ## **Concepto:** 
 **QUPONS** es una plataforma dedicada a la generación de cupones de descuento digitales, con el objetivo de proporcionar a los usuarios un espacio en línea donde puedan acceder fácilmente a las ofertas más destacadas de las tiendas más reconocidas en la ciudad.
