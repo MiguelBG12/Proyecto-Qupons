@@ -93,6 +93,7 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 **3.8 Crear la base de datos:**
 
 - En la sesion de MySQL en la terminal, copia el codigo de "database/scripts/database_full.sql" esto creará la base de datos "db_webcuponera" con sus respectibas tablas.
+```bash
 mysql> SHOW TABLES;
 | Tables_in_db_webcuponera |
 |--------------------------|
@@ -102,6 +103,7 @@ mysql> SHOW TABLES;
 | cupon_comprado           |
 | cupones                  |
 | usuario                  |
+```
 
 - Copia el codigo de "database/scripts/procedures.sql" esto creara los procedimientos almacenados que usa la aplicación.
 
