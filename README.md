@@ -202,10 +202,10 @@ Desde el Frontend "http://localhost:5173/registrar-usuario" rellena el formulari
 
 ## **Paso 5: obtener cupon**
 El usuairo tiene desponible una seccion donde puede ver los cupones obtenidos y poder descargarlos en un archivo pdf
+![cupone otenidos](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/75c2dbda-9878-4a8a-a1d4-1bda05a9d80a)
 
 
-
-# Autores:
+# Autores👨‍🎓👩‍🎓:
 #### Marirosa Vilcherrez: https://www.linkedin.com/in/marirosavilcherrez/
 #### Miguel Bautista: https://www.linkedin.com/in/miguelbautistag/
 #### Denzel Romero : https://www.linkedin.com/in/denzel-rb/
