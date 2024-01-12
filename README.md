@@ -16,7 +16,7 @@ En **QUPONS**, los usuarios encuentran un recurso valioso al buscar productos o 
 ## **Problema Resuelto:**
 El proyecto aborda la dificultad que enfrentan los usuarios al intentar encontrar ofertas navegando por Internet. La solución es **QUPONS**, una plataforma especializada que centraliza ofertas de todas las categorías, proporcionando una respuesta eficaz a este problema común.
 
-## **Estructura de la Aplicacion web**
+## **Estructura de la Aplicación web**
 ![estructura-del-proyecto](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/02bda60d-aefb-4fcd-863b-8d521b66cc28)
 
 A continuación tenemos los pasos para instalar y ejecutar el proyecto:
@@ -178,13 +178,34 @@ ____________________________
 
         npm run dev
 
-# Uso:
-## **Paso 1: Registros** 
+# 6. Uso:
+## **Paso 1: Registrar Administrador** 
 Empieza registrando un administrador, en tu terminal dentro de la sesion de mysql, utiliza el archivo "databases/scripts/pruebas_procedures.sql".
 Puedes usar cualquier administradore del primer grupo ya que estos ejecutan al procedimiento alamcenado "sp_crear_admin" para generar el registro
 
+## **Paso 2: Crear categorias**
+Para que las tiendas puedan crear sus cupones se necesita que el administrador cree categorias.
+por ejemplo: Moda, Gastronomia, Entretenimiento, Electrodomesticos, etc.
+![crear-categorias](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/c620230e-8434-458c-8efc-4d127c263e80)
 
-# AUTORES:
+## **Paso 3: Registrar una tienda**
+Desde el Frontend "http://localhost:5173/registrar-tienda" llena el formulario con los datos de tu tienda.
+![registro-tienda](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/82e63b97-bff7-45cf-8dfd-d715fe66e043)
+
+## **Paso 4: Crear cupon**
+Desde la seccion crear cupon "http://localhost:5173/tienda-crear-cupones" personaliza el cupon rellenando los datos requeridos 
+![crear-cupon](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/9d047b6d-43f5-4557-82ac-5c7ddf635308)
+
+## **Paso 5: Registrar usuario**
+Desde el Frontend "http://localhost:5173/registrar-usuario" rellena el formulario con los datos del usuario.
+![registro-usuario](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/951c8ee9-b9d7-4096-a2e4-e9958f6c2fb4)
+
+## **Paso 5: obtener cupon**
+El usuairo tiene desponible una seccion donde puede ver los cupones obtenidos y poder descargarlos en un archivo pdf
+
+
+
+# Autores:
 #### Marirosa Vilcherrez: https://www.linkedin.com/in/marirosavilcherrez/
 #### Miguel Bautista: https://www.linkedin.com/in/miguelbautistag/
 #### Denzel Romero : https://www.linkedin.com/in/denzel-rb/
