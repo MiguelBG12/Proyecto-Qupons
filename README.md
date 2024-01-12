@@ -16,6 +16,9 @@ En **QUPONS**, los usuarios encuentran un recurso valioso al buscar productos o 
 ## **Problema Resuelto:**
 El proyecto aborda la dificultad que enfrentan los usuarios al intentar encontrar ofertas navegando por Internet. La solución es **QUPONS**, una plataforma especializada que centraliza ofertas de todas las categorías, proporcionando una respuesta eficaz a este problema común.
 
+## **Estructura de la Aplicacion web**
+![estructura-del-proyecto](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/02bda60d-aefb-4fcd-863b-8d521b66cc28)
+
 A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 
 # 1. Clona este repositorio en tu computadora**
@@ -89,7 +92,16 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 
 **3.8 Crear la base de datos:**
 
-- En la sesion de MySQL en la terminal, copia el codigo de "database/scripts/database_full.sql" esto creará la base de datos "db_webcuponera" y sus tablas.
+- En la sesion de MySQL en la terminal, copia el codigo de "database/scripts/database_full.sql" esto creará la base de datos "db_webcuponera" con sus respectibas tablas.
+mysql> SHOW TABLES;
+| Tables_in_db_webcuponera |
+|--------------------------|
+| administradores          |
+| categorias               |
+| cliente_tienda           |
+| cupon_comprado           |
+| cupones                  |
+| usuario                  |
 
 - Copia el codigo de "database/scripts/procedures.sql" esto creara los procedimientos almacenados que usa la aplicación.
 
@@ -161,3 +173,15 @@ A continuación tenemos los pasos para instalar y ejecutar el proyecto:
 **5.2 Ejecución del frontend "Proyecto-Qupons/frontend/src"**
 
         npm run dev
+
+# Uso:
+## **Paso 1: Registros** 
+Empieza registrando un administrador, en tu terminal dentro de la sesion de mysql, utiliza el archivo "databases/scripts/pruebas_procedures.sql".
+Puedes usar cualquier administradore del primer grupo ya que estos ejecutan al procedimiento alamcenado "sp_crear_admin" para generar el registro
+
+
+## AUTORES:
+Marirosa Vilcherrez: https://www.linkedin.com/in/marirosavilcherrez/
+Miguel Bautista: https://www.linkedin.com/in/miguelbautistag/
+Denzel Romero : https://www.linkedin.com/in/denzel-rb/
+Pablo Bautista: https://www.linkedin.com/in/pablobautistagoyoneche/
