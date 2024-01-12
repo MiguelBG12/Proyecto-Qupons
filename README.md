@@ -185,7 +185,7 @@ Puedes usar cualquier administradore del primer grupo ya que estos ejecutan al p
 
 
 # AUTORES:
-## Marirosa Vilcherrez: https://www.linkedin.com/in/marirosavilcherrez/
-## Miguel Bautista: https://www.linkedin.com/in/miguelbautistag/
-## Denzel Romero : https://www.linkedin.com/in/denzel-rb/
-## Pablo Bautista: https://www.linkedin.com/in/pablobautistagoyoneche/
+#### Marirosa Vilcherrez: https://www.linkedin.com/in/marirosavilcherrez/
+#### Miguel Bautista: https://www.linkedin.com/in/miguelbautistag/
+#### Denzel Romero : https://www.linkedin.com/in/denzel-rb/
+#### Pablo Bautista: https://www.linkedin.com/in/pablobautistagoyoneche/
