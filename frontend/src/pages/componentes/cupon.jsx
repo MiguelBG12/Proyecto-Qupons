@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./css/cupon.css";
-import promo2 from "../../assets/img/promo2.jpg";
+//import promo3 from "../../assets/img/promo3.jpg";
 
 const Cupon = ({ object }) => {
   const descuentoPorcentaje = (((object.precio_normal - object.precio_oferta) / object.precio_normal) * 100).toFixed(2);

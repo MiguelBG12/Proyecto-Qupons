@@ -30,6 +30,7 @@ const Cupon_obtenido = () => {
             descripcion: cuponData.descripcion,
             precio_normal: cuponData.precio_normal,
             precio_oferta: cuponData.precio_oferta,
+            disenno_oferta_foto: cuponData.disenno_oferta_foto,
             fecha_vencimiento: cuponData.fecha_vencimiento,
           }));
           setCupones(mappedCupones);
@@ -89,9 +90,9 @@ const Cupon_obtenido = () => {
       {cupones.map((cupon, index) => (
         <div className="base-cupon" key={index} id={`cupon-${cupon.cupones_id}`}>
           <img
-              src={cupon.disenno_oferta_foto ? `data:image/jpeg;base64,${cupon.disenno_oferta_foto}` : ''}
-              alt="Imagen"
-            />
+          src={cupon.disenno_oferta_foto}
+          alt="Imagen"
+        />
           <br />
           <h3 className="titulo-cupon">{cupon.titulo}</h3>
           <p className="descripcion-cupon">{cupon.descripcion} </p>

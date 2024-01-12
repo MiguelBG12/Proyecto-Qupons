@@ -11,7 +11,7 @@ const Info_cupones_administrador = () => {
     axios.get("http://localhost:8000/admin/ver_cupones")
     .then((response) => {
       const dataCupones = response.data.result[0]; // Obtener la lista de clientes del resultado
-      setCupones(dataCupones);
+      setCupones(dataCupones || []);
     })
     .catch((error) => {
       console.error("Error al obtener la lista de cupones", error);
