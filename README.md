@@ -1,98 +1,98 @@
 # PROYECTO QUPONS💲
 ![readme-imagen-2](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/8cb7748a-1bcb-4f26-a1d9-8d53e552ca13)
 
-## **Concepto:** 
-**QUPONS** es una plataforma dedicada a la generación de cupones de descuento digitales, con el objetivo de proporcionar a los usuarios un espacio en línea donde puedan acceder fácilmente a las ofertas más destacadas de las tiendas más reconocidas en la ciudad.
+## **Concept:** 
+**QUPONS** is a platform dedicated to the generation of digital discount coupons, with the aim of providing users with an online space where they can easily access the most outstanding offers from the most recognized stores in the city.
 
-## **Beneficiarios del Proyecto:**
-**QUPONS** se enfoca en beneficiar tanto a las tiendas (grandes empresas y emprendedores que ofrecen productos y servicios) como a los usuarios con intenciones de compra.
+## **Project Beneficiaries:**
+**QUPONS** It focuses on benefiting both stores (large companies and entrepreneurs that offer products and services) and users with purchase intentions.
 
-### **Tiendas:**
-Proporcionamos a las tiendas un espacio exclusivo en Internet para exhibir sus mejores ofertas. Cada visitante a la plataforma QUPONS podrá identificar de manera rápida que solo se muestran promociones, facilitando así su decisión de compra.
+### **Stores:**
+We provide stores with an exclusive space on the Internet to showcase their best offers. Each visitor to the QUPONS platform will be able to quickly identify that only promotions are shown, thus facilitating their purchase decision.
 
-### **Usuarios:**
-En **QUPONS**, los usuarios encuentran un recurso valioso al buscar productos o servicios, ya que concentramos las mejores ofertas de las tiendas en diversas categorías. Brindamos un lugar donde la búsqueda de ofertas se simplifica, permitiendo a los usuarios optimizar su presupuesto.
+### **Users:**
+En **QUPONS**, Users find a valuable resource when searching for products or services, since we concentrate the best offers from stores in various categories. We provide a place where searching for deals is simplified, allowing users to optimize their budget.
 
-## **Problema Resuelto:**
-El proyecto aborda la dificultad que enfrentan los usuarios al intentar encontrar ofertas navegando por Internet. La solución es **QUPONS**, una plataforma especializada que centraliza ofertas de todas las categorías, proporcionando una respuesta eficaz a este problema común.
+## **Problem solved:**
+The project addresses the difficulty that users face when trying to find deals while browsing the Internet. The solution is **QUPONS**, a specialized platform that centralizes offers from all categories, providing an effective answer to this common problem.
 
-## **Estructura de la Aplicación web**
+## **Structure of the Web Application**
 ![estructura-del-proyecto](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/02bda60d-aefb-4fcd-863b-8d521b66cc28)
 
-A continuación tenemos los pasos para instalar y ejecutar el proyecto:
+Below we have the steps to install and run the project:
 
-# 1. Clona este repositorio en tu computadora**
-
-
-    # Comando
-    git clone <URL_del_repositorio>
+# 1. Clone this repository to your computer**
 
 
-# 2. Instalar Python 
-**2.1 Descargalo desde la pagina oficial: (https://www.python.org/downloads/)**
-
-# 3. Base de datos MySQL:
-
-**3.1 Instalación de MySQL en Windows:**
-- Descarga el instalador MSI de MySQL desde el sitio oficial: MySQL Community 	Downloads.
-- Ejecuta el instalador descargado y sigue las instrucciones del asistente.
-- Durante la instalación, se te pedirá configurar la contraseña del usuario root de MySQL.
-- Agrega la ruta del directorio binario de MySQL al sistema a la variable de entorno PATH para facilitar el uso de comandos desde la terminal.
-
-**3.2 Instalación de MySQL en Linux:**
+    # Command
+    git clone <repository_URL>
 
 
-    # Actualiza el índice de paquetes
+# 2. Install Python 
+**2.1 Download it from the official website: (https://www.python.org/downloads/)**
+
+# 3. MySQL database:
+
+**3.1 Installing MySQL on Windows:**
+- Download the MySQL MSI installer from the official site: MySQL Community Downloads.
+- Run the downloaded installer and follow the wizard instructions.
+- During installation, you will be asked to set the MySQL root user password.
+- Add the path of the MySQL binary directory to the system to the PATH environment variable to make it easier to use commands from the terminal.
+
+**3.2 Installing MySQL on Linux:**
+
+
+    # Update the package index
     sudo apt update
     
-    # Instala el servidor MySQL
+    # Install MySQL server
     sudo apt install mysql-server
     
-    # Inicia el servicio MySQL
+    # Start the MySQL service
     sudo service mysql start
     
-    # Configura la contraseña del usuario root de MySQL
+    # Set the MySQL root user password
      sudo mysql_secure_installation
 
 
-**3.3 Instalación de MySQL en MacOS:**
+**3.3 Installing MySQL on MacOS:**
 
-- Instala Homebrew si aún no lo tienes:
+- Install Homebrew if you don't have it already:
 
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-        # Instala MySQL con Homebrew:
+        # Install MySQL with Homebrew:
         brew install mysql
         
-        # Inicia el servicio MySQL
+        # Start the MySQL service
         brew services start mysql
         
-        # Configura la contraseña del usuario root de MySQL
+        # Set the MySQL root user password
         mysql_secure_installation
 
 
-- Estos comandos deberían proporcionarte una instalación básica de MySQL en cada sistema operativo. Asegúrate de consultar la documentación oficial de MySQL para obtener información adicional sobre la configuración y el uso del servidor MySQL: MySQL Documentation.
+- These commands should give you a basic installation of MySQL on each operating system. Be sure to check out the official MySQL documentation for additional information on setting up and using MySQL Server: MySQL Documentation.
 
-**3.4 Coloca el usuario y contraseña de MySQL en el archivo "backend/.env" para el correcto funcionamiento de la aplicación.**
+**3.4 Place the MySQL username and password in the "backend/.env" file for the application to function correctly.**
 
-**3.5 Iniciar sesion en MySQL desde la terminal:**
+**3.5 Login to MySQL from terminal:**
 
 
-        sudo mysql -u <Coloca tu usuario> -p
-        Enter password: <Coloca tu contraseña>
+        sudo mysql -u <Enter your username> -p
+        Enter password: <Enter your password>
 		
-**3.6 Ver lista usuarios existentes en MySQL**
+**3.6 View list of existing users in MySQL**
 
         mysql> SELECT user FROM mysql.user;
 
-**3.7 Privilegios de usuario**
+**3.7 User privileges**
 
-        GRANT ALL PRIVILEGES ON *.* TO 'nombre_usuario'@'localhost';
+        GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost';
 
-**3.8 Crear la base de datos:**
+**3.8 To create the data base:**
 
-- En la sesion de MySQL en la terminal, copia el codigo de "database/scripts/database_full.sql" esto creará la base de datos "db_webcuponera" con sus respectibas tablas.
+- In the MySQL session in the terminal, copy the code "database/scripts/database_full.sql" this will create the database "db_webcuponera" with their respective tables.
 ```bash
 mysql> SHOW TABLES;
 ____________________________
@@ -107,105 +107,103 @@ ____________________________
 |__________________________|
 ```
 
-- Copia el codigo de "database/scripts/procedures.sql" esto creara los procedimientos almacenados que usa la aplicación.
+- Copy the code "database/scripts/procedures.sql" This will create the stored procedures that the application uses.
 
 # 4. Backend:
 
-**4.1 Crear el entorno virtual en WINDOWS:**
+**4.1 Create the virtual environment in WINDOWS:**
 
-        # Instalar virtualenv desde la terminal
+        # Install virtualenv from terminal
         pip install virtualenv
 
-        # Navega al directorio
+        # Navigate to the directory
         > cd Proyecto-qupons/backend
 
-        # Crea el entorno virtual
+        # Create the virtual environment
         > py -3 -m venv venv
 
-        # Activa el entorno virtual
+        # Activate the virtual environment
         > venv\Scripts\activate
 
-        # Instala las dependencias
+        # Install the dependencies
         > pip install -r requirements.txt
 
-**4.2 Crear el entorno virtual en LINUX:**
+**4.2 Create the virtual environment in LINUX:**
 
-        # Instalar virtualenv desde la terminal
+        # Install virtualenv from terminal
         $ pip install virtualenv
 
         # Navega al directorio
         $ cd Proyecto-qupons/backend
 
-        # Crea el entorno virtual
+        # Create the virtual environment
         $ python3 -m venv venv
 
-        # Activa el entorno virtual
+        # Activate the virtual environment
         $ source venv/bin/activate
 
-        # Instala las dependencias
+        # Install the dependencies
         $ pip install -r requirements.txt
 
-**4.3 Crear el entorno virtual en MacOS:**
+**4.3 Create the virtual environment in MacOS:**
 
-        # Instalar virtualenv desde la terminal
+        # Install virtualenv from terminal
         $ pip install virtualenv
 
-        # Navega al directorio
+        # Navigate to the directory
         $ cd Proyecto-qupons/backend
 
-        # Crea el entorno virtual
+        # Create the virtual environment
         $ python3 -m venv venv
 
-        # Activa el entorno virtual
+        # Activate the virtual environment
         $ source venv/bin/activate
 
-        # Instala las dependencias
+        # Install the dependencies
         $ pip install -r requirements.txt
 
-**4.4 Iniciar el Backend (FastAPI):**
+**4.4 Start the Backend (FastAPI):**
 
-        # Raíz: "backend/"
+        # Root: "backend/"
         uvicorn app.main:app --reload
 
 # 5. Frontend:
 
-**5.1 Desde la terrminal navega hasta "Proyecto-Qupons/frontend/src"**
+**5.1 From the terminal navigate to "Proyecto-Qupons/frontend/src"**
 
-        # Instala las dependencias del archivo "package.json"
+        # Install file dependencies "package.json"
         npm install
 
-**5.2 Ejecución del frontend "Proyecto-Qupons/frontend/src"**
+**5.2 Frontend execution "Proyecto-Qupons/frontend/src"**
 
         npm run dev
 
-# 6. Uso:
-## **Paso 1: Registrar Administrador** 
-Empieza registrando un administrador, en tu terminal dentro de la sesion de mysql, utiliza el archivo "databases/scripts/pruebas_procedures.sql".
-Puedes usar cualquier administradore del primer grupo ya que estos ejecutan al procedimiento alamcenado "sp_crear_admin" para generar el registro
+# 6. Use:
+## **Step 1: Register Administrator** 
+Start by registering an administrator, in your terminal within the mysql session, use the file "databases/scripts/tests_procedures.sql".
+You can use any administrator from the first group since they execute the stored procedure "sp_crear_admin" to generate the record.
 
-## **Paso 2: Crear categorias**
-Para que las tiendas puedan crear sus cupones se necesita que el administrador cree categorias.
-por ejemplo: Moda, Gastronomia, Entretenimiento, Electrodomesticos, etc.
+## **Step 2: Create categories**
+In order for stores to create their coupons, the administrator needs to create categories. for example: Fashion, Gastronomy, Entertainment, Appliances, etc.
 ![crear-categorias](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/c620230e-8434-458c-8efc-4d127c263e80)
 
-## **Paso 3: Registrar una tienda**
-Desde el Frontend "http://localhost:5173/registrar-tienda" llena el formulario con los datos de tu tienda.
+## **Step 3: Register a store**
+From the Frontend "http://localhost:5173/registrar-tienda" fill out the form with your store data.
 ![registro-tienda](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/82e63b97-bff7-45cf-8dfd-d715fe66e043)
 
-## **Paso 4: Crear cupon**
-Desde la seccion crear cupon "http://localhost:5173/tienda-crear-cupones" personaliza el cupon rellenando los datos requeridos 
+## **Step 4: Create coupon**
+From the create coupon section "http://localhost:5173/tienda-crear-coupons" personalize the coupon by filling in the required information.
 ![crear-cupon](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/9d047b6d-43f5-4557-82ac-5c7ddf635308)
 
-## **Paso 5: Registrar usuario**
-Desde el Frontend "http://localhost:5173/registrar-usuario" rellena el formulario con los datos del usuario.
+## **Step 5: Register user**
+From the Frontend "http://localhost:5173/registrar-usuario" fill out the form with the user's data.
 ![registro-usuario](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/951c8ee9-b9d7-4096-a2e4-e9958f6c2fb4)
 
-## **Paso 5: obtener cupon**
-El usuairo tiene desponible una seccion "http://localhost:5173/usuario-cupones-obtenidos" donde puede ver los cupones obtenidos y poder descargarlos en un archivo pdf
+## **Step 6: Get coupon**
+The user has a section available "http://localhost:5173/usuario-cupones-obtenidos" where they can see the coupons obtained and be able to download them in a pdf file.
 ![cupone otenidos](https://github.com/MiguelBG12/Proyecto-Qupons/assets/135359331/75c2dbda-9878-4a8a-a1d4-1bda05a9d80a)
 
-
-# Autores👨‍🎓👩‍🎓:
+# Authors👨‍🎓👩‍🎓:
 #### Marirosa Vilcherrez: https://www.linkedin.com/in/marirosavilcherrez/
 #### Miguel Bautista: https://www.linkedin.com/in/miguelbautistag/
 #### Denzel Romero : https://www.linkedin.com/in/denzel-rb/
