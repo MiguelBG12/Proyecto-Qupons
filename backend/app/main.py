@@ -1,5 +1,5 @@
 from jose import jwt
-from fastapi import FastAPI, Depends, HTTPException, Request, Response
+from fastapi import FastAPI, HTTPException, Request, Response
 from app.routes import admin
 from app.routes import users
 from app.routes import stores
@@ -10,7 +10,6 @@ from app.models.store import StoreCreateRequest
 from app.utils.utils import create_access_token, SECRET_KEY, ALGORITHM
 from app.config.db_conexion import data_conexion
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 
 # Configuración de orígenes permitidos para CORS
 origins = [
